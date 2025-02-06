@@ -27,6 +27,19 @@ header > div .flags {
   gap: 2rem;
 }
 
+header > div .flags .flag {
+  filter: brightness(0.5) grayscale(0.5);
+}
+
+header > div .flags .flag:hover {
+  filter: contrast(1.5);
+  cursor: pointer;
+}
+
+header > div .flags .flag.active {
+  filter: brightness(1) grayscale(0) contrast(1.5);
+}
+
 header > div a {
   text-decoration: none;
   color: var(--tints-light_100);
@@ -129,9 +142,22 @@ header .sidebar .content nav ul li:hover {
   cursor: pointer;
 }
 header .sidebar .content .flags-container {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 2rem;
+}
+
+header .sidebar .content .flags-container .flag {
+  filter: brightness(0.5) grayscale(0.5);
+}
+
+header .sidebar .content .flags-container .flag:hover {
+  filter: contrast(1.5);
+  cursor: pointer;
+}
+
+header .sidebar .content .flags-container .flag.active {
+  filter: brightness(1) grayscale(0) contrast(1.5);
 }
 
 header .sidebar .content .flags-mobile {
@@ -173,7 +199,7 @@ header .sidebar .social-media a svg {
     display: none;
   }
 
-  header > div .flags-mobile {
+  header .sidebar .content .flags-container {
     display: flex;
   }
 }
