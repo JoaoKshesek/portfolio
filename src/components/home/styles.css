@@ -1,0 +1,91 @@
+#home {
+  width: 100%;
+  height: 100vh;
+  max-width: 128rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  justify-content: center;
+  margin-top: -4rem;
+}
+
+#home .container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  background: rgba(35, 35, 35, 0.05);
+  padding: 8rem;
+  border-radius: 4px;
+}
+
+#home .title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--tints-purple_100);
+}
+
+#home .title svg {
+  height: 8rem;
+  width: 8rem;
+  font-weight: bold;
+}
+
+#home .title h1 {
+  color: var(--tints-light_100);
+  font-family: var(--font-primary);
+  font-size: 4rem;
+  text-align: center;
+}
+
+#home p {
+  max-width: 80rem;
+  color: var(--tints-light_100);
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  text-align: center;
+}
+
+#home button {
+  background: var(--tints-purple_100);
+  color: var(--tints-light_100);
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  text-align: center;
+  outline: none;
+  border: none;
+  padding: 1.2rem 2rem;
+  margin-top: 8rem;
+  transition: all ease-in 100ms;
+  border-radius: 4px;
+}
+
+#home button:hover {
+  filter: brightness(1.25);
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  #home  {
+    margin-top: 2rem;
+  }
+  #home .container {
+    padding: 2rem;
+  }
+  #home .title h1 {
+    font-size: 3.6rem;
+  }
+  #home p {
+    font-size: 1.8rem;
+  }
+  #home button {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+}

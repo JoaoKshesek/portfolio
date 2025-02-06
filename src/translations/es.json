@@ -1,0 +1,54 @@
+{
+  "translation": {
+    "header_contact": "Contacto",
+
+    "navbar_navigation": "Navegación",
+    "navbar_language": "Idioma",
+
+    "navbar_home": "Inicio",
+    "navbar_about": "Acerca de",
+    "navbar_technologies": "Tecnologías",
+    "navbar_projects": "Proyectos",
+
+    "home_title": "La inteligencia es la capacidad de adaptarse al cambio",
+    "home_description": "Transforma tus ideas en soluciones innovadoras y robustas, con enfoque en eficiencia, seguridad y escalabilidad, para impulsar el crecimiento y el éxito de tu negocio.",
+    "home_button": "Saber más",
+
+    "about_title": "¿Quién soy?",
+    "about_paragraph_1": "Como Desarrollador Front-End, mi enfoque está en la creación de aplicaciones web inclusivas y centradas en el usuario, accesibles para todos, siguiendo las Directrices de Accesibilidad para el Contenido Web (WCAG). Mis habilidades están en diseñar interfaces responsivas y optimizadas para el rendimiento, utilizando tecnologías y marcos modernos.",
+    "about_paragraph_2": "Como líder técnico, he tenido la oportunidad de gestionar equipos de alto rendimiento, aportando innovación a las metodologías adoptadas, así como principios para una arquitectura sólida de proyectos. Creo que una gestión eficiente del equipo implica una comunicación clara, la definición de objetivos estratégicos y el fomento del aprendizaje continuo. Al adoptar prácticas ágiles y promover un ambiente colaborativo, he podido optimizar los flujos de trabajo, aumentar la productividad y entregar proyectos de alta calidad antes de lo previsto. Además, valoro la colaboración y el intercambio de conocimientos. Creo que un buen equipo se fortalece mediante el intercambio de ideas y la búsqueda constante de mejora.",
+    "about_paragraph_3": "Mi camino en el desarrollo incluye experiencias diversas, desde la construcción de sistemas administrativos robustos hasta aplicaciones dinámicas para usuarios finales. Me apasiona crear soluciones escalables y de alta calidad, garantizando código limpio, reutilizable y bien documentado.",
+    "about_paragraph_4": "Mi objetivo es uno solo: contribuir a proyectos innovadores que marquen la diferencia.",
+
+    "technologies_title": "Descubre las tecnologías con las que trabajo",
+    "technologies_stack_1": "Frontend",
+    "technologies_stack_2": "Backend",
+    "technologies_stack_3": "DevOps",
+    "technologies_stack_4": "Herramientas",
+
+    "projects_title": "Conoce algunos de los proyectos en los que he colaborado",
+    "projects_description": "Los proyectos son únicos y personalizados para adaptarse a las necesidades de cada cliente.",
+
+    "project_title_1": "Cinemark - Plataforma",
+    "project_title_2": "Blocos Dinâmicos - Ecommerce",
+    "project_title_3": "Lide Paraná - Aplicación",
+    "project_title_4": "Lide Global - Gestor",
+    "project_title_5": "Manakai - Plataforma [En curso]",
+    "project_title_6": "Busca Global - Plataforma",
+    "project_title_7": "MedGuias - Plataforma",
+    "project_title_8": "Sebrae - Plataforma",
+
+    "project_description_1": "Plataforma digital desarrollada para mejorar la experiencia de los clientes de Cinemark, ofreciendo acceso a películas, programación y servicios exclusivos.",
+    "project_description_2": "Tienda virtual innovadora con un sistema dinámico de personalización de productos, ofreciendo una experiencia de compra intuitiva y eficiente.",
+    "project_description_3": "Aplicación desarrollada para la comunidad empresarial de Lide Paraná, permitiendo networking, acceso a eventos y contenido exclusivo.",
+    "project_description_4": "Plataforma administrativa para gestionar eventos, miembros y contenidos de Lide Global, facilitando la organización y optimización de procesos internos.",
+    "project_description_5": "Solución digital centrada en la gestión de procesos internos, optimizando flujos de trabajo y aumentando la productividad de las empresas.",
+    "project_description_6": "Plataforma dedicada a la búsqueda y emisión de certificados diversos, enfocada en la integración de todos los registros civiles de América Latina.",
+    "project_description_7": "Plataforma desarrollada para el sector de la salud, ayudando en la gestión y recomendación de guías médicas de manera práctica y eficiente.",
+    "project_description_8": "Solución digital desarrollada para Sebrae, facilitando el acceso a contenidos educativos, soporte para emprendedores y gestión empresarial.",
+
+    "project_button": "Ver más",
+
+    "footer_copyright": "Todos los derechos reservados"
+  }
+}

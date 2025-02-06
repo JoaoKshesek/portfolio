@@ -1,0 +1,54 @@
+{
+  "translation": {
+    "header_contact": "Contact",
+
+    "navbar_navigation": "Navigation",
+    "navbar_language": "Language",
+
+    "navbar_home": "Home",
+    "navbar_about": "About",
+    "navbar_technologies": "Technologies",
+    "navbar_projects": "Projects",
+
+    "home_title": "Intelligence is the ability to adapt to change",
+    "home_description": "Transform your ideas into innovative and robust solutions, focusing on efficiency, security, and scalability, to drive growth and success for your business.",
+    "home_button": "Learn More",
+
+    "about_title": "Who am I?",
+    "about_paragraph_1": "As a Front-End Developer, my focus is on creating user-centric, inclusive web applications accessible to everyone, following the Web Content Accessibility Guidelines (WCAG). My skills are in designing responsive, performance-optimized interfaces using modern technologies and frameworks.",
+    "about_paragraph_2": "As a technical leader, I have had the opportunity to manage high-performance teams, bringing innovation to adopted methodologies as well as principles for a solid project architecture. I believe efficient team management involves clear communication, setting strategic objectives, and encouraging continuous learning. By adopting agile practices and promoting a collaborative environment, I have been able to optimize workflows, increase productivity, and deliver high-quality projects ahead of schedule. Furthermore, I value collaboration and knowledge sharing. I believe a strong team thrives on the exchange of ideas and the constant pursuit of improvement.",
+    "about_paragraph_3": "My journey in development includes diverse experiences, from building robust administrative systems to dynamic applications for end users. I am passionate about creating scalable, high-quality solutions, ensuring clean, reusable, and well-documented code.",
+    "about_paragraph_4": "My goal is singular: to contribute to innovative projects that make a difference.",
+
+    "technologies_title": "Discover the technologies I work with",
+    "technologies_stack_1": "Frontend",
+    "technologies_stack_2": "Backend",
+    "technologies_stack_3": "DevOps",
+    "technologies_stack_4": "Tools",
+
+    "projects_title": "Check out some of the projects I’ve collaborated on",
+    "projects_description": "The projects are unique and personalized to fit each client’s needs.",
+
+    "project_title_1": "Cinemark - Platform",
+    "project_title_2": "Blocos Dinâmicos - Ecommerce",
+    "project_title_3": "Lide Paraná - App",
+    "project_title_4": "Lide Global - Manager",
+    "project_title_5": "Manakai - Platform [Ongoing]",
+    "project_title_6": "Busca Global - Platform",
+    "project_title_7": "MedGuias - Platform",
+    "project_title_8": "Sebrae - Platform",
+
+    "project_description_1": "Digital platform developed to enhance the Cinemark customer experience, providing access to movies, schedules, and exclusive services.",
+    "project_description_2": "Innovative online store with a dynamic product customization system, offering an intuitive and efficient shopping experience.",
+    "project_description_3": "App developed for the Lide Paraná business community, enabling networking, access to events, and exclusive content.",
+    "project_description_4": "Administrative platform for managing Lide Global events, members, and content, streamlining organization and optimizing internal processes.",
+    "project_description_5": "Digital solution focused on managing internal processes, optimizing workflows, and increasing company productivity.",
+    "project_description_6": "Platform for searching and issuing various certificates, integrating all notaries in Latin America.",
+    "project_description_7": "Platform developed for the healthcare sector, assisting in managing and recommending medical guides in a practical and efficient way.",
+    "project_description_8": "Digital solution developed for Sebrae, providing access to educational content, entrepreneur support, and business management.",
+
+    "project_button": "See more",
+
+    "footer_copyright": "All rights reserved"
+  }
+}

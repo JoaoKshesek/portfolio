@@ -1,0 +1,54 @@
+{
+  "translation": {
+    "header_contact": "contato",
+
+    "navbar_navigation": "Navegação",
+    "navbar_language": "Idioma",
+
+    "navbar_home": "Início",
+    "navbar_about": "Sobre",
+    "navbar_technologies": "Tecnologias",
+    "navbar_projects": "Projetos",
+
+    "home_title": "A inteligência é a capacidade de se adaptar à mudança",
+    "home_description": "Transforme suas ideias em soluções inovadoras e robustas, com foco em eficiência, segurança e escalabilidade, para impulsionar o crescimento e o sucesso do seu negócio.",
+    "home_button": "Saiba mais",
+
+    "about_title": "Quem sou eu?",
+    "about_paragraph_1": "Como Desenvolvedor Front-End, meu foco é na criação de aplicações web inclusivas e centradas no usuário, acessíveis a todos, seguindo os princípios das Diretrizes de Acessibilidade para Conteúdo Web (WCAG). Minhas habilidades estão em projetar interfaces responsivas e otimizadas para desempenho, utilizando tecnologias e frameworks modernos.",
+    "about_paragraph_2": "Como líder técnico, tive a oportunidade de gerenciar times de alto desempenho, trazendo inovação nas metodologias adotadas, bem como princípios para uma sólida arquitetura de projeto. Acredito que uma gestão eficiente de equipe envolve comunicação clara, definição de objetivos estratégicos e incentivo ao aprendizado contínuo. Ao adotar práticas ágeis e promover um ambiente colaborativo, consegui otimizar fluxos de trabalho, aumentar a produtividade e entregar projetos com alta qualidade, antecipando prazos estabelecidos. Além disso, valorizo a colaboração e a troca de conhecimento. Acredito que um bom time se fortalece pelo compartilhamento de ideias e pela busca constante por aprimoramento.",
+    "about_paragraph_3": "Minha jornada no desenvolvimento inclui experiências diversas, desde a construção de sistemas administrativos robustos até aplicações dinâmicas para usuários finais. Sou apaixonado por criar soluções escaláveis e de alta qualidade, garantindo código limpo, reutilizável e bem documentado.",
+    "about_paragraph_4": "Meu objetivo é um só: contribuir para projetos inovadores que façam a diferença.",
+
+    "technologies_title": "Conheça as tecnologias com que trabalho",
+    "technologies_stack_1": "Frontend",
+    "technologies_stack_2": "Backend",
+    "technologies_stack_3": "DevOps",
+    "technologies_stack_4": "Ferramentas",
+
+    "projects_title": "Conheça alguns dos projetos que colaborei",
+    "projects_description": "Os projetos são únicos e personalizados para se adequar às necessidades de cada cliente.",
+
+    "project_title_1": "Cinemark - Plataforma",
+    "project_title_2": "Blocos Dinâmicos - Ecommerce",
+    "project_title_3": "Lide Paraná - Aplicativo",
+    "project_title_4": "Lide Global - Gerenciador",
+    "project_title_5": "Manakai - Plataforma [Em andamento]",
+    "project_title_6": "Busca Global - Plataforma",
+    "project_title_7": "MedGuias - Plataforma",
+    "project_title_8": "Sebrae - Plataforma",
+
+    "project_description_1": "Plataforma digital desenvolvida para aprimorar a experiência dos clientes da Cinemark, oferecendo acesso a filmes, programação e serviços exclusivos.",
+    "project_description_2": "Loja virtual inovadora com um sistema dinâmico de personalização de produtos, proporcionando uma experiência de compra intuitiva e eficiente.",
+    "project_description_3": "Aplicativo desenvolvido para a comunidade empresarial do Lide Paraná, permitindo networking, acesso a eventos e conteúdos exclusivos.",
+    "project_description_4": "Plataforma administrativa para gerenciamento de eventos, membros e conteúdos do Lide Global, facilitando a organização e otimização de processos internos.",
+    "project_description_5": "Solução digital voltada para a gestão de processos internos, otimizando fluxos de trabalho e aumentando a produtividade das empresas.",
+    "project_description_6": "Plataforma voltada para a busca e emissão de certidões diversas, voltada a integração de todos os cartórios da América Latina.",
+    "project_description_7": "Plataforma desenvolvida para o setor de saúde, auxiliando na gestão e recomendação de guias médicos de forma prática e eficiente.",
+    "project_description_8": "Solução digital desenvolvida para o Sebrae, facilitando o acesso a conteúdos educacionais, suporte para empreendedores e gestão de negócios.",
+
+    "project_button": "Ver mais",
+
+    "footer_copyright": "Todos os direitos reservados"
+  }
+}

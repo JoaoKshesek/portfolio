@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  font-size: 62.5%;
+  --font-primary: "Share Tech", serif;
+  --font-secondary: "Montserrat", serif;
+  --tints-purple_100: #6a0dad;
+  --tints-light_100: #e2e2e2;
+  --tints-light_200: #bbbbbb;
+  --tints-dark_100: #131313;
+}
+
+::selection {
+  color: var(--tints-light_100);
+  background-color: var(--tints-purple_100);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 8px; 
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tints-dark_100);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tints-purple_100); 
+  border-radius: 10px;
+  border: 1px solid var(--tints-dark_100);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8e24aa;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--tints-purple_100) var(--tints-dark_100);
+}
+
+body {
+  background: var(--tints-dark_100);
+  font-family: var(--font-primary);
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+}
