@@ -3,11 +3,11 @@ import "./styles.css";
 
 export function About() {
   const { t } = useTranslation();
-  
+
   return (
     <div id="about">
       <div className="profile">
-        <img className="avatar" src="/hero.jpeg" alt="João Valter Kshesek" />
+        <img className="avatar" src="./hero.jpeg" alt="João Valter Kshesek" />
       </div>
 
       <div className="info">

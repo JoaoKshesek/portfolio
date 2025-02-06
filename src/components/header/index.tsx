@@ -47,9 +47,9 @@ export function Header() {
   }, [isOpen]);
 
   const languages = [
-    { code: "language_portuguese", flag: "/assets/icons/brazil-flag.png", alt: "Brazil flag" },
-    { code: "language_english", flag: "/assets/icons/usa-flag.png", alt: "USA flag" },
-    { code: "language_spanish", flag: "/assets/icons/spain-flag.png", alt: "Spain flag" },
+    { code: "language_portuguese", flag: "./assets/icons/brazil-flag.png", alt: "Brazil flag" },
+    { code: "language_english", flag: "./assets/icons/usa-flag.png", alt: "USA flag" },
+    { code: "language_spanish", flag: "./assets/icons/spain-flag.png", alt: "Spain flag" },
   ];
 
   return (

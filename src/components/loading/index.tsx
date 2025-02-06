@@ -5,7 +5,7 @@ export function Loading() {
   return (
     <div className="loading">
       <div>
-        <DotLottieReact src="/assets/animations/loading.lottie" loop autoplay />
+        <DotLottieReact src="./assets/animations/loading.lottie" loop autoplay />
       </div>{" "}
     </div>
   );
