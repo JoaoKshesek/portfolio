@@ -9,7 +9,7 @@ const RootComponent = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 4000);
+    }, 2700);
 
     return () => clearTimeout(timer);
   }, []);
