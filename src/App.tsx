@@ -11,7 +11,7 @@ function App() {
         mutationRate={0.04}
         interval={90}
         fadeBottom={0.6}
-        color={"red"}
+
         style={{
           position: "absolute",
           top: 0,
@@ -21,10 +21,10 @@ function App() {
         }}
       />
 
-      <div className="flex flex-col h-full">
+      <div className="relative flex h-full flex-col rounded-xl border border-ide-border bg-ide-editor text-ide-fg shadow-2xl">
         <Header />
 
-        <div className="flex flex-1 overflow-hidden h-[80%]">
+        <div className="flex min-h-0 flex-1">
           <Navigation />
           <Aside />
           <Main />

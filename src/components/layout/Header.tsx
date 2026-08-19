@@ -1,7 +1,37 @@
-export function Header() {
+const trafficLights = [
+  { label: "Fechar", color: "#ff5f57", glyph: "✕" },
+  { label: "Minimizar", color: "#febc2e", glyph: "–" },
+  { label: "Maximizar", color: "#28c840", glyph: "⤢" },
+];
+
+interface HeaderProps {
+  title?: string;
+}
+
+export function Header({ title = "App.tsx — portfolio-v2" }: HeaderProps) {
   return (
-    <header className="bg-blue-600 p-6 text-white">
-    
+    <header className="flex h-9 shrink-0 items-center gap-2 rounded-t-[13px] border-b border-ide-border bg-ide-titlebar px-3 select-none">
+      <div className="group flex shrink-0 items-center gap-2">
+        {trafficLights.map((light) => (
+          <button
+            key={light.label}
+            type="button"
+            aria-label={light.label}
+            style={{ backgroundColor: light.color }}
+            className="flex size-3 items-center justify-center rounded-full text-[8px] leading-none text-black/60 shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.15)]"
+          >
+            <span className="opacity-0 transition-opacity group-hover:opacity-100">
+              {light.glyph}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <span className="flex-1 truncate text-center text-[13px] text-ide-muted">
+        {title}
+      </span>
+
+      <div aria-hidden className="w-13 shrink-0" />
     </header>
   );
 }
