@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import "@vscode/codicons/dist/codicon.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -21,6 +22,21 @@
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+
+  --ide-titlebar: #f0eff1;
+  --ide-editor: #ffffff;
+  --ide-sidebar: #f8f8f8;
+  --ide-activitybar: #f0eff1;
+  --ide-statusbar: #f8f8f8;
+  --ide-statusbar-fg: #6b7280;
+  --ide-border: #e0e0e0;
+  --ide-fg: #3b3b3b;
+  --ide-muted: #767676;
+  --ide-hover: rgba(0, 0, 0, 0.06);
+  --ide-active: #ffffff;
+  --ide-indicator: #ff795d;
+  --ide-indicator-active: #ff957f;
+  --ide-badge: #0078d4;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -98,7 +114,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --text: #9ca3af;
     --text-h: #f3f4f6;
     --bg: #16171d;
@@ -110,6 +126,18 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+    --ide-titlebar: #0b1118;
+    --ide-editor: #1f1f1f;
+    --ide-sidebar: #020408;
+    --ide-activitybar: #0b1118;
+    --ide-statusbar: #181818;
+    --ide-statusbar-fg: #7c8591;
+    --ide-border: #2f363f;
+    --ide-fg: #cccccc;
+    --ide-muted: #8b8b8b;
+    --ide-hover: rgba(255, 255, 255, 0.08);
+    --ide-active: #1f1f1f;
   }
 
   #social .button-icon {
@@ -125,6 +153,21 @@
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: 'Geist Variable', sans-serif;
+  --font-mono: var(--mono);
+  --color-ide-titlebar: var(--ide-titlebar);
+  --color-ide-editor: var(--ide-editor);
+  --color-ide-sidebar: var(--ide-sidebar);
+  --color-ide-activitybar: var(--ide-activitybar);
+  --color-ide-statusbar: var(--ide-statusbar);
+  --color-ide-statusbar-fg: var(--ide-statusbar-fg);
+  --color-ide-border: var(--ide-border);
+  --color-ide-fg: var(--ide-fg);
+  --color-ide-muted: var(--ide-muted);
+  --color-ide-hover: var(--ide-hover);
+  --color-ide-active: var(--ide-active);
+  --color-ide-indicator: var(--ide-indicator);
+  --color-ide-indicator-active: var(--ide-indicator-active);
+  --color-ide-badge: var(--ide-badge);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -165,7 +208,22 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+.light {
+  color-scheme: light;
+}
+
 .dark {
+  color-scheme: dark;
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --code-bg: #1f2028;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -197,6 +255,18 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --ide-titlebar: #0b1118;
+  --ide-editor: #1f1f1f;
+  --ide-sidebar: #020408;
+  --ide-activitybar: #0b1118;
+  --ide-statusbar: #181818;
+  --ide-statusbar-fg: #7c8591;
+  --ide-border: #2f363f;
+  --ide-fg: #cccccc;
+  --ide-muted: #8b8b8b;
+  --ide-hover: rgba(255, 255, 255, 0.08);
+  --ide-active: #1f1f1f;
 }
 
 @layer base {
