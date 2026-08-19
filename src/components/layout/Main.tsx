@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface MainProps {
   children?: ReactNode;
@@ -6,15 +6,15 @@ interface MainProps {
 
 export function Main({ children }: MainProps) {
   return (
-    <main className="flex-1 flex flex-col">
-      <section className="bg-green-500 flex-1 p-6 text-white">
-        <h2 className="text-xl font-bold">Featured Content</h2>
+    <main className="flex min-w-0 flex-1 flex-col overflow-hidden bg-ide-editor">
+      <section className="flex-1 overflow-y-auto p-6">
+        <h2 className="text-xl font-bold text-ide-fg">Featured Content</h2>
       </section>
-      <section className="bg-gray-200 flex-1 p-6 max-h-50">
+      <section className="max-h-50 flex-1 overflow-y-auto border-t border-ide-border p-6">
         {children || (
           <>
-            <h2 className="text-xl font-bold mb-4">Additional Content</h2>
-            <p className="text-gray-700">Your content goes here</p>
+            <h2 className="mb-4 text-xl font-bold text-ide-fg">Additional Content</h2>
+            <p className="text-ide-muted">Your content goes here</p>
           </>
         )}
       </section>
