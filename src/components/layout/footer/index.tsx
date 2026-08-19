@@ -1,4 +1,4 @@
-import { Codicon } from "@/components/ui/codicon";
+import { Codicon } from "@/components/atoms/codicon";
 
 interface FooterProps {
   branch?: string;

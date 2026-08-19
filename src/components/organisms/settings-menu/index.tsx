@@ -1,5 +1,5 @@
 import { Menu } from "@base-ui/react/menu";
-import { Codicon } from "@/components/ui/codicon";
+import { Codicon } from "@/components/atoms/codicon";
 import {
   useLanguage,
   useTheme,
@@ -48,7 +48,7 @@ export function SettingsMenu() {
 
       <Menu.Portal>
         <Menu.Positioner side="right" align="end" sideOffset={4} className="z-50">
-          <Menu.Popup className="min-w-56 rounded-md border border-ide-border bg-ide-titlebar p-1 text-[13px] text-ide-fg shadow-2xl outline-none transition-opacity duration-100 data-ending-style:opacity-0 data-starting-style:opacity-0">
+          <Menu.Popup className="min-w-56 rounded-md border border-ide-border bg-ide-titlebar/80 backdrop-blur-md p-1 text-[13px] text-ide-fg shadow-2xl outline-none transition-opacity duration-100 data-ending-style:opacity-0 data-starting-style:opacity-0">
             <Menu.RadioGroup
               value={language}
               onValueChange={(value) => setLanguage(value as Language)}

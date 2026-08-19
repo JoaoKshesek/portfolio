@@ -1,20 +1,11 @@
-import { useState } from "react";
-import { Codicon } from "@/components/ui/codicon";
-import { SettingsMenu } from "./SettingsMenu";
+import { Codicon } from "@/components/atoms/codicon";
+
 import { cn } from "@/lib/utils";
-
-const items = [
-  { id: "files", icon: "files", label: "Explorer" },
-  { id: "search", icon: "search", label: "Buscar" },
-  { id: "scm", icon: "source-control", label: "Source Control", badge: 9 },
-  { id: "extensions", icon: "extensions", label: "Extensões" },
-  { id: "claude", icon: "sparkle", label: "Claude Code" },
-];
-
-const bottomItems = [{ id: "account", icon: "account", label: "Conta" }];
+import { SettingsMenu } from "@/components/organisms/settings-menu";
+import { useNavigation } from "./use.index";
 
 export function Navigation() {
-  const [active, setActive] = useState("files");
+  const { active, setActive, items, bottomItems } = useNavigation();
 
   return (
     <nav className="flex w-12 shrink-0 flex-col border-r border-ide-border bg-ide-activitybar">

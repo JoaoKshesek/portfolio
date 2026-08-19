@@ -1,3 +1,5 @@
+import { TechnologyList } from "@/components/organisms/technology-list";
+
 export function Aside() {
   return (
     <aside className="w-56 shrink-0 overflow-y-auto border-r border-ide-border bg-ide-sidebar">
@@ -9,6 +11,7 @@ export function Aside() {
         <li className="cursor-pointer px-4 py-0.5 hover:bg-ide-hover">Experience</li>
         <li className="cursor-pointer px-4 py-0.5 hover:bg-ide-hover">Education</li>
       </ul>
+      <TechnologyList data={[{ id: "1", icon: "icon1", name: "Technology 1", description: "Description 1" }]} />
     </aside>
   );
 }

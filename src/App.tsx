@@ -1,5 +1,10 @@
-import { Header, Navigation, Aside, Main, Footer } from "@/components/layout";
+
 import "./App.css";
+import { Aside } from "./components/layout/aside";
+import { Footer } from "./components/layout/footer";
+import { Header } from "./components/layout/header";
+import { Main } from "./components/layout/main";
+import { Navigation } from "./components/layout/navigation";
 import { GlyphMatrix } from "./components/ui/glyph-matrix";
 
 function App() {
