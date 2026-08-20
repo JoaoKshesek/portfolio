@@ -1,11 +1,6 @@
 import { useMemo, useState } from "react";
 
-export interface Technology {
-  id: string;
-  icon: string;
-  name: string;
-  description: string;
-}
+import type { Technology } from "@/lib/technologies";
 
 export interface UseTechnologyListProps {
   filtered: Technology[];

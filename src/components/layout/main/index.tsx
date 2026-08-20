@@ -6,7 +6,7 @@ interface MainProps {
 
 export function Main({ children }: MainProps) {
   return (
-    <main className="flex min-w-0 flex-1 flex-col overflow-hidden bg-ide-editor">
+    <main className="flex h-full min-w-0 flex-col overflow-hidden bg-ide-editor">
       <section className="flex-1 overflow-y-auto p-6">
         <h2 className="text-xl font-bold text-ide-fg">Featured Content</h2>
       </section>

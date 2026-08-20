@@ -1,13 +1,7 @@
 import { Codicon } from "@/components/atoms/codicon";
 import { useTechnologyList } from "./use.index";
 import { TechnologyCard } from "@/components/molecules/technology-card";
-
-interface Technology {
-  id: string;
-  icon: string;
-  name: string;
-  description: string;
-}
+import type { Technology } from "@/lib/technologies";
 
 interface TechnologyListProps {
   data: Technology[];
@@ -53,6 +47,7 @@ export function TechnologyList({
               icon={tech.icon}
               name={tech.name}
               description={tech.description}
+              time={tech.time}
             />
           ))
         ) : (

@@ -6,6 +6,12 @@ import { Header } from "./components/layout/header";
 import { Main } from "./components/layout/main";
 import { Navigation } from "./components/layout/navigation";
 import { GlyphMatrix } from "./components/ui/glyph-matrix";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "./components/ui/resizable";
+import { ActivityViewProvider } from "./lib/activity-view-provider";
 
 function App() {
   return (
@@ -29,11 +35,26 @@ function App() {
       <div className="relative flex h-full flex-col rounded-xl border border-ide-border bg-ide-editor text-ide-fg shadow-2xl">
         <Header />
 
-        <div className="flex min-h-0 flex-1">
-          <Navigation />
-          <Aside />
-          <Main />
-        </div>
+        <ActivityViewProvider>
+          <div className="flex min-h-0 flex-1">
+            <Navigation />
+
+            <ResizablePanelGroup
+              orientation="horizontal"
+              className="min-w-0 flex-1"
+            >
+              <ResizablePanel defaultSize={224} minSize={160} maxSize={480}>
+                <Aside />
+              </ResizablePanel>
+
+              <ResizableHandle className="w-px bg-ide-border transition-colors after:w-2 hover:bg-ide-resize focus-visible:bg-ide-resize active:bg-ide-resize" />
+
+              <ResizablePanel>
+                <Main />
+              </ResizablePanel>
+            </ResizablePanelGroup>
+          </div>
+        </ActivityViewProvider>
 
         <Footer />
       </div>
