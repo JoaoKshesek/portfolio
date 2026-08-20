@@ -38,6 +38,9 @@
   --ide-indicator-active: #ff957f;
   --ide-badge: #0078d4;
   --ide-resize: #0071f3;
+  --sb-track-color: #f8f8f8;
+  --sb-thumb-color: #d0d0d0;
+  --sb-size: 12px;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -269,6 +272,9 @@
   --ide-muted: #8b8b8b;
   --ide-hover: rgba(255, 255, 255, 0.08);
   --ide-active: #1f1f1f;
+  --sb-track-color: #03080c;
+  --sb-thumb-color: #1B2127;
+  --sb-size: 10px;
 }
 
 @layer base {
@@ -278,3 +284,29 @@
     @apply bg-background text-foreground;}
   html {
     @apply font-sans;}}
+
+::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 1px!important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 1px;
+  border: 1px solid #1B2127;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}

@@ -23,11 +23,11 @@ export function Aside() {
 
   return (
     <aside className="flex h-full w-full flex-col overflow-hidden bg-ide-sidebar">
-      <h3 className="px-4 py-2 text-[11px] font-normal tracking-wider text-ide-muted uppercase">
+      <h3 className="px-3 py-2 text-[11px] font-normal tracking-wider text-white uppercase">
         {title}
       </h3>
 
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
         <Panel />
       </div>
     </aside>

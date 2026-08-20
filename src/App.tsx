@@ -43,7 +43,7 @@ function App() {
               orientation="horizontal"
               className="min-w-0 flex-1"
             >
-              <ResizablePanel defaultSize={224} minSize={160} maxSize={480}>
+              <ResizablePanel defaultSize={234} minSize={230} maxSize={480}>
                 <Aside />
               </ResizablePanel>
 

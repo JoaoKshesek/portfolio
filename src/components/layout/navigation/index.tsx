@@ -2,6 +2,7 @@ import { Codicon } from "@/components/atoms/codicon";
 
 import { cn } from "@/lib/utils";
 import { SettingsMenu } from "@/components/organisms/settings-menu";
+import { SocialMenu } from "@/components/organisms/social-menu";
 import { useNavigation } from "./use.index";
 
 export function Navigation() {
@@ -38,16 +39,22 @@ export function Navigation() {
       })}
 
       <div className="mt-auto flex flex-col">
-        {bottomItems.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            aria-label={item.label}
-            className="flex h-12 w-full cursor-pointer items-center justify-center text-ide-statusbar-fg hover:text-white"
-          >
-            <Codicon name={item.icon} size={24} />
-          </button>
-        ))}
+        {bottomItems.map((item) => {
+          if (item.id === "account") {
+            return <SocialMenu key={item.id} />;
+          }
+
+          return (
+            <button
+              key={item.id}
+              type="button"
+              aria-label={item.label}
+              className="flex h-12 w-full cursor-pointer items-center justify-center text-ide-statusbar-fg hover:text-white"
+            >
+              <Codicon name={item.icon} size={24} />
+            </button>
+          );
+        })}
 
         <SettingsMenu />
       </div>

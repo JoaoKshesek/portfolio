@@ -29,12 +29,15 @@ import visualStudio from "@/assets/icons/visual-studio.png";
 import vite from "@/assets/icons/vite.png";
 import vscode from "@/assets/icons/vscode.png";
 
+export type TechnologyCategory = "ferramentas" | "frontend" | "backend" | "infraestrutura";
+
 export interface Technology {
   id: string;
   icon: string;
   name: string;
   description: string;
   time: string;
+  category: TechnologyCategory;
 }
 
 export const technologies: Technology[] = [
@@ -44,6 +47,7 @@ export const technologies: Technology[] = [
     name: "TypeScript",
     description: "JavaScript com tipagem estática e refactors seguros.",
     time: "5a",
+    category: "frontend",
   },
   {
     id: "javascript",
@@ -51,6 +55,7 @@ export const technologies: Technology[] = [
     name: "JavaScript",
     description: "Linguagem base da web, no browser e no servidor.",
     time: "5a",
+    category: "frontend",
   },
   {
     id: "react",
@@ -58,6 +63,7 @@ export const technologies: Technology[] = [
     name: "React",
     description: "Interfaces declarativas baseadas em componentes.",
     time: "5a",
+    category: "frontend",
   },
   {
     id: "nextjs",
@@ -65,6 +71,7 @@ export const technologies: Technology[] = [
     name: "Next.js",
     description: "Framework React com SSR, rotas e otimização de build.",
     time: "5a",
+    category: "frontend",
   },
   {
     id: "react-native",
@@ -72,6 +79,7 @@ export const technologies: Technology[] = [
     name: "React Native",
     description: "Apps mobile para iOS e Android com a stack React.",
     time: "5a",
+    category: "frontend",
   },
   {
     id: "html",
@@ -79,6 +87,7 @@ export const technologies: Technology[] = [
     name: "HTML",
     description: "Marcação semântica e acessível como base das páginas.",
     time: "5a",
+    category: "frontend",
   },
   {
     id: "css",
@@ -86,6 +95,7 @@ export const technologies: Technology[] = [
     name: "CSS",
     description: "Layout responsivo, animações e design system.",
     time: "5a",
+    category: "frontend",
   },
   {
     id: "mui",
@@ -93,6 +103,7 @@ export const technologies: Technology[] = [
     name: "Material UI",
     description: "Biblioteca de componentes React com tema customizável.",
     time: "5a",
+    category: "frontend",
   },
   {
     id: "vite",
@@ -100,6 +111,7 @@ export const technologies: Technology[] = [
     name: "Vite",
     description: "Dev server instantâneo e build otimizado para o front.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "node",
@@ -107,6 +119,7 @@ export const technologies: Technology[] = [
     name: "Node.js",
     description: "Runtime JavaScript para APIs e serviços no back-end.",
     time: "5a",
+    category: "backend",
   },
   {
     id: "express",
@@ -114,6 +127,7 @@ export const technologies: Technology[] = [
     name: "Express",
     description: "Framework minimalista para APIs REST em Node.",
     time: "5a",
+    category: "backend",
   },
   {
     id: "php",
@@ -121,6 +135,7 @@ export const technologies: Technology[] = [
     name: "PHP",
     description: "Linguagem server-side em sistemas web e legados.",
     time: "5a",
+    category: "backend",
   },
   {
     id: "laravel",
@@ -128,6 +143,7 @@ export const technologies: Technology[] = [
     name: "Laravel",
     description: "Framework PHP com ORM, filas e autenticação prontos.",
     time: "5a",
+    category: "backend",
   },
   {
     id: "csharp",
@@ -135,6 +151,7 @@ export const technologies: Technology[] = [
     name: "C#",
     description: "Linguagem da plataforma .NET para APIs e serviços.",
     time: "5a",
+    category: "backend",
   },
   {
     id: "mysql",
@@ -142,6 +159,7 @@ export const technologies: Technology[] = [
     name: "MySQL",
     description: "Banco relacional: modelagem, queries e índices.",
     time: "5a",
+    category: "infraestrutura",
   },
   {
     id: "mongodb",
@@ -149,6 +167,7 @@ export const technologies: Technology[] = [
     name: "MongoDB",
     description: "Banco NoSQL orientado a documentos e agregações.",
     time: "5a",
+    category: "infraestrutura",
   },
   {
     id: "docker",
@@ -156,6 +175,7 @@ export const technologies: Technology[] = [
     name: "Docker",
     description: "Containers para padronizar ambientes e deploys.",
     time: "5a",
+    category: "infraestrutura",
   },
   {
     id: "aws",
@@ -163,6 +183,7 @@ export const technologies: Technology[] = [
     name: "AWS",
     description: "Infra em nuvem: computação, storage e filas.",
     time: "5a",
+    category: "infraestrutura",
   },
   {
     id: "azure",
@@ -170,6 +191,7 @@ export const technologies: Technology[] = [
     name: "Azure",
     description: "Nuvem da Microsoft para apps e pipelines .NET.",
     time: "5a",
+    category: "infraestrutura",
   },
   {
     id: "datadog",
@@ -177,6 +199,7 @@ export const technologies: Technology[] = [
     name: "Datadog",
     description: "Observabilidade com métricas, logs e alertas.",
     time: "5a",
+    category: "infraestrutura",
   },
   {
     id: "git",
@@ -184,6 +207,7 @@ export const technologies: Technology[] = [
     name: "Git",
     description: "Versionamento, branches e histórico de mudanças.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "github",
@@ -191,6 +215,7 @@ export const technologies: Technology[] = [
     name: "GitHub",
     description: "Repositórios, code review e CI com Actions.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "jest",
@@ -198,6 +223,7 @@ export const technologies: Technology[] = [
     name: "Jest",
     description: "Testes unitários e de integração com cobertura.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "cypress",
@@ -205,6 +231,7 @@ export const technologies: Technology[] = [
     name: "Cypress",
     description: "Testes end-to-end rodando no browser real.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "swagger",
@@ -212,6 +239,7 @@ export const technologies: Technology[] = [
     name: "Swagger",
     description: "Documentação de APIs no padrão OpenAPI.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "postman",
@@ -219,6 +247,7 @@ export const technologies: Technology[] = [
     name: "Postman",
     description: "Coleções para testar e documentar endpoints.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "insomnia",
@@ -226,6 +255,7 @@ export const technologies: Technology[] = [
     name: "Insomnia",
     description: "Cliente REST e GraphQL para debug de requisições.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "beekeeper",
@@ -233,6 +263,7 @@ export const technologies: Technology[] = [
     name: "Beekeeper Studio",
     description: "Cliente SQL para explorar e editar bases de dados.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "vscode",
@@ -240,6 +271,7 @@ export const technologies: Technology[] = [
     name: "VS Code",
     description: "Editor do dia a dia — inclusive a inspiração deste site.",
     time: "5a",
+    category: "ferramentas",
   },
   {
     id: "visual-studio",
@@ -247,5 +279,6 @@ export const technologies: Technology[] = [
     name: "Visual Studio",
     description: "IDE para desenvolvimento em C# e .NET.",
     time: "5a",
+    category: "ferramentas",
   },
 ];
