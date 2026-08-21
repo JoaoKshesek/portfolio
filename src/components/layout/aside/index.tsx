@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 
+import { Codicon } from "@/components/atoms/codicon";
 import { ClaudePanel } from "@/components/organisms/aside-panels/claude";
 import { ExplorerPanel } from "@/components/organisms/aside-panels/explorer";
 import { ExtensionsPanel } from "@/components/organisms/aside-panels/extensions";
@@ -23,9 +24,19 @@ export function Aside() {
 
   return (
     <aside className="flex h-full w-full flex-col overflow-hidden bg-ide-sidebar">
-      <h3 className="px-3 py-2 text-[11px] font-normal tracking-wider text-white uppercase">
-        {title}
-      </h3>
+      <div className="flex h-9 shrink-0 items-center justify-between pr-1 pl-3">
+        <h3 className="text-[11px] font-normal tracking-wider text-white uppercase">
+          {title}
+        </h3>
+
+        <button
+          type="button"
+          aria-label="Mais ações"
+          className="flex size-6 cursor-pointer items-center justify-center rounded-sm text-ide-muted hover:bg-ide-hover hover:text-white"
+        >
+          <Codicon name="ellipsis" size={16} />
+        </button>
+      </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
         <Panel />

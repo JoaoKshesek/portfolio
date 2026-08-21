@@ -1,6 +1,10 @@
 import { useMemo, useState } from "react";
 
-import type { Technology, TechnologyCategory } from "@/lib/technologies";
+import {
+  categoryLabels,
+  type Technology,
+  type TechnologyCategory,
+} from "@/lib/technologies";
 
 export interface UseTechnologyListProps {
   filtered: Technology[];
@@ -21,12 +25,10 @@ export const useTechnologyList = (
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<TechnologyCategory[]>([]);
 
-  const categories: { id: TechnologyCategory; label: string }[] = [
-    { id: "ferramentas", label: "Ferramentas" },
-    { id: "frontend", label: "Frontend" },
-    { id: "backend", label: "Backend" },
-    { id: "infraestrutura", label: "Infraestrutura" },
-  ];
+  const categories = Object.entries(categoryLabels).map(([id, label]) => ({
+    id: id as TechnologyCategory,
+    label,
+  }));
 
   const toggleCategory = (category: TechnologyCategory) => {
     setSelectedCategories((prev) =>

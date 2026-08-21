@@ -1,0 +1,67 @@
+import { useMemo, useState } from "react";
+
+import { useActivityView } from "@/lib/activity-view";
+import { useEditor } from "@/lib/editor";
+import {
+  countResults,
+  search,
+  searchSuggestions,
+  type SearchGroup,
+  type SearchResult,
+} from "@/lib/search";
+
+export interface UseSearchProps {
+  query: string;
+  setQuery: (query: string) => void;
+  groups: SearchGroup[];
+  total: number;
+  suggestions: string[];
+  isCollapsed: (groupId: string) => boolean;
+  toggleGroup: (groupId: string) => void;
+  open: (result: SearchResult) => void;
+}
+
+export const useSearch = (): UseSearchProps => {
+  const { openTechnology, openProject, openFile } = useEditor();
+  const { setView } = useActivityView();
+  const [query, setQuery] = useState("");
+  const [collapsed, setCollapsed] = useState<string[]>([]);
+
+  const groups = useMemo(() => search(query), [query]);
+
+  const open = (result: SearchResult) => {
+    const { target } = result;
+
+    switch (target.kind) {
+      case "technology":
+        openTechnology(target.technology);
+        break;
+      case "project":
+        openProject(target.project);
+        break;
+      case "file":
+        openFile(target.file);
+        break;
+      case "commit":
+        // commits não viram aba: o lugar deles é o grafo
+        setView("scm");
+        break;
+    }
+  };
+
+  return {
+    query,
+    setQuery,
+    groups,
+    total: countResults(groups),
+    suggestions: searchSuggestions,
+    isCollapsed: (groupId: string) => collapsed.includes(groupId),
+    toggleGroup: (groupId: string) =>
+      setCollapsed((prev) =>
+        prev.includes(groupId)
+          ? prev.filter((id) => id !== groupId)
+          : [...prev, groupId],
+      ),
+    open,
+  };
+};

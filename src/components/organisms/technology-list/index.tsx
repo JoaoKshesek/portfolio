@@ -8,11 +8,13 @@ import type { Technology } from "@/lib/technologies";
 interface TechnologyListProps {
   data: Technology[];
   placeholder?: string;
+  onSelect?: (technology: Technology) => void;
 }
 
 export function TechnologyList({
   data,
   placeholder = "Buscar tecnologias...",
+  onSelect,
 }: TechnologyListProps) {
   const {
     filtered,
@@ -89,6 +91,7 @@ export function TechnologyList({
               name={tech.name}
               description={tech.description}
               time={tech.time}
+              onClick={() => onSelect?.(tech)}
             />
           ))
         ) : (
