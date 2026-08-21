@@ -132,7 +132,7 @@
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
 
     --ide-titlebar: #0b1118;
-    --ide-editor: #1f1f1f;
+    --ide-editor: #0b1118;
     --ide-sidebar: #020408;
     --ide-activitybar: #0b1118;
     --ide-statusbar: #181818;
@@ -141,7 +141,7 @@
     --ide-fg: #cccccc;
     --ide-muted: #8b8b8b;
     --ide-hover: rgba(255, 255, 255, 0.08);
-    --ide-active: #1f1f1f;
+    --ide-active: #0b1118;
   }
 
   #social .button-icon {
@@ -308,5 +308,13 @@
 @supports not selector(::-webkit-scrollbar) {
   body {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+/* Rola sem mostrar a barra — usado na trilha de abas do editor. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
