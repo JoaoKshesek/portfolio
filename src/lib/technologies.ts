@@ -31,6 +31,13 @@ import vscode from "@/assets/icons/vscode.png";
 
 export type TechnologyCategory = "ferramentas" | "frontend" | "backend" | "infraestrutura";
 
+export const categoryLabels: Record<TechnologyCategory, string> = {
+  ferramentas: "Ferramentas",
+  frontend: "Frontend",
+  backend: "Backend",
+  infraestrutura: "Infraestrutura",
+};
+
 export interface Technology {
   id: string;
   icon: string;
@@ -282,3 +289,9 @@ export const technologies: Technology[] = [
     category: "ferramentas",
   },
 ];
+
+export function technologiesByIds(ids: string[]): Technology[] {
+  return ids
+    .map((id) => technologies.find((technology) => technology.id === id))
+    .filter((technology) => technology !== undefined);
+}
