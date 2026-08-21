@@ -1,23 +1,57 @@
-import type { ReactNode } from 'react';
+import { Codicon } from "@/components/atoms/codicon";
+import { EditorBreadcrumbs } from "@/components/organisms/editor-breadcrumbs";
+import { EditorTabs } from "@/components/organisms/editor-tabs";
+import { EducationDetails } from "@/components/organisms/education-details";
+import { ExperienceDetails } from "@/components/organisms/experience-details";
+import { ReadmeProfile } from "@/components/organisms/readme-profile";
+import { SitePreview } from "@/components/organisms/site-preview";
+import { TechnologyDetails } from "@/components/organisms/technology-details";
+import { useEditor } from "@/lib/editor";
 
-interface MainProps {
-  children?: ReactNode;
-}
+export function Main() {
+  const { activeTab } = useEditor();
 
-export function Main({ children }: MainProps) {
   return (
     <main className="flex h-full min-w-0 flex-col overflow-hidden bg-ide-editor">
-      <section className="flex-1 overflow-y-auto p-6">
-        <h2 className="text-xl font-bold text-ide-fg">Featured Content</h2>
-      </section>
-      <section className="max-h-50 flex-1 overflow-y-auto border-t border-ide-border p-6">
-        {children || (
-          <>
-            <h2 className="mb-4 text-xl font-bold text-ide-fg">Additional Content</h2>
-            <p className="text-ide-muted">Your content goes here</p>
-          </>
-        )}
-      </section>
+      <EditorTabs />
+
+      {activeTab ? (
+        <>
+          <EditorBreadcrumbs tab={activeTab} />
+
+          {activeTab.content.kind === "education" ? (
+            <EducationDetails
+              institutionId={activeTab.content.institutionId}
+              studyId={activeTab.content.studyId}
+            />
+          ) : activeTab.content.kind === "experience" ? (
+            <ExperienceDetails
+              companyId={activeTab.content.companyId}
+              roleId={activeTab.content.roleId}
+            />
+          ) : activeTab.content.kind === "profile" ? (
+            <ReadmeProfile />
+          ) : activeTab.content.kind === "technology" ? (
+            <TechnologyDetails technology={activeTab.content.technology} />
+          ) : activeTab.content.kind === "site" ? (
+            <SitePreview
+              url={activeTab.content.url}
+              title={activeTab.content.title ?? activeTab.name}
+            />
+          ) : (
+            <section className="min-h-0 flex-1 overflow-auto px-6 py-4 text-[13px] text-ide-muted">
+              Conteúdo de {activeTab.name} entra aqui.
+            </section>
+          )}
+        </>
+      ) : (
+        <div className="flex flex-1 flex-col items-center justify-center gap-3 text-ide-muted">
+          <Codicon name="files" size={40} className="opacity-40" />
+          <p className="text-[13px]">
+            Selecione um arquivo no Explorer para abrir.
+          </p>
+        </div>
+      )}
     </main>
   );
 }

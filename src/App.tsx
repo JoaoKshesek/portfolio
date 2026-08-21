@@ -12,6 +12,7 @@ import {
   ResizablePanelGroup,
 } from "./components/ui/resizable";
 import { ActivityViewProvider } from "./lib/activity-view-provider";
+import { EditorProvider } from "./lib/editor-provider";
 
 function App() {
   return (
@@ -36,24 +37,26 @@ function App() {
         <Header />
 
         <ActivityViewProvider>
-          <div className="flex min-h-0 flex-1">
-            <Navigation />
+          <EditorProvider>
+            <div className="flex min-h-0 flex-1">
+              <Navigation />
 
-            <ResizablePanelGroup
-              orientation="horizontal"
-              className="min-w-0 flex-1"
-            >
-              <ResizablePanel defaultSize={234} minSize={230} maxSize={480}>
-                <Aside />
-              </ResizablePanel>
+              <ResizablePanelGroup
+                orientation="horizontal"
+                className="min-w-0 flex-1"
+              >
+                <ResizablePanel defaultSize={234} minSize={230} maxSize={480}>
+                  <Aside />
+                </ResizablePanel>
 
-              <ResizableHandle className="w-px bg-ide-border transition-colors after:w-2 hover:bg-ide-resize focus-visible:bg-ide-resize active:bg-ide-resize" />
+                <ResizableHandle className="w-px bg-ide-border transition-colors after:w-2 hover:bg-ide-resize focus-visible:bg-ide-resize active:bg-ide-resize" />
 
-              <ResizablePanel>
-                <Main />
-              </ResizablePanel>
-            </ResizablePanelGroup>
-          </div>
+                <ResizablePanel>
+                  <Main />
+                </ResizablePanel>
+              </ResizablePanelGroup>
+            </div>
+          </EditorProvider>
         </ActivityViewProvider>
 
         <Footer />
