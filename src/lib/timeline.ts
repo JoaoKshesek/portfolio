@@ -12,6 +12,8 @@ export interface TimelineCommit {
   branch: string;
   year: string;
   message: string;
+  /** id em @/lib/projects — torna o commit clicável */
+  project?: string;
   /** branch que este commit encerra */
   merges?: string;
   refs?: string[];
@@ -22,6 +24,7 @@ export const timelineBranches: TimelineBranch[] = [
   { id: "fisica", name: "fisica", lane: 1, color: "#3fb950", parent: "main" },
   { id: "signo", name: "signo", lane: 1, color: "#f0883e", parent: "main" },
   { id: "humu", name: "humu", lane: 2, color: "#58a6ff", parent: "main" },
+  { id: "jmn", name: "jmn", lane: 1, color: "#f778ba", parent: "main" },
 ];
 
 // Dados mocados: ajuste as mensagens e os anos à vontade.
@@ -82,22 +85,46 @@ export const timelineCommits: TimelineCommit[] = [
     message: "feat: entrei na Signo",
   },
   {
-    id: "cinemark",
+    id: "loterica-nova",
     branch: "signo",
     year: "2022",
-    message: "feat(cinemark): plataforma no ar",
+    message: "feat(loterica-nova): manutenção e novas features no site",
+    project: "loterica-nova",
   },
   {
-    id: "lide",
+    id: "medguias",
     branch: "signo",
     year: "2023",
-    message: "feat(lide): app em React Native",
+    message: "feat(medguias): manutenção e novas features no site",
+    project: "medguias",
   },
   {
-    id: "busca",
+    id: "lide-global",
+    branch: "signo",
+    year: "2023",
+    message: "feat(lide-global): CRM e app",
+    project: "lide-global",
+  },
+  {
+    id: "blocos-dinamicos",
     branch: "signo",
     year: "2024",
-    message: "feat(busca-global): plataforma de buscas",
+    message: "feat(blocos-dinamicos): CRM e site",
+    project: "blocos-dinamicos",
+  },
+  {
+    id: "blumenau-fc",
+    branch: "signo",
+    year: "2024",
+    message: "feat(blumenau-fc): site no ar",
+    project: "blumenau-fc",
+  },
+  {
+    id: "sebrae",
+    branch: "signo",
+    year: "2025",
+    message: "feat(sebrae): manutenção e novas features, alocado na Weef",
+    project: "sebrae",
   },
   {
     id: "merge-signo",
@@ -113,6 +140,55 @@ export const timelineCommits: TimelineCommit[] = [
     message: "feat: entrei na Humu",
   },
   {
+    id: "i3pics",
+    branch: "humu",
+    year: "2025",
+    message: "feat(i3pics): app publicado",
+    project: "i3pics",
+  },
+  {
+    id: "humu-ibk",
+    branch: "humu",
+    year: "2025",
+    message: "feat(humu-ibk): manutenção e novas features no sistema web",
+    project: "humu-ibk",
+  },
+  {
+    id: "lugpay",
+    branch: "jmn",
+    year: "2025",
+    message: "feat(lugpay): app da JMN",
+    project: "lugpay",
+  },
+  {
+    id: "ionboarding",
+    branch: "humu",
+    year: "2026",
+    message: "feat(ionboarding): manutenção e novas features no CRM",
+    project: "ionboarding",
+  },
+  {
+    id: "ibass",
+    branch: "humu",
+    year: "2026",
+    message: "feat(ibass): manutenção e novas features no CRM",
+    project: "ibass",
+  },
+  {
+    id: "humu-lp",
+    branch: "humu",
+    year: "2026",
+    message: "feat(humu-lp): manutenção e novas features no site",
+    project: "humu-lp",
+  },
+  {
+    id: "humu-backoffice",
+    branch: "humu",
+    year: "2026",
+    message: "feat(humu-backoffice): manutenção e novas features no backoffice",
+    project: "humu-backoffice",
+  },
+  {
     id: "promocao",
     branch: "humu",
     year: "2026",
@@ -122,7 +198,7 @@ export const timelineCommits: TimelineCommit[] = [
     id: "hoje",
     branch: "humu",
     year: "2026",
-    message: "wip: construindo o que vem agora",
+    message: "wip: desenvolvimento assistido por IA e orquestração de agentes",
     refs: ["HEAD"],
   },
 ];

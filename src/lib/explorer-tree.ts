@@ -7,7 +7,11 @@ import {
   projectFolderIcon,
   type IconSpec,
 } from "./icons";
-import { projects } from "./projects";
+import {
+  projectCompanies,
+  projectPath,
+  projectsByCompany,
+} from "./projects";
 
 export interface SiteContent {
   kind: "site";
@@ -133,33 +137,38 @@ const projectsFolder: TreeFolder = {
   id: "src/projetos",
   name: "projetos",
   defaultOpen: true,
-  children: projects.map((project) => {
-    const base = `src/projetos/${project.id}`;
+  children: projectCompanies().map((companyId) => ({
+    type: "folder",
+    id: `src/projetos/${companyId}`,
+    name: companyId,
+    children: projectsByCompany(companyId).map((project) => {
+      const base = projectPath(project);
 
-    const description: TreeFile = {
-      type: "file",
-      id: `${base}/descricao.md`,
-      name: "descricao.md",
-    };
+      const description: TreeFile = {
+        type: "file",
+        id: `${base}/descricao.md`,
+        name: "descricao.md",
+      };
 
-    const preview: TreeFile[] = project.url
-      ? [
-          {
-            type: "file",
-            id: `${base}/preview.png`,
-            name: "preview.png",
-            content: { kind: "site", url: project.url, title: project.name },
-          },
-        ]
-      : [];
+      const preview: TreeFile[] = project.url
+        ? [
+            {
+              type: "file",
+              id: `${base}/preview.png`,
+              name: "preview.png",
+              content: { kind: "site", url: project.url, title: project.name },
+            },
+          ]
+        : [];
 
-    return {
-      type: "folder",
-      id: base,
-      name: project.id,
-      children: [description, ...preview],
-    };
-  }),
+      return {
+        type: "folder",
+        id: base,
+        name: project.id,
+        children: [description, ...preview],
+      };
+    }),
+  })),
 };
 
 export const explorerRoot: ExplorerRoot = {
@@ -210,7 +219,12 @@ export function nodeIcon(node: TreeNode, isOpen: boolean): IconSpec {
   }
 
   if (node.type === "folder") {
-    if (node.id.startsWith("src/projetos/")) return projectFolderIcon(isOpen);
+    if (node.id.startsWith("src/projetos/")) {
+      // src/projetos/<empresa> vs src/projetos/<empresa>/<projeto>
+      return node.id.split("/").length === 3
+        ? companyFolderIcon(isOpen)
+        : projectFolderIcon(isOpen);
+    }
     if (node.id.startsWith("src/experiencia/")) return companyFolderIcon(isOpen);
     if (node.id.startsWith("src/educacao/")) return companyFolderIcon(isOpen);
     return folderIcon(node.name, isOpen);

@@ -1,3 +1,4 @@
+import { aiDocs, type AiDoc } from "./ai-workflow";
 import { institutions } from "./education";
 import { companies } from "./experience";
 import {
@@ -10,7 +11,12 @@ import {
 } from "./explorer-tree";
 import type { IconSpec } from "./icons";
 import { profile } from "./profile";
-import { projects, type Project } from "./projects";
+import {
+  projectRoleLabels,
+  projectTypeLabels,
+  projects,
+  type Project,
+} from "./projects";
 import { categoryLabels, technologies, type Technology } from "./technologies";
 import { branchById, timelineCommits, type TimelineCommit } from "./timeline";
 
@@ -18,7 +24,8 @@ export type SearchTarget =
   | { kind: "technology"; technology: Technology }
   | { kind: "project"; project: Project }
   | { kind: "file"; file: TreeFile }
-  | { kind: "commit"; commit: TimelineCommit };
+  | { kind: "commit"; commit: TimelineCommit }
+  | { kind: "ai"; doc: AiDoc };
 
 export type SearchIcon = IconSpec | { type: "dot"; color: string };
 
@@ -44,6 +51,7 @@ interface IndexEntry extends Omit<SearchResult, "detail"> {
 }
 
 const groupLabels: Record<string, string> = {
+  ia: "ia",
   experiencia: "experiência",
   educacao: "educação",
   tecnologias: "tecnologias",
@@ -80,6 +88,28 @@ const experienceEntries: IndexEntry[] = companies.flatMap((company) =>
     target: { kind: "file" as const, file: experienceFile(company.id, role.id) },
   })),
 );
+
+const aiEntries: IndexEntry[] = aiDocs.map((doc) => ({
+  id: `ia:${doc.id}`,
+  group: "ia",
+  title: doc.title,
+  fields: [
+    doc.summary,
+    doc.name,
+    ...doc.sections.flatMap((section) => [
+      section.title,
+      ...section.body,
+      ...(section.items ?? []),
+    ]),
+  ],
+  fallbackDetail: doc.summary,
+  icon: {
+    type: "codicon" as const,
+    name: "sparkle",
+    className: "text-ide-indicator",
+  },
+  target: { kind: "ai" as const, doc },
+}));
 
 const educationEntries: IndexEntry[] = institutions.flatMap((institution) =>
   institution.studies.map((study) => ({
@@ -127,8 +157,17 @@ const projectEntries: IndexEntry[] = projects.map((project) => ({
   id: `projeto:${project.id}`,
   group: "projetos",
   title: project.name,
-  fields: [project.stack.join(", "), project.url ?? "", project.id],
-  fallbackDetail: project.stack.join(", "),
+  fields: [
+    project.types.map((type) => projectTypeLabels[type]).join(" · "),
+    projectRoleLabels[project.role],
+    project.stack.join(", "),
+    project.client ?? "",
+    project.url ?? "",
+    project.id,
+  ],
+  fallbackDetail: `${project.types
+    .map((type) => projectTypeLabels[type])
+    .join(" · ")} · ${projectRoleLabels[project.role]}`,
   icon: { type: "codicon", name: project.url ? "globe" : "file" },
   target: { kind: "project", project },
 }));
@@ -183,6 +222,7 @@ const fileEntries: IndexEntry[] = treeFiles().map((file) => ({
 const index: IndexEntry[] = [
   ...experienceEntries,
   ...educationEntries,
+  ...aiEntries,
   ...technologyEntries,
   ...projectEntries,
   ...commitEntries,

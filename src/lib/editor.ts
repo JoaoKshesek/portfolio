@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 
 import type { FileContent, TreeFile } from "@/lib/explorer-tree";
+import type { AiDoc } from "@/lib/ai-workflow";
 import type { Project } from "@/lib/projects";
 import type { Technology } from "@/lib/technologies";
 
@@ -11,7 +12,8 @@ export type TabIcon = IconSpec;
 export type TabContent =
   | FileContent
   | { kind: "file"; path: string }
-  | { kind: "technology"; technology: Technology };
+  | { kind: "technology"; technology: Technology }
+  | { kind: "ai"; docId: string };
 
 export interface EditorTab {
   id: string;
@@ -29,6 +31,7 @@ export interface EditorContextValue {
   openFile: (file: TreeFile) => void;
   openTechnology: (technology: Technology) => void;
   openProject: (project: Project) => void;
+  openAiDoc: (doc: AiDoc) => void;
   activateTab: (id: string) => void;
   closeTab: (id: string) => void;
 }

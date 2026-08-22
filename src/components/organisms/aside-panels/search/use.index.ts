@@ -22,7 +22,7 @@ export interface UseSearchProps {
 }
 
 export const useSearch = (): UseSearchProps => {
-  const { openTechnology, openProject, openFile } = useEditor();
+  const { openTechnology, openProject, openFile, openAiDoc } = useEditor();
   const { setView } = useActivityView();
   const [query, setQuery] = useState("");
   const [collapsed, setCollapsed] = useState<string[]>([]);
@@ -41,6 +41,9 @@ export const useSearch = (): UseSearchProps => {
         break;
       case "file":
         openFile(target.file);
+        break;
+      case "ai":
+        openAiDoc(target.doc);
         break;
       case "commit":
         // commits não viram aba: o lugar deles é o grafo

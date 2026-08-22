@@ -1,4 +1,5 @@
 import { Codicon } from "@/components/atoms/codicon";
+import { AiWorkflow } from "@/components/organisms/ai-workflow";
 import { EditorBreadcrumbs } from "@/components/organisms/editor-breadcrumbs";
 import { EditorTabs } from "@/components/organisms/editor-tabs";
 import { EducationDetails } from "@/components/organisms/education-details";
@@ -19,7 +20,9 @@ export function Main() {
         <>
           <EditorBreadcrumbs tab={activeTab} />
 
-          {activeTab.content.kind === "education" ? (
+          {activeTab.content.kind === "ai" ? (
+            <AiWorkflow docId={activeTab.content.docId} />
+          ) : activeTab.content.kind === "education" ? (
             <EducationDetails
               institutionId={activeTab.content.institutionId}
               studyId={activeTab.content.studyId}

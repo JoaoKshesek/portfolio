@@ -1,10 +1,13 @@
 import { useMemo } from "react";
 
+import { useEditor } from "@/lib/editor";
+import { projectById } from "@/lib/projects";
 import {
   branchById,
   timelineBranches,
   timelineCommits,
 } from "@/lib/timeline";
+import { cn } from "@/lib/utils";
 
 const ROW_HEIGHT = 34;
 const LANE_WIDTH = 14;
@@ -14,6 +17,9 @@ const DOT_RADIUS = 4.5;
 const laneX = (lane: number) => RAIL_PADDING + lane * LANE_WIDTH;
 const rowY = (row: number) => row * ROW_HEIGHT + ROW_HEIGHT / 2;
 
+const rowClass =
+  "flex h-full w-full items-center gap-2 pr-3 text-left text-[12px] hover:bg-ide-hover";
+
 /** curva em S ligando duas lanes, como o Git Graph desenha ramificação e merge */
 function curve(x1: number, y1: number, x2: number, y2: number) {
   const middle = (y1 + y2) / 2;
@@ -21,6 +27,8 @@ function curve(x1: number, y1: number, x2: number, y2: number) {
 }
 
 export function GitGraph() {
+  const { openProject } = useEditor();
+
   const { rows, paths, railWidth, height } = useMemo(() => {
     const rows = timelineCommits.map((commit, row) => ({ ...commit, row }));
 
@@ -33,7 +41,11 @@ export function GitGraph() {
       const x = laneX(branch.lane);
 
       const segments = [
-        { id: `${branch.id}-line`, color: branch.color, d: `M ${x} ${rowY(first)} L ${x} ${rowY(last)}` },
+        {
+          id: `${branch.id}-line`,
+          color: branch.color,
+          d: `M ${x} ${rowY(first)} L ${x} ${rowY(last)}`,
+        },
       ];
 
       if (branch.parent) {
@@ -114,14 +126,10 @@ export function GitGraph() {
       <ol className="relative">
         {rows.map((row) => {
           const branch = branchById(row.branch);
+          const project = row.project ? projectById(row.project) : undefined;
 
-          return (
-            <li
-              key={row.id}
-              title={`${row.year} · ${row.message}`}
-              style={{ height: ROW_HEIGHT, paddingLeft: railWidth }}
-              className="flex items-center gap-2 pr-3 text-[12px] hover:bg-ide-hover"
-            >
+          const content = (
+            <>
               <span className="min-w-0 flex-1 truncate text-ide-fg">
                 {row.message}
               </span>
@@ -139,6 +147,29 @@ export function GitGraph() {
               <span className="shrink-0 font-mono text-[11px] text-ide-muted">
                 {row.year}
               </span>
+            </>
+          );
+
+          return (
+            <li
+              key={row.id}
+              title={`${row.year} · ${row.message}`}
+              style={{ height: ROW_HEIGHT }}
+            >
+              {project ? (
+                <button
+                  type="button"
+                  onClick={() => openProject(project)}
+                  style={{ paddingLeft: railWidth }}
+                  className={cn(rowClass, "cursor-pointer")}
+                >
+                  {content}
+                </button>
+              ) : (
+                <div style={{ paddingLeft: railWidth }} className={rowClass}>
+                  {content}
+                </div>
+              )}
             </li>
           );
         })}

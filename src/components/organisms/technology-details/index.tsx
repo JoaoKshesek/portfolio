@@ -1,6 +1,10 @@
 import { Codicon } from "@/components/atoms/codicon";
 import { useEditor } from "@/lib/editor";
-import { projectsUsing } from "@/lib/projects";
+import {
+  projectRoleLabels,
+  projectTypeLabels,
+  projectsUsing,
+} from "@/lib/projects";
 import { categoryLabels, type Technology } from "@/lib/technologies";
 
 interface TechnologyDetailsProps {
@@ -69,7 +73,15 @@ export function TechnologyDetails({ technology }: TechnologyDetailsProps) {
                         size={16}
                         className="shrink-0 text-ide-muted"
                       />
-                      <span className="flex-1 truncate">{project.name}</span>
+                      <span className="flex min-w-0 flex-1 flex-col">
+                        <span className="truncate">{project.name}</span>
+                        <span className="truncate text-[11px] text-ide-muted">
+                          {project.types
+                            .map((type) => projectTypeLabels[type])
+                            .join(" · ")}
+                          {` · ${projectRoleLabels[project.role]}`}
+                        </span>
+                      </span>
                       <Codicon
                         name="chevron-right"
                         size={14}

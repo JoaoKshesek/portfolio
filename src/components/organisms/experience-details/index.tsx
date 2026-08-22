@@ -2,7 +2,11 @@ import { Codicon } from "@/components/atoms/codicon";
 import { useEditor } from "@/lib/editor";
 import { findRole } from "@/lib/experience";
 import { experienceFile } from "@/lib/explorer-tree";
-import { projectsByCompany } from "@/lib/projects";
+import {
+  projectRoleLabels,
+  projectTypeLabels,
+  projectsByCompany,
+} from "@/lib/projects";
 import { technologiesByIds } from "@/lib/technologies";
 
 interface ExperienceDetailsProps {
@@ -151,7 +155,16 @@ export function ExperienceDetails({
                           size={16}
                           className="shrink-0 text-ide-muted"
                         />
-                        <span className="flex-1 truncate">{project.name}</span>
+                        <span className="flex min-w-0 flex-1 flex-col">
+                          <span className="truncate">{project.name}</span>
+                          <span className="truncate text-[11px] text-ide-muted">
+                            {project.types
+                              .map((type) => projectTypeLabels[type])
+                              .join(" · ")}
+                            {` · ${projectRoleLabels[project.role]}`}
+                            {project.client && ` · ${project.client}`}
+                          </span>
+                        </span>
                       </button>
                     </li>
                   ))}
