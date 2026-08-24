@@ -1,4 +1,4 @@
-import avatar from "@/assets/hero.png";
+import avatar from "@/assets/hero.jpeg";
 
 export interface ProfileContact {
   label: string;
@@ -11,20 +11,26 @@ export const profile = {
   avatar,
   name: "João Valter Kshesek",
   handle: "JoaoKshesek",
-  role: "Frontend Engineer",
-  organization: "@Inovanti-Bank",
+  role: "Frontend Engineer & Software Developer",
+  organization: "@HUMU",
   location: "Curitiba, Brazil",
-  website: "https://joaokshesek.github.io/portfolio/",
   linkedin: {
     label: "in/joao-valter-kshesek",
     href: "https://www.linkedin.com/in/joao-valter-kshesek/",
   },
-  headline: "I'm João Valter, a Software Engineer from Curitiba - Brazil",
+  phone: "+55 41 99553-1007",
+  email: "kshesek.joaovalter@gmail.com",
+  quote: "A inteligência é a capacidade de se adaptar à mudança.",
+  headline: "Frontend Engineer especializado em React & Next.js, com mais de 5 anos construindo aplicações robustas, escaláveis e de alta performance",
+  description: "Desenvolvedor Front-End com expertise em React.js, Next.js e React Native. Atuo na construção de aplicações modernas com foco em SSR, SSG, performance, acessibilidade e integração via APIs REST/GraphQL. Domino Clean Code, Design Patterns, Arquitetura de Microfrontend, TDD e CI/CD pipelines.",
   bullets: [
-    "💻 I've worked across diverse industries — from financial systems to e-commerce and delivery services.",
-    "🎹 I'm a rock lover at heart, but I actually play classical piano.",
-    "🥊 Boxing is part of who I am — it taught me to never back down.",
-    "🐱 My cat is called Mulan because he tricked me, just like in the movie.",
+    "🏗️ Arquitetura & Design: Microfrontend, Clean Code, SOLID, Design Patterns",
+    "⚛️ Frontend: React.js, Next.js, React Native, Tailwind CSS, Shadcn, MUI",
+    "🔧 Backend: Node.js (Express, Nest.js), PHP (Laravel), APIs REST & GraphQL",
+    "🎯 Performance & Qualidade: TDD, Jest, Cypress, SEO, WCAG, Acessibilidade",
+    "☁️ Cloud & DevOps: AWS, Firebase, Docker, CI/CD pipelines, Git/GitFlow",
+    "💻 Bancos de dados: PostgreSQL, MySQL, MongoDB",
+    "🎹 Curioso por natureza: rock lover, pianista clássico e boxeador nas horas vagas",
   ],
   /** ids de @/lib/technologies */
   techs: [
@@ -32,14 +38,25 @@ export const profile = {
     "typescript",
     "react",
     "nextjs",
-    "mui",
+    "react-native",
     "node",
+    "express",
+    "nestjs",
+    "php",
+    "laravel",
+    "tailwindcss",
+    "mui",
+    "shadcn",
+    "postgresql",
     "mysql",
     "mongodb",
+    "redis",
+    "graphql",
     "docker",
     "aws",
+    "firebase",
   ],
-  tools: ["git", "github", "vscode", "insomnia", "postman", "jest", "cypress"],
+  tools: ["git", "github", "vscode", "insomnia", "postman", "jest", "cypress", "storybook", "webpack", "vite"],
   contacts: [
     {
       label: "LinkedIn",

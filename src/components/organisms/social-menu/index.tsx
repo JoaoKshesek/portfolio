@@ -24,18 +24,26 @@ export function SocialMenu() {
           <Menu.Popup className="min-w-56 rounded-md border border-ide-border bg-ide-titlebar/80 backdrop-blur-md p-1 text-[13px] text-ide-fg shadow-2xl outline-none transition-opacity duration-100 data-ending-style:opacity-0 data-starting-style:opacity-0">
             <div className={labelClass}>Redes Sociais</div>
 
-            {socialLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={itemClass}
-              >
-                <Codicon name={link.icon} size={14} />
-                <span className="flex-1">{link.label}</span>
-              </a>
-            ))}
+            {socialLinks.map((link) => {
+              const IconComponent = link.iconComponent;
+
+              return (
+                <a
+                  key={link.id}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={itemClass}
+                >
+                  {IconComponent ? (
+                    <IconComponent size={14} weight="fill" aria-hidden />
+                  ) : (
+                    <Codicon name={link.icon} size={14} />
+                  )}
+                  <span className="flex-1">{link.label}</span>
+                </a>
+              );
+            })}
           </Menu.Popup>
         </Menu.Positioner>
       </Menu.Portal>

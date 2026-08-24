@@ -7,6 +7,7 @@ import { ExperienceDetails } from "@/components/organisms/experience-details";
 import { ReadmeProfile } from "@/components/organisms/readme-profile";
 import { SitePreview } from "@/components/organisms/site-preview";
 import { TechnologyDetails } from "@/components/organisms/technology-details";
+import { ProjectDetails } from "@/components/organisms/project-details";
 import { useEditor } from "@/lib/editor";
 
 export function Main() {
@@ -36,6 +37,11 @@ export function Main() {
             <ReadmeProfile />
           ) : activeTab.content.kind === "technology" ? (
             <TechnologyDetails technology={activeTab.content.technology} />
+          ) : activeTab.content.kind === "project-description" ? (
+            <ProjectDetails
+              projectId={activeTab.content.projectId}
+              path={activeTab.content.path}
+            />
           ) : activeTab.content.kind === "site" ? (
             <SitePreview
               url={activeTab.content.url}

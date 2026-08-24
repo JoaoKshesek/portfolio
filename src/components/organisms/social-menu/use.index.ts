@@ -1,8 +1,11 @@
+import { LinkedinLogoIcon, InstagramLogoIcon, WhatsappLogoIcon, type IconProps } from "@phosphor-icons/react";
+
 export interface SocialLink {
   id: string;
   label: string;
   icon: string;
   url: string;
+  iconComponent?: React.ComponentType<IconProps>;
 }
 
 export interface UseSocialMenuProps {
@@ -17,18 +20,21 @@ const socialLinks: SocialLink[] = [
     label: "LinkedIn",
     icon: "link",
     url: "https://linkedin.com",
+    iconComponent: LinkedinLogoIcon,
   },
   {
     id: "instagram",
     label: "Instagram",
     icon: "link",
     url: "https://instagram.com",
+    iconComponent: InstagramLogoIcon,
   },
   {
     id: "whatsapp",
     label: "WhatsApp",
     icon: "link",
     url: "https://whatsapp.com",
+    iconComponent: WhatsappLogoIcon,
   },
 ];
 

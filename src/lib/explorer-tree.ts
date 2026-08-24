@@ -35,11 +35,18 @@ export interface ProfileContent {
   kind: "profile";
 }
 
+export interface ProjectDescriptionContent {
+  kind: "project-description";
+  projectId: string;
+  path: string;
+}
+
 export type FileContent =
   | SiteContent
   | ProfileContent
   | ExperienceContent
-  | EducationContent;
+  | EducationContent
+  | ProjectDescriptionContent;
 
 export interface TreeFile {
   type: "file";
@@ -148,24 +155,18 @@ const projectsFolder: TreeFolder = {
         type: "file",
         id: `${base}/descricao.md`,
         name: "descricao.md",
+        content: {
+          kind: "project-description",
+          projectId: project.id,
+          path: `${base}/descricao.md`,
+        },
       };
-
-      const preview: TreeFile[] = project.url
-        ? [
-            {
-              type: "file",
-              id: `${base}/preview.png`,
-              name: "preview.png",
-              content: { kind: "site", url: project.url, title: project.name },
-            },
-          ]
-        : [];
 
       return {
         type: "folder",
         id: base,
         name: project.id,
-        children: [description, ...preview],
+        children: [description],
       };
     }),
   })),

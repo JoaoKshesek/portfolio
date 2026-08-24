@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-import type { FileContent, TreeFile } from "@/lib/explorer-tree";
+import type { FileContent, ProjectDescriptionContent, TreeFile } from "@/lib/explorer-tree";
 import type { AiDoc } from "@/lib/ai-workflow";
 import type { Project } from "@/lib/projects";
 import type { Technology } from "@/lib/technologies";
@@ -13,7 +13,8 @@ export type TabContent =
   | FileContent
   | { kind: "file"; path: string }
   | { kind: "technology"; technology: Technology }
-  | { kind: "ai"; docId: string };
+  | { kind: "ai"; docId: string }
+  | { kind: "project-description"; projectId: string; path: string };
 
 export interface EditorTab {
   id: string;
