@@ -18,6 +18,10 @@ export interface Project {
   stack: string[];
   /** descrição breve do projeto */
   description?: string;
+  /** URL da imagem de banner do projeto */
+  banner?: string;
+  /** URL da logo/thumbnail do projeto */
+  logo?: string;
 }
 
 export const projectRoleLabels: Record<ProjectRole, string> = {
@@ -42,6 +46,7 @@ export const projects: Project[] = [
     role: "manutencao",
     stack: ["typescript", "react", "nextjs", "css", "nestjs", "mongodb"],
     description: "Plataforma de intermediação de apostas em loterias. Atuei no desenvolvimento do novo design, manutenção das funcionalidades administrativas e na criação do sistema de impressão de tickets validados pela máquina.",
+    banner: "/src/assets/projects/banner-loterica.png",
   },
   {
     id: "medguias",
@@ -69,6 +74,7 @@ export const projects: Project[] = [
     company: "signo",
     role: "criacao",
     stack: ["typescript", "react", "nextjs", "node", "mongodb", "docker"],
+    banner: "/src/assets/projects/banner-blocosdinamicos.png",
   },
   {
     id: "blumenau-fc",

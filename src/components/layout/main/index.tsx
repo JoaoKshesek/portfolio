@@ -1,13 +1,13 @@
 import { Codicon } from "@/components/atoms/codicon";
 import { AiWorkflow } from "@/components/organisms/ai-workflow";
 import { EditorBreadcrumbs } from "@/components/organisms/editor-breadcrumbs";
-import { EditorTabs } from "@/components/organisms/editor-tabs";
-import { EducationDetails } from "@/components/organisms/education-details";
-import { ExperienceDetails } from "@/components/organisms/experience-details";
-import { ReadmeProfile } from "@/components/organisms/readme-profile";
-import { SitePreview } from "@/components/organisms/site-preview";
-import { TechnologyDetails } from "@/components/organisms/technology-details";
-import { ProjectDetails } from "@/components/organisms/project-details";
+import { EditorTabs } from "@/components/molecules/editor-tabs";
+import { EducationDetails } from "@/components/templates/education-details";
+import { ExperienceDetails } from "@/components/templates/experience-details";
+import { ReadmeProfile } from "@/components/templates/readme-profile";
+import { SitePreview } from "@/components/templates/site-preview";
+import { TechnologyDetails } from "@/components/templates/technology-details";
+import { ProjectDetails } from "@/components/templates/project-details";
 import { useEditor } from "@/lib/editor";
 
 export function Main() {
@@ -40,7 +40,6 @@ export function Main() {
           ) : activeTab.content.kind === "project-description" ? (
             <ProjectDetails
               projectId={activeTab.content.projectId}
-              path={activeTab.content.path}
             />
           ) : activeTab.content.kind === "site" ? (
             <SitePreview

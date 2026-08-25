@@ -1,4 +1,4 @@
-import { EditorTab } from "@/components/molecules/editor-tab";
+import { EditorTab } from "@/components/atoms/editor-tab";
 import { useEditor } from "@/lib/editor";
 
 export function EditorTabs() {
