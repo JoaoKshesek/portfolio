@@ -113,13 +113,6 @@ export const timelineCommits: TimelineCommit[] = [
     project: "blocos-dinamicos",
   },
   {
-    id: "blumenau-fc",
-    branch: "signo",
-    year: "2024",
-    message: "feat(blumenau-fc): site no ar",
-    project: "blumenau-fc",
-  },
-  {
     id: "sebrae",
     branch: "signo",
     year: "2025",

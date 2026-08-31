@@ -7,11 +7,7 @@ import {
   projectFolderIcon,
   type IconSpec,
 } from "./icons";
-import {
-  projectCompanies,
-  projectPath,
-  projectsByCompany,
-} from "./projects";
+import { projectPath, projects } from "./projects";
 
 export interface SiteContent {
   kind: "site";
@@ -144,32 +140,29 @@ const projectsFolder: TreeFolder = {
   id: "src/projetos",
   name: "projetos",
   defaultOpen: true,
-  children: projectCompanies().map((companyId) => ({
-    type: "folder",
-    id: `src/projetos/${companyId}`,
-    name: companyId,
-    children: projectsByCompany(companyId).map((project) => {
-      const base = projectPath(project);
+  children: [...projects]
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .map((project) => {
+    const base = projectPath(project);
 
-      const description: TreeFile = {
-        type: "file",
-        id: `${base}/descricao.md`,
-        name: "descricao.md",
-        content: {
-          kind: "project-description",
-          projectId: project.id,
-          path: `${base}/descricao.md`,
-        },
-      };
+    const description: TreeFile = {
+      type: "file",
+      id: `${base}/descricao.md`,
+      name: "descricao.md",
+      content: {
+        kind: "project-description",
+        projectId: project.id,
+        path: `${base}/descricao.md`,
+      },
+    };
 
-      return {
-        type: "folder",
-        id: base,
-        name: project.id,
-        children: [description],
-      };
-    }),
-  })),
+    return {
+      type: "folder",
+      id: base,
+      name: project.id,
+      children: [description],
+    };
+  }),
 };
 
 export const explorerRoot: ExplorerRoot = {
@@ -221,10 +214,7 @@ export function nodeIcon(node: TreeNode, isOpen: boolean): IconSpec {
 
   if (node.type === "folder") {
     if (node.id.startsWith("src/projetos/")) {
-      // src/projetos/<empresa> vs src/projetos/<empresa>/<projeto>
-      return node.id.split("/").length === 3
-        ? companyFolderIcon(isOpen)
-        : projectFolderIcon(isOpen);
+      return projectFolderIcon(isOpen);
     }
     if (node.id.startsWith("src/experiencia/")) return companyFolderIcon(isOpen);
     if (node.id.startsWith("src/educacao/")) return companyFolderIcon(isOpen);

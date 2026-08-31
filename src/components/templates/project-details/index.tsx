@@ -1,4 +1,5 @@
 import { Codicon } from "@/components/atoms/codicon";
+import { PhonePreview } from "@/components/molecules/phone-preview";
 import { projectTypeLabels } from "@/lib/projects";
 import { useProjectDetails } from "./use.index";
 
@@ -129,7 +130,14 @@ export function ProjectDetails({ projectId }: ProjectDetailsProps) {
               </section>
             )}
 
-            {project.url && (
+            {project.types.includes("app") ? (
+              <section>
+                <h2 className={sidebarTitle}>Preview do app</h2>
+                <div className="mx-auto w-full max-w-60">
+                  <PhonePreview />
+                </div>
+              </section>
+            ) : project.url ? (
               <section>
                 <h2 className={sidebarTitle}>Visitar projeto</h2>
                 <button
@@ -156,7 +164,7 @@ export function ProjectDetails({ projectId }: ProjectDetailsProps) {
                   Abrir website
                 </button>
               </section>
-            )}
+            ) : null}
           </aside>
         </div>
       </div>

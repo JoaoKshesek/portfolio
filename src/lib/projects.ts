@@ -76,14 +76,14 @@ export const projects: Project[] = [
     stack: ["typescript", "react", "nextjs", "node", "mongodb", "docker"],
     banner: "/src/assets/projects/banner-blocosdinamicos.png",
   },
-  {
-    id: "blumenau-fc",
-    name: "Blumenau FC",
-    types: ["site"],
-    url: null,
+    {
+    id: "busca-global",
+    name: "Busca Global",
+    types: ["crm", "site"],
+    url: "https://busca.global/",
     company: "signo",
     role: "criacao",
-    stack: ["typescript", "react", "nextjs", "css"],
+    stack: ["typescript", "react", "nextjs", "node", "mongodb", "docker"],
   },
   {
     id: "sebrae",
@@ -103,15 +103,7 @@ export const projects: Project[] = [
     company: "humu",
     role: "criacao",
     stack: ["typescript", "react-native", "node", "jest"],
-  },
-  {
-    id: "humu-ibk",
-    name: "Humu IBK",
-    types: ["sistema"],
-    url: null,
-    company: "humu",
-    role: "manutencao",
-    stack: ["typescript", "react", "nextjs", "node", "jest"],
+    description: "Aplicativo mobile construído do zero em React Native e publicado nas lojas. Participei da definição da arquitetura modular que virou referência para o time, com foco em desacoplamento, testabilidade e cobertura de testes em Jest.",
   },
   {
     id: "ionboarding",
@@ -121,15 +113,27 @@ export const projects: Project[] = [
     company: "humu",
     role: "manutencao",
     stack: ["typescript", "react", "nextjs", "node"],
+    description: "CRM de onboarding de clientes da instituição: abertura de contas, envio e validação de documentos e acompanhamento das etapas de aprovação. Atuei na manutenção e em novas features dos fluxos de cadastro, sempre sob as exigências de LGPD.",
   },
   {
     id: "ibass",
-    name: "iBass",
+    name: "iBaaS",
     types: ["crm"],
     url: null,
     company: "humu",
     role: "manutencao",
     stack: ["typescript", "react", "nextjs", "node"],
+    description: "Painel de gestão da operação de Banking as a Service: contas, clientes e transações dos parceiros que operam sobre a infraestrutura da instituição. Atuei na manutenção e em novas features, com atenção à integridade dos dados financeiros exibidos.",
+  },
+  {
+    id: "icredit",
+    name: "iCredit",
+    types: ["sistema"],
+    url: null,
+    company: "humu",
+    role: "manutencao",
+    stack: ["typescript", "react", "nextjs", "node"],
+    description: "Sistema de gestão de operações de crédito: propostas, análise, contratos e acompanhamento das parcelas. Atuei na manutenção e em novas features das telas de operação, integrando com as APIs internas da instituição.",
   },
   {
     id: "humu-lp",
@@ -139,15 +143,7 @@ export const projects: Project[] = [
     company: "humu",
     role: "manutencao",
     stack: ["typescript", "nextjs", "css"],
-  },
-  {
-    id: "humu-backoffice",
-    name: "Humu Backoffice",
-    types: ["sistema"],
-    url: null,
-    company: "humu",
-    role: "manutencao",
-    stack: ["typescript", "react", "nextjs", "node"],
+    description: "Landing page institucional da Humu. Atuei na manutenção e evolução do site: novas seções, ajustes de conteúdo e melhorias de performance e responsividade em Next.js.",
   },
   {
     id: "lugpay",
@@ -162,7 +158,7 @@ export const projects: Project[] = [
 
 /** caminho do projeto na árvore do explorer */
 export function projectPath(project: Project): string {
-  return `src/projetos/${project.company}/${project.id}`;
+  return `src/projetos/${project.id}`;
 }
 
 export function projectCompanies(): string[] {

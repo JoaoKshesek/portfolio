@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useEditor } from "@/lib/editor";
 import { projectById, type Project } from "@/lib/projects";
 import { technologiesByIds, type Technology } from "@/lib/technologies";
-import { Codicon } from "@/components/atoms/codicon";
 
 export interface UseProjectDetailsProps {
   content: string;
@@ -32,7 +31,7 @@ export const useProjectDetails = (
         setIsLoading(true);
         setError(null);
 
-        const filePath = `/src/projetos/signo/${projectId}/descricao.md`;
+        const filePath = `/src/projetos/${projectId}/descricao.md`;
         const response = await fetch(filePath);
 
         if (response.ok) {
@@ -66,7 +65,7 @@ export const useProjectDetails = (
         elements.push(
           <h2
             key={i}
-            className="text-lg font-bold text-white mt-6 mb-3"
+            className="text-lg font-bold text-white"
           >
             {line.replace(/^## /, "")}
           </h2>
@@ -87,19 +86,11 @@ export const useProjectDetails = (
           <ul key={`list-${i}`} className="ml-6 flex flex-col gap-1">
             {listItems.map((item, idx) => (
               <li key={idx} className="flex gap-2 text-[13px] text-ide-fg">
-                <Codicon
-                  name="circle-small-filled"
-                  size={16}
-                  className="mt-px shrink-0 text-ide-muted"
-                />
                 {item}
               </li>
             ))}
           </ul>
         );
-      } else if (line.trim() === "") {
-        elements.push(<div key={`space-${i}`} className="h-2" />);
-        i++;
       } else if (line.trim() !== "") {
         elements.push(
           <p key={i} className="text-ide-fg text-[13px]">
