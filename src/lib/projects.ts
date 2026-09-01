@@ -96,6 +96,17 @@ export const projects: Project[] = [
     stack: ["typescript", "react", "nextjs", "express", "mysql", "azure"],
   },
   {
+    id: "clipify",
+    name: "Clipify",
+    types: ["crm", "sistema"],
+    url: "https://www.clipify.com/",
+    company: "signo",
+    role: "criacao",
+    stack: ["react", "mui", "php", "laravel"],
+    description:
+      "Plataforma de distribuição viral que conecta criadores de conteúdo e clipadores: o criador abre campanhas com premiação, os clipadores publicam os cortes e o sistema acompanha as visualizações e a distribuição dos prêmios. Aplicação web construída do zero em React com MUI e backend em PHP/Laravel.",
+  },
+  {
     id: "i3pics",
     name: "i3Pics",
     types: ["app"],

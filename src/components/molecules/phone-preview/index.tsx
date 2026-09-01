@@ -24,7 +24,7 @@ export function PhonePreview({ className }: PhonePreviewProps) {
 
   return (
     <Iphone className={className}>
-      <div className="relative size-full select-none overflow-hidden bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-900">
+      <div className="@container relative size-full select-none overflow-hidden bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-900">
         {openApp ? (
           <button
             type="button"
@@ -40,19 +40,19 @@ export function PhonePreview({ className }: PhonePreviewProps) {
           </button>
         ) : (
           <div className="flex size-full flex-col">
-            <div className="flex items-center justify-between px-5 pt-2.5 text-[9px] font-semibold text-white">
+            <div className="flex items-center justify-between px-[9cqw] pt-[4cqw] text-[3.8cqw] font-semibold text-white">
               <span>9:41</span>
               <span>5G</span>
             </div>
 
-            <div className="grid grid-cols-4 gap-x-1.5 gap-y-3 px-3 pt-7">
+            <div className="grid grid-cols-4 gap-x-[2cqw] gap-y-[5cqw] px-[5cqw] pt-[11cqw]">
               {phoneApps.map((app) => (
                 <button
                   key={app.id}
                   type="button"
                   title={app.name}
                   onClick={() => openSplashes(app)}
-                  className={`flex flex-col items-center gap-1 ${
+                  className={`flex flex-col items-center gap-[1.5cqw] ${
                     app.splashes.length > 0 ? "cursor-pointer" : "cursor-default"
                   }`}
                 >
@@ -60,9 +60,9 @@ export function PhonePreview({ className }: PhonePreviewProps) {
                     src={app.icon}
                     alt=""
                     aria-hidden
-                    className="size-10 rounded-xl object-cover shadow-md"
+                    className="size-[18cqw] rounded-[4cqw] object-cover shadow-md"
                   />
-                  <span className="w-full truncate text-center text-[8px] text-white/90">
+                  <span className="w-full truncate text-center text-[3.4cqw] text-white/90">
                     {app.name}
                   </span>
                 </button>
@@ -73,11 +73,11 @@ export function PhonePreview({ className }: PhonePreviewProps) {
 
         {/* indicadores de tela do app aberto */}
         {openApp && openApp.splashes.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1">
+          <div className="absolute bottom-[7cqw] left-1/2 flex -translate-x-1/2 gap-[1.5cqw]">
             {openApp.splashes.map((splash, index) => (
               <span
                 key={splash}
-                className={`size-1 rounded-full ${
+                className={`size-[1.5cqw] rounded-full ${
                   index === splashIndex ? "bg-white" : "bg-white/40"
                 }`}
               />
