@@ -8,6 +8,7 @@ export interface PhoneApp {
 
 const appNames: Record<string, string> = {
   adenpay: "AdenPay",
+  bolsozen: "Bolsozen",
   helpmeup: "Help Me Up",
   humu: "Humu",
   i3pics: "i3Pics",

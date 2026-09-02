@@ -18,10 +18,6 @@ export interface Project {
   stack: string[];
   /** descrição breve do projeto */
   description?: string;
-  /** URL da imagem de banner do projeto */
-  banner?: string;
-  /** URL da logo/thumbnail do projeto */
-  logo?: string;
 }
 
 export const projectRoleLabels: Record<ProjectRole, string> = {
@@ -46,7 +42,6 @@ export const projects: Project[] = [
     role: "manutencao",
     stack: ["typescript", "react", "nextjs", "css", "nestjs", "mongodb"],
     description: "Plataforma de intermediação de apostas em loterias. Atuei no desenvolvimento do novo design, manutenção das funcionalidades administrativas e na criação do sistema de impressão de tickets validados pela máquina.",
-    banner: "/src/assets/projects/banner-loterica.png",
   },
   {
     id: "medguias",
@@ -74,7 +69,6 @@ export const projects: Project[] = [
     company: "signo",
     role: "criacao",
     stack: ["typescript", "react", "nextjs", "node", "mongodb", "docker"],
-    banner: "/src/assets/projects/banner-blocosdinamicos.png",
   },
     {
     id: "busca-global",
@@ -165,11 +159,41 @@ export const projects: Project[] = [
     role: "criacao",
     stack: ["typescript", "react-native", "node"],
   },
+  {
+    id: "bellus",
+    name: "Bellus",
+    types: ["sistema"],
+    url: null,
+    company: "pessoal",
+    role: "criacao",
+    stack: ["typescript", "react", "nextjs", "node"],
+    description: "Plataforma fullstack de agendamento e gerenciamento de salões: agenda dos profissionais, serviços, clientes e horários. Projeto pessoal construído do zero com Spec-Driven Development (SDD), da especificação ao deploy.",
+  },
+  {
+    id: "blog",
+    name: "Blog",
+    types: ["site"],
+    url: null,
+    company: "pessoal",
+    role: "criacao",
+    stack: ["typescript", "react", "nextjs", "node"],
+    description: "Blog fullstack criado como laboratório de Spec-Driven Development (SDD): um projeto de teste para explorar o fluxo de especificação antes do código, da escrita das specs à implementação completa.",
+  },
+  {
+    id: "bolsozen",
+    name: "Bolsozen",
+    types: ["app"],
+    url: null,
+    company: "pessoal",
+    role: "criacao",
+    stack: ["typescript", "react-native", "node"],
+    description: "Aplicativo de gerenciamento inteligente de finanças pessoais: organização de gastos, categorização e acompanhamento do orçamento. Projeto pessoal construído do zero com Spec-Driven Development (SDD).",
+  },
 ];
 
-/** caminho do projeto na árvore do explorer */
+/** caminho do arquivo do projeto na árvore do explorer */
 export function projectPath(project: Project): string {
-  return `src/projetos/${project.id}`;
+  return `src/projetos/${project.id}.md`;
 }
 
 export function projectCompanies(): string[] {

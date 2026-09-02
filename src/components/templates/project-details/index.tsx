@@ -1,5 +1,7 @@
 import { Codicon } from "@/components/atoms/codicon";
 import { PhonePreview } from "@/components/molecules/phone-preview";
+import { projectPreviewFile } from "@/lib/explorer-tree";
+import { projectBanner } from "@/lib/project-assets";
 import { projectTypeLabels } from "@/lib/projects";
 import { useProjectDetails } from "./use.index";
 
@@ -33,6 +35,7 @@ export function ProjectDetails({ projectId }: ProjectDetailsProps) {
   }
 
   const isApp = project.types.includes("app");
+  const banner = projectBanner(project.id);
 
   return (
     <div className="@container/pane flex min-h-0 flex-1 overflow-hidden">
@@ -41,33 +44,19 @@ export function ProjectDetails({ projectId }: ProjectDetailsProps) {
         <div className="mx-auto flex max-w-4xl flex-col gap-6">
           {/* Banner/Header */}
           <header
-            className="relative h-64 bg-cover bg-center rounded-lg overflow-hidden flex items-end"
+            className="relative h-48 bg-cover bg-center rounded-lg overflow-hidden flex items-end"
             style={{
-              backgroundImage: project.banner
-                ? `url(${project.banner})`
-                : undefined,
+              backgroundImage: banner ? `url(${banner})` : undefined,
             }}
           >
             {/* Overlay gradient para melhor legibilidade */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-            {!project.banner && (
+            {!banner && (
               <div className="absolute inset-0 bg-gradient-to-br from-ide-editor to-ide-hover" />
             )}
 
-            {/* Content with Logo */}
             <div className="relative z-10 w-full px-6 pb-6 flex items-end gap-6">
-              {/* Logo */}
-              {project.logo && (
-                <div className="flex-shrink-0">
-                  <img
-                    src={project.logo}
-                    alt={project.name}
-                    className="size-32 rounded-lg border-4 border-ide-editor object-cover bg-ide-editor shadow-lg"
-                  />
-                </div>
-              )}
-
               {/* Título e Tags */}
               <div className="flex-1 flex flex-col gap-3 pb-2">
                 <p className="text-[13px] text-gray-300">Projeto</p>
@@ -149,18 +138,10 @@ export function ProjectDetails({ projectId }: ProjectDetailsProps) {
                   <h2 className={sidebarTitle}>Visitar projeto</h2>
                   <button
                     type="button"
-                    onClick={() =>
-                      openFile({
-                        type: "file",
-                        id: `${project.id}-preview`,
-                        name: "preview.png",
-                        content: {
-                          kind: "site",
-                          url: project.url!,
-                          title: project.name,
-                        },
-                      })
-                    }
+                    onClick={() => {
+                      const preview = projectPreviewFile(project);
+                      if (preview) openFile(preview);
+                    }}
                     className="flex w-full cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-left text-[13px] text-ide-fg hover:bg-ide-hover hover:text-white transition-colors"
                   >
                     <Codicon

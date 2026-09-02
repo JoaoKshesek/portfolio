@@ -7,7 +7,8 @@ import {
   projectFolderIcon,
   type IconSpec,
 } from "./icons";
-import { projectPath, projects } from "./projects";
+import { projectLogo } from "./project-assets";
+import { projectPath, projects, type Project } from "./projects";
 
 export interface SiteContent {
   kind: "site";
@@ -135,6 +136,37 @@ const experienceFolder: TreeFolder = {
   })),
 };
 
+export function projectDescriptionFile(project: Project): TreeFile {
+  const path = projectPath(project);
+
+  return {
+    type: "file",
+    id: path,
+    name: `${project.id}.md`,
+    image: projectLogo(project.id),
+    content: {
+      kind: "project-description",
+      projectId: project.id,
+      path,
+    },
+  };
+}
+
+/** aba de preview do site do projeto, nomeada pelo domínio */
+export function projectPreviewFile(project: Project): TreeFile | null {
+  if (!project.url) return null;
+
+  return {
+    type: "file",
+    id: `src/projetos/${project.id}/preview`,
+    name: new URL(project.url).hostname.replace(/^www\./, ""),
+    image: projectLogo(project.id),
+    icon: "globe",
+    iconClass: "text-sky-400",
+    content: { kind: "site", url: project.url, title: project.name },
+  };
+}
+
 const projectsFolder: TreeFolder = {
   type: "folder",
   id: "src/projetos",
@@ -142,27 +174,7 @@ const projectsFolder: TreeFolder = {
   defaultOpen: true,
   children: [...projects]
     .sort((a, b) => a.id.localeCompare(b.id))
-    .map((project) => {
-    const base = projectPath(project);
-
-    const description: TreeFile = {
-      type: "file",
-      id: `${base}/descricao.md`,
-      name: "descricao.md",
-      content: {
-        kind: "project-description",
-        projectId: project.id,
-        path: `${base}/descricao.md`,
-      },
-    };
-
-    return {
-      type: "folder",
-      id: base,
-      name: project.id,
-      children: [description],
-    };
-  }),
+    .map((project) => projectDescriptionFile(project)),
 };
 
 export const explorerRoot: ExplorerRoot = {

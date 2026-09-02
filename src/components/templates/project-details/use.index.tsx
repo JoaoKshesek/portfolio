@@ -31,7 +31,7 @@ export const useProjectDetails = (
         setIsLoading(true);
         setError(null);
 
-        const filePath = `/src/projetos/${projectId}/descricao.md`;
+        const filePath = `/src/projetos/${projectId}.md`;
         const response = await fetch(filePath);
 
         if (response.ok) {

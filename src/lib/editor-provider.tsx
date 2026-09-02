@@ -2,8 +2,14 @@ import { useMemo, useState, type ReactNode } from "react";
 
 import type { AiDoc } from "./ai-workflow";
 import { EditorContext, type EditorTab } from "./editor";
-import { nodeIcon, readmeFile, type TreeFile } from "./explorer-tree";
-import { projectPath, type Project } from "./projects";
+import {
+  nodeIcon,
+  projectDescriptionFile,
+  projectPreviewFile,
+  readmeFile,
+  type TreeFile,
+} from "./explorer-tree";
+import type { Project } from "./projects";
 import type { Technology } from "./technologies";
 
 interface EditorProviderProps {
@@ -41,22 +47,7 @@ function aiDocTab(doc: AiDoc): EditorTab {
 }
 
 function projectTab(project: Project): EditorTab {
-  const base = projectPath(project);
-
-  if (!project.url) {
-    return fileTab({
-      type: "file",
-      id: `${base}/descricao.md`,
-      name: "descricao.md",
-    });
-  }
-
-  return fileTab({
-    type: "file",
-    id: `${base}/preview.png`,
-    name: "preview.png",
-    content: { kind: "site", url: project.url, title: project.name },
-  });
+  return fileTab(projectPreviewFile(project) ?? projectDescriptionFile(project));
 }
 
 export function EditorProvider({ children }: EditorProviderProps) {
