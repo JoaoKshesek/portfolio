@@ -143,5 +143,12 @@
     "nextScreen": "Siguiente pantalla de la app",
     "screenAlt": "Pantalla {{index}} de la app {{name}}",
     "home": "Volver a la pantalla de inicio"
+  },
+  "boot": {
+    "label": "Cargando el portafolio",
+    "clone": "Cloning into 'portfolio'... done.",
+    "install": "Packages: +42 ████████████████████ 100%",
+    "ready": "abriendo el editor",
+    "skip": "haz clic o pulsa cualquier tecla para saltar"
   }
 }

@@ -322,3 +322,19 @@
     display: none;
   }
 }
+
+/* cursor do terminal da tela de boot */
+.boot-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: boot-blink 1s steps(2, start) infinite;
+}
+
+@keyframes boot-blink {
+  to {
+    visibility: hidden;
+  }
+}
