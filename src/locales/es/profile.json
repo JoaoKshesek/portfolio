@@ -1,0 +1,15 @@
+{
+  "role": "Ingeniero de Software",
+  "location": "Curitiba, Brasil",
+  "quote": "La inteligencia es la capacidad de adaptarse al cambio.",
+  "headline": "Ingeniero de Software con más de 5 años de experiencia diseñando y entregando productos web y mobile escalables, con fuerte actuación en React, Next.js y Node.js",
+  "description": "Actúo de punta a punta en el ciclo de vida del software: desde la definición de arquitectura y las decisiones técnicas hasta la entrega en producción y la evolución continua. Tengo experiencia liderando frentes de Microfrontend, estructurando bases de código orientadas a Clean Code y SOLID, y garantizando calidad mediante TDD, revisiones técnicas y pipelines de CI/CD. Valoro el rendimiento, la accesibilidad y las soluciones que equilibran excelencia técnica con impacto real para el negocio.",
+  "bullets": [
+    "🏗️ Arquitectura & Diseño: Microfrontend, Clean Code, SOLID, Design Patterns",
+    "⚛️ Frontend: React.js, Next.js, React Native, Tailwind CSS, Shadcn, MUI",
+    "🔧 Backend: Node.js (Express, Nest.js), PHP (Laravel), APIs REST & GraphQL",
+    "🎯 Rendimiento & Calidad: TDD, Jest, Cypress, SEO, WCAG, Accesibilidad",
+    "☁️ Cloud & DevOps: AWS, Firebase, Docker, pipelines de CI/CD, Git/GitFlow",
+    "💻 Bases de datos: PostgreSQL, MySQL, MongoDB"
+  ]
+}

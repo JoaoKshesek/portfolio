@@ -1,0 +1,62 @@
+{
+  "rocketseat": {
+    "studies": {
+      "pos-tech-developer-360": {
+        "title": "Postgraduate Degree (Lato Sensu) — Tech Developer 360",
+        "field": "Technology and Computer Systems",
+        "period": "Nov 2025 — Nov 2026",
+        "status": "In progress",
+        "summary": "Specialization focused on modern software engineering, deepening knowledge in systems architecture, full stack development, cloud computing, DevOps, observability and artificial intelligence.",
+        "highlights": [
+          "Software architecture and engineering",
+          "Full Stack development",
+          "REST and GraphQL APIs",
+          "Cloud Computing and infrastructure",
+          "DevOps, CI/CD and containerization",
+          "Application observability and monitoring",
+          "Performance and scalability",
+          "Testing and software quality",
+          "Application security",
+          "Building and integrating AI-powered solutions"
+        ]
+      },
+      "explorer": {
+        "title": "Explorer",
+        "period": "Aug 2023",
+        "status": "Completed",
+        "summary": "Hands-on web development program that consolidated the essential foundations for building modern applications, from structuring interfaces to developing APIs and integrating applications.",
+        "highlights": [
+          "Web development and Frontend fundamentals",
+          "HTML, CSS and JavaScript",
+          "DOM manipulation and programming logic",
+          "Building interfaces with React",
+          "Building REST APIs with Node.js, Express and Fastify",
+          "Git and version control",
+          "Project organization and best practices",
+          "Frontend and backend integration"
+        ]
+      }
+    }
+  },
+  "descomplica": {
+    "studies": {
+      "analise-e-desenvolvimento-de-sistemas": {
+        "title": "Associate Degree in Systems Analysis and Development",
+        "field": "Systems Analysis and Development",
+        "period": "Jan 2023 — Dec 2025",
+        "status": "Completed",
+        "summary": "Technology degree focused on software development, with a solid foundation in programming, software engineering, databases and systems architecture.",
+        "highlights": [
+          "Web and Mobile application development",
+          "Programming and Software Engineering",
+          "REST APIs and systems integration",
+          "Databases and data modeling",
+          "Software architecture",
+          "Agile methodologies and collaborative development",
+          "Best practices and development patterns",
+          "Cloud Computing and infrastructure"
+        ]
+      }
+    }
+  }
+}

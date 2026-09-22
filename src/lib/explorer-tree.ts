@@ -1,0 +1,252 @@
+import { institutions } from "./education";
+import { companies } from "./experience";
+import {
+  companyFolderIcon,
+  folderIcon,
+  projectFolderIcon,
+  type IconSpec,
+} from "./icons";
+import { projectLogo } from "./project-assets";
+import { projectPath, projects, type Project } from "./projects";
+
+export interface SiteContent {
+  kind: "site";
+  url: string;
+  title?: string;
+}
+
+export interface EducationContent {
+  kind: "education";
+  institutionId: string;
+  studyId: string;
+}
+
+export interface ExperienceContent {
+  kind: "experience";
+  companyId: string;
+  roleId: string;
+}
+
+export interface ProfileContent {
+  kind: "profile";
+}
+
+export interface ProjectDescriptionContent {
+  kind: "project-description";
+  projectId: string;
+  path: string;
+}
+
+export type FileContent =
+  | SiteContent
+  | ProfileContent
+  | ExperienceContent
+  | EducationContent
+  | ProjectDescriptionContent;
+
+export interface TreeFile {
+  type: "file";
+  id: string;
+  name: string;
+  icon?: string;
+  iconClass?: string;
+  /** imagem usada como ícone, no lugar do codicon */
+  image?: string;
+  content?: FileContent;
+}
+
+export interface TreeFolder {
+  type: "folder";
+  id: string;
+  name: string;
+  icon?: string;
+  iconClass?: string;
+  defaultOpen?: boolean;
+  children: TreeNode[];
+}
+
+export type TreeNode = TreeFile | TreeFolder;
+
+export interface ExplorerRoot {
+  name: string;
+  children: TreeNode[];
+}
+
+export const readmeFile: TreeFile = {
+  type: "file",
+  id: "README.md",
+  name: "README.md",
+  icon: "info",
+  iconClass: "text-sky-600 dark:text-sky-400",
+  content: { kind: "profile" },
+};
+
+export function educationFile(
+  institutionId: string,
+  studyId: string,
+): TreeFile {
+  return {
+    type: "file",
+    id: `src/educacao/${institutionId}/${studyId}.md`,
+    name: `${studyId}.md`,
+    content: { kind: "education", institutionId, studyId },
+  };
+}
+
+const educationFolder: TreeFolder = {
+  type: "folder",
+  id: "src/educacao",
+  name: "educacao",
+  children: institutions.map((institution) => ({
+    type: "folder",
+    id: `src/educacao/${institution.id}`,
+    name: institution.id,
+    children: institution.studies.map((study) =>
+      educationFile(institution.id, study.id),
+    ),
+  })),
+};
+
+export function experienceFile(companyId: string, roleId: string): TreeFile {
+  return {
+    type: "file",
+    id: `src/experiencia/${companyId}/${roleId}.md`,
+    name: `${roleId}.md`,
+    content: { kind: "experience", companyId, roleId },
+  };
+}
+
+const experienceFolder: TreeFolder = {
+  type: "folder",
+  id: "src/experiencia",
+  name: "experiencia",
+  children: companies.map((company) => ({
+    type: "folder",
+    id: `src/experiencia/${company.id}`,
+    name: company.id,
+    children: company.roles.map((role) =>
+      experienceFile(company.id, role.id),
+    ),
+  })),
+};
+
+export function projectDescriptionFile(project: Project): TreeFile {
+  const path = projectPath(project);
+
+  return {
+    type: "file",
+    id: path,
+    name: `${project.id}.md`,
+    image: projectLogo(project.id),
+    content: {
+      kind: "project-description",
+      projectId: project.id,
+      path,
+    },
+  };
+}
+
+/** aba de preview do site do projeto, nomeada pelo domínio */
+export function projectPreviewFile(project: Project): TreeFile | null {
+  if (!project.url) return null;
+
+  return {
+    type: "file",
+    id: `src/projetos/${project.id}/preview`,
+    name: new URL(project.url).hostname.replace(/^www\./, ""),
+    image: projectLogo(project.id),
+    icon: "globe",
+    iconClass: "text-sky-600 dark:text-sky-400",
+    content: { kind: "site", url: project.url, title: project.name },
+  };
+}
+
+const projectsFolder: TreeFolder = {
+  type: "folder",
+  id: "src/projetos",
+  name: "projetos",
+  defaultOpen: true,
+  children: [...projects]
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .map((project) => projectDescriptionFile(project)),
+};
+
+export const explorerRoot: ExplorerRoot = {
+  name: "portfolio",
+  children: [
+    {
+      type: "folder",
+      id: "src",
+      name: "src",
+      defaultOpen: true,
+      children: [
+        experienceFolder,
+        projectsFolder,
+        educationFolder,
+      ],
+    },
+    readmeFile,
+  ],
+};
+
+interface FileIcon {
+  icon: string;
+  iconClass: string;
+}
+
+const extensionIcons: Record<string, FileIcon> = {
+  md: { icon: "markdown", iconClass: "text-sky-600 dark:text-sky-400" },
+  json: { icon: "json", iconClass: "text-amber-600 dark:text-amber-400" },
+  ts: { icon: "file-code", iconClass: "text-sky-600 dark:text-sky-400" },
+  tsx: { icon: "file-code", iconClass: "text-sky-600 dark:text-sky-400" },
+  js: { icon: "file-code", iconClass: "text-amber-600 dark:text-amber-400" },
+  pdf: { icon: "file-pdf", iconClass: "text-red-600 dark:text-red-400" },
+  png: { icon: "file-media", iconClass: "text-purple-600 dark:text-purple-400" },
+  jpg: { icon: "file-media", iconClass: "text-purple-600 dark:text-purple-400" },
+  svg: { icon: "file-media", iconClass: "text-purple-600 dark:text-purple-400" },
+  webp: { icon: "file-media", iconClass: "text-purple-600 dark:text-purple-400" },
+};
+
+const fallbackIcon: FileIcon = { icon: "file", iconClass: "text-ide-muted" };
+
+export function nodeIcon(node: TreeNode, isOpen: boolean): IconSpec {
+  if (node.type === "file" && node.image) {
+    return { type: "image", src: node.image };
+  }
+
+  if (node.icon) {
+    return { type: "codicon", name: node.icon, className: node.iconClass };
+  }
+
+  if (node.type === "folder") {
+    if (node.id.startsWith("src/projetos/")) {
+      return projectFolderIcon(isOpen);
+    }
+    if (node.id.startsWith("src/experiencia/")) return companyFolderIcon(isOpen);
+    if (node.id.startsWith("src/educacao/")) return companyFolderIcon(isOpen);
+    return folderIcon(node.name, isOpen);
+  }
+
+  const extension = node.name.split(".").pop()?.toLowerCase() ?? "";
+  const { icon, iconClass } = extensionIcons[extension] ?? fallbackIcon;
+
+  return { type: "codicon", name: icon, className: iconClass };
+}
+
+export function folderIds(nodes: TreeNode[], onlyDefaultOpen = false): string[] {
+  return nodes.flatMap((node) => {
+    if (node.type !== "folder") return [];
+
+    const children = folderIds(node.children, onlyDefaultOpen);
+
+    if (onlyDefaultOpen && !node.defaultOpen) return children;
+
+    return [node.id, ...children];
+  });
+}
+
+export function treeFiles(nodes: TreeNode[] = explorerRoot.children): TreeFile[] {
+  return nodes.flatMap((node) =>
+    node.type === "file" ? [node] : treeFiles(node.children),
+  );
+}

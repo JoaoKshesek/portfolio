@@ -1,0 +1,73 @@
+{
+  "humu": {
+    "description": "Payment institution focused on digital financial solutions — transfers, payments and financial management for businesses and consumers.",
+    "location": "Curitiba, Brazil",
+    "period": "Jul 2025 — present",
+    "duration": "1 year and 2 months",
+    "roles": {
+      "tech-lead": {
+        "title": "Tech Lead",
+        "period": "Mar 2026 — present",
+        "duration": "6 months",
+        "model": "Hybrid",
+        "summary": "I lead the frontend of a payment institution — web and mobile, under data protection law (LGPD).",
+        "responsibilities": [
+          "I lead the frontend team: architecture, code quality and decisions that need to last.",
+          "I define the technical roadmap for web and mobile, balancing delivery, scale and regulatory compliance.",
+          "I own release planning, CI/CD pipelines and whatever runs in production.",
+          "I maintain observability in Grafana and Kibana: dashboards, alerts and log pipelines."
+        ],
+        "achievements": [
+          "Migrated the mobile architecture to a modular, scalable structure with higher test coverage.",
+          "Standardized frontend practices across web and mobile, reducing bugs and rework.",
+          "Became the technical point of contact for compliance, ensuring adherence to LGPD.",
+          "Improved observability to the point of detecting performance degradation before users notice."
+        ]
+      },
+      "desenvolvedor-senior": {
+        "title": "Senior Front-end Developer",
+        "period": "Jul 2025 — Mar 2026",
+        "duration": "9 months",
+        "model": "On-site",
+        "summary": "I built financial interfaces, web and mobile, in an environment where getting data wrong is expensive.",
+        "responsibilities": [
+          "Developed secure, responsive React interfaces for financial flows.",
+          "Modeled reusable components with accessibility and visual consistency.",
+          "Worked alongside backend and security teams on data integrity and regulatory requirements (LGPD).",
+          "Helped define the mobile architecture, aiming at decoupling and testability."
+        ],
+        "achievements": [
+          "Delivered the bank slip (boleto) issuance and reconciliation features.",
+          "Took part in the mobile architecture overhaul that became the team's foundation."
+        ]
+      }
+    }
+  },
+  "signo": {
+    "description": "Software house building tailor-made solutions, delivering scalable products for clients across very different industries.",
+    "location": "Curitiba, Brazil",
+    "period": "Oct 2022 — Jun 2025",
+    "duration": "2 years and 9 months",
+    "roles": {
+      "desenvolvedor-front-end": {
+        "title": "Front-end Developer",
+        "period": "Oct 2022 — Jun 2025",
+        "duration": "2 years and 9 months",
+        "model": "On-site",
+        "summary": "A new client every cycle: from e-commerce to mobile apps, always with the product live at the end.",
+        "responsibilities": [
+          "Developed and optimized interfaces in React and Next.js.",
+          "Designed project architectures with scale and component reuse in mind.",
+          "Integrated external APIs in a secure and maintainable way.",
+          "Led technical teams on web and mobile applications, with code review and mentoring."
+        ],
+        "achievements": [
+          "Introduced frontend security practices, preventing vulnerabilities in critical systems.",
+          "Reduced application load times with caching and lazy loading.",
+          "Raised unit and integration test coverage, cutting down the incidence of bugs.",
+          "Introduced CI/CD pipelines, automating deploys and taking human error out of production."
+        ]
+      }
+    }
+  }
+}

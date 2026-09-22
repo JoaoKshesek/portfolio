@@ -1,0 +1,147 @@
+{
+  "header": {
+    "title": "Portfólio - João Kshesek",
+    "close": "Fechar",
+    "minimize": "Minimizar",
+    "maximize": "Maximizar"
+  },
+  "footer": {
+    "status": "{{errors}} erros, {{warnings}} avisos"
+  },
+  "navigation": {
+    "files": "Explorer",
+    "search": "Buscar",
+    "scm": "Source Control",
+    "extensions": "Extensões",
+    "claude": "Claude Code",
+    "account": "Conta",
+    "social": "Redes sociais",
+    "settings": "Configurações",
+    "moreActions": "Mais ações",
+    "closePanel": "Fechar painel"
+  },
+  "settings": {
+    "language": "Idioma",
+    "theme": "Tema",
+    "themes": {
+      "dark": "Escuro",
+      "light": "Claro"
+    }
+  },
+  "explorer": {
+    "newFile": "Novo arquivo",
+    "newFolder": "Nova pasta",
+    "readOnly": "Somente leitura",
+    "refresh": "Recarregar",
+    "collapseAll": "Recolher tudo"
+  },
+  "editor": {
+    "openFiles": "Arquivos abertos",
+    "breadcrumbs": "Caminho do arquivo",
+    "empty": "Selecione um arquivo no Explorer para abrir.",
+    "placeholder": "Conteúdo de {{name}} entra aqui.",
+    "extensionsPath": "extensões"
+  },
+  "search": {
+    "placeholder": "Buscar no portfólio...",
+    "tryFor": "Tente buscar por",
+    "noResults": "Nenhum resultado para \"{{query}}\".",
+    "summary": "{{results}} em {{groups}}",
+    "results_one": "{{count}} resultado",
+    "results_other": "{{count}} resultados",
+    "groups_one": "{{count}} grupo",
+    "groups_other": "{{count}} grupos",
+    "suggestions": [
+      "react",
+      "node",
+      "2022",
+      "humu"
+    ],
+    "groupLabels": {
+      "ia": "ia",
+      "experiencia": "experiência",
+      "educacao": "educação",
+      "tecnologias": "tecnologias",
+      "projetos": "projetos",
+      "trajetoria": "trajetória",
+      "perfil": "perfil",
+      "arquivos": "arquivos"
+    }
+  },
+  "sourceControl": {
+    "title": "Trajetória · 2017 → hoje"
+  },
+  "technologyList": {
+    "placeholder": "Buscar tecnologias...",
+    "categories": "Categorias",
+    "empty": "Nenhuma tecnologia encontrada"
+  },
+  "technology": {
+    "years": "{{count}}a",
+    "inUse": "{{years}} de uso",
+    "projects_one": "{{count}} projeto",
+    "projects_zero": "{{count}} projetos",
+    "projects_other": "{{count}} projetos",
+    "projectsTitle": "Projetos",
+    "noProjects": "Nenhum projeto listado com essa tecnologia ainda.",
+    "details": "Detalhes",
+    "identifier": "Identificador",
+    "category": "Categoria",
+    "timeInUse": "Tempo de uso",
+    "categories": {
+      "ferramentas": "Ferramentas",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "infraestrutura": "Infraestrutura"
+    }
+  },
+  "project": {
+    "label": "Projeto",
+    "loading": "Carregando...",
+    "notFound": "Projeto não encontrado",
+    "loadError": "Não foi possível carregar a descrição do projeto",
+    "fetchError": "Erro ao carregar o arquivo de descrição",
+    "stack": "Stack",
+    "appPreview": "Preview do app",
+    "visit": "Visitar projeto",
+    "openWebsite": "Abrir website",
+    "types": {
+      "site": "Site",
+      "app": "App",
+      "crm": "CRM",
+      "sistema": "Sistema web"
+    },
+    "roles": {
+      "criacao": "Criação",
+      "manutencao": "Manutenção e features"
+    }
+  },
+  "experience": {
+    "notFound": "Cargo não encontrado.",
+    "responsibilities": "O que eu fazia",
+    "achievements": "Resultados",
+    "stack": "Stack",
+    "projectsAt": "Projetos na {{company}}",
+    "otherRoles": "Outros cargos"
+  },
+  "education": {
+    "notFound": "Formação não encontrada.",
+    "certificate": "Certificado",
+    "degree": "Formação",
+    "covers": "O que o curso cobre",
+    "stack": "Stack",
+    "credential": "Credencial",
+    "viewCredential": "Ver credencial",
+    "atInstitution": "Na {{institution}}"
+  },
+  "profile": {
+    "greeting": "👾 Hi, there!",
+    "skills": "Principais habilidades:",
+    "hashtags": "#integridade #ética #compromisso"
+  },
+  "phone": {
+    "nextScreen": "Próxima tela do app",
+    "screenAlt": "Tela {{index}} do app {{name}}",
+    "home": "Voltar para a tela inicial"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "loterica-nova": {
+    "description": "Plataforma de intermediação de apostas em loterias. Atuei no desenvolvimento do novo design, manutenção das funcionalidades administrativas e na criação do sistema de impressão de tickets validados pela máquina."
+  },
+  "medguias": {
+    "description": "Guia médico digital e impresso com mais de 10 mil médicos cadastrados: busca por especialista, presencial ou por telemedicina, agendamento integrado ao WhatsApp e prontuário digital com receituário e histórico do paciente. Atuei na manutenção e em novas features, incluindo a correção da agenda com fusos horários."
+  },
+  "lide-global": {
+    "description": "Plataforma digital da LIDE, maior organização de líderes empresariais da América Latina: CRM, painel administrativo e aplicativo mobile que conectam milhares de líderes para networking, eventos e negócios. Backend, painel e app construídos do zero, com liderança do time mobile."
+  },
+  "blocos-dinamicos": {
+    "description": "E-commerce de plugins dinâmicos para SketchUp, integrado a um plugin exclusivo em Ruby que permite adquirir componentes de dentro do próprio SketchUp. Projeto desenvolvido de ponta a ponta, do alinhamento com o cliente ao deploy em produção."
+  },
+  "busca-global": {
+    "description": "Plataforma web que conecta quem procura a quem oferece: empresas e profissionais cadastram seus negócios e o público encontra tudo em um só lugar. Construída do zero, do modelo de dados à interface, com painel administrativo para gestão dos cadastros."
+  },
+  "sebrae": {
+    "description": "Hub de educação digital do Sebrae para donos de micro e pequenas empresas: cursos, jornadas de aprendizagem, mentorias e aulas ao vivo com especialistas, com certificado digital. Em 2025 foram 18 cursos em mais de 1.800 turmas. Atuei em novas features, correções no painel administrativo e na suíte de testes E2E em Cypress."
+  },
+  "clipify": {
+    "description": "Plataforma de distribuição viral que conecta criadores de conteúdo e clipadores: o criador abre campanhas com premiação, os clipadores publicam os cortes e o sistema acompanha as visualizações e a distribuição dos prêmios. Aplicação web construída do zero em React com MUI e backend em PHP/Laravel."
+  },
+  "i3pics": {
+    "description": "Aplicativo mobile construído do zero em React Native e publicado nas lojas. Participei da definição da arquitetura modular que virou referência para o time, com foco em desacoplamento, testabilidade e cobertura de testes."
+  },
+  "humu": {
+    "description": "Internet banking da Humu, web e mobile: conta de pagamento, Pix, transferências, emissão e conciliação de boletos e gestão financeira para empresas e consumidores. Atuo na manutenção e evolução das interfaces, com foco em segurança, integridade dos dados e conformidade com a LGPD."
+  },
+  "lugpay": {
+    "description": "Plataforma de gestão de locação para proprietários e administradoras: cadastro de propriedades, geração de contratos, cobranças e controle financeiro, contatos e solicitações centralizados e calculadora de imposto, tudo em um único painel. Construída do zero para a JMN."
+  },
+  "adenpay": {
+    "description": "Internet banking e aplicativo da conta digital do Aden Bank: saldo e extrato em tempo real, Pix, transferências e pagamentos direto do celular ou da web, sem burocracia. Interface web em React e app iOS e Android em React Native."
+  },
+  "helpmeup": {
+    "description": "Marketplace de serviços domésticos que conecta contratantes a prestadores verificados num raio de 5 km: limpeza residencial e comercial, babá, cuidado de pets e plantas, jardinagem e mais. Agendamento, pagamento por cartão e avaliações direto no aplicativo, construído do zero em React Native."
+  },
+  "porti": {
+    "description": "Ecossistema financeiro para médicos: conta digital Portí Pay, antecipação de recebíveis de plantões em até 48 horas e gestão financeira e contábil da PJ médica. Mais de 3 mil médicos e R$ 21 milhões transacionados. Internet banking em React e app em React Native."
+  },
+  "orbit": {
+    "description": "Plataforma de ativos virtuais e soluções financeiras de uma SPSAV em regulamentação pelo Banco Central: compra, venda e custódia de cripto e stablecoins com foco em segurança e liquidez para operações de alto volume. Internet banking em React e app em React Native."
+  },
+  "way": {
+    "description": "Plataforma por assinatura para dentistas e estudantes de odontologia: árvore de decisão clínica, roteiro de anamnese, manual farmacológico, conteúdo técnico, fórum e agenda. Aplicativo iOS e Android em React Native e backoffice web em React."
+  }
+}

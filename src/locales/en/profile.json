@@ -1,0 +1,15 @@
+{
+  "role": "Software Engineer",
+  "location": "Curitiba, Brazil",
+  "quote": "Intelligence is the ability to adapt to change.",
+  "headline": "Software Engineer with over 5 years of experience designing and delivering scalable web and mobile products, with a strong focus on React, Next.js and Node.js",
+  "description": "I work across the whole software lifecycle: from architecture and technical decisions to production delivery and continuous evolution. I have led Microfrontend initiatives, structured codebases around Clean Code and SOLID, and ensured quality through TDD, technical reviews and CI/CD pipelines. I value performance, accessibility and solutions that balance technical excellence with real business impact.",
+  "bullets": [
+    "🏗️ Architecture & Design: Microfrontend, Clean Code, SOLID, Design Patterns",
+    "⚛️ Frontend: React.js, Next.js, React Native, Tailwind CSS, Shadcn, MUI",
+    "🔧 Backend: Node.js (Express, Nest.js), PHP (Laravel), REST & GraphQL APIs",
+    "🎯 Performance & Quality: TDD, Jest, Cypress, SEO, WCAG, Accessibility",
+    "☁️ Cloud & DevOps: AWS, Firebase, Docker, CI/CD pipelines, Git/GitFlow",
+    "💻 Databases: PostgreSQL, MySQL, MongoDB"
+  ]
+}

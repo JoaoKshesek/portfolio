@@ -1,0 +1,73 @@
+{
+  "humu": {
+    "description": "Institución de pago enfocada en soluciones financieras digitales — transferencias, pagos y gestión financiera para empresas y consumidores.",
+    "location": "Curitiba, Brasil",
+    "period": "Jul 2025 — actual",
+    "duration": "1 año y 2 meses",
+    "roles": {
+      "tech-lead": {
+        "title": "Tech Lead",
+        "period": "Mar 2026 — actual",
+        "duration": "6 meses",
+        "model": "Híbrido",
+        "summary": "Lidero el frontend de una institución de pago — web y mobile, bajo la ley de protección de datos (LGPD).",
+        "responsibilities": [
+          "Lidero el equipo de frontend: arquitectura, calidad de código y decisiones que necesitan durar.",
+          "Defino el roadmap técnico de web y mobile equilibrando entrega, escala y cumplimiento regulatorio.",
+          "Me encargo de la planificación de releases, de los pipelines de CI/CD y de lo que corre en producción.",
+          "Mantengo la observabilidad en Grafana y Kibana: dashboards, alertas y pipelines de logs."
+        ],
+        "achievements": [
+          "Migré la arquitectura mobile a una estructura modular y escalable, con mayor cobertura de pruebas.",
+          "Estandaricé las prácticas de frontend entre web y mobile, reduciendo bugs y retrabajo.",
+          "Me convertí en el punto de contacto técnico de cumplimiento, garantizando la adherencia a la LGPD.",
+          "Mejoré la observabilidad hasta detectar degradación de rendimiento antes de que el usuario la note."
+        ]
+      },
+      "desenvolvedor-senior": {
+        "title": "Desarrollador Front-end Sénior",
+        "period": "Jul 2025 — Mar 2026",
+        "duration": "9 meses",
+        "model": "Presencial",
+        "summary": "Construí interfaces financieras, web y mobile, en un entorno donde equivocarse con un dato sale caro.",
+        "responsibilities": [
+          "Desarrollé interfaces seguras y responsivas en React para flujos financieros.",
+          "Modelé componentes reutilizables, con accesibilidad y consistencia visual.",
+          "Trabajé junto a backend y seguridad por la integridad de los datos y las normas (LGPD).",
+          "Ayudé a definir la arquitectura mobile, buscando desacoplamiento y testabilidad."
+        ],
+        "achievements": [
+          "Entregué las funcionalidades de emisión y conciliación de boletos bancarios.",
+          "Participé en la reestructuración de la arquitectura mobile que se volvió la base del equipo."
+        ]
+      }
+    }
+  },
+  "signo": {
+    "description": "Software house de soluciones a medida, entregando productos escalables para clientes de sectores muy distintos.",
+    "location": "Curitiba, Brasil",
+    "period": "Oct 2022 — Jun 2025",
+    "duration": "2 años y 9 meses",
+    "roles": {
+      "desenvolvedor-front-end": {
+        "title": "Desarrollador Front-end",
+        "period": "Oct 2022 — Jun 2025",
+        "duration": "2 años y 9 meses",
+        "model": "Presencial",
+        "summary": "Un cliente nuevo en cada ciclo: del e-commerce a la app, siempre con el producto en producción al final.",
+        "responsibilities": [
+          "Desarrollé y optimicé interfaces en React y Next.js.",
+          "Modelé la arquitectura de los proyectos pensando en escala y reutilización de componentes.",
+          "Integré APIs externas de forma segura y sostenible.",
+          "Lideré equipos técnicos en aplicaciones web y mobile, con code review y mentoría."
+        ],
+        "achievements": [
+          "Implanté prácticas de seguridad en el frontend, previniendo vulnerabilidades en sistemas críticos.",
+          "Reduje el tiempo de carga de las aplicaciones con caché y lazy loading.",
+          "Elevé la cobertura de pruebas unitarias y de integración, bajando la incidencia de bugs.",
+          "Introduje pipelines de CI/CD, automatizando deploys y sacando el error humano de producción."
+        ]
+      }
+    }
+  }
+}

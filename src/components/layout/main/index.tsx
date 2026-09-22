@@ -1,0 +1,68 @@
+import { useTranslation } from "react-i18next";
+
+import { Codicon } from "@/components/atoms/codicon";
+import { AiWorkflow } from "@/components/organisms/ai-workflow";
+import { EditorBreadcrumbs } from "@/components/organisms/editor-breadcrumbs";
+import { EditorTabs } from "@/components/molecules/editor-tabs";
+import { EducationDetails } from "@/components/templates/education-details";
+import { ExperienceDetails } from "@/components/templates/experience-details";
+import { ReadmeProfile } from "@/components/templates/readme-profile";
+import { SitePreview } from "@/components/templates/site-preview";
+import { TechnologyDetails } from "@/components/templates/technology-details";
+import { ProjectDetails } from "@/components/templates/project-details";
+import { useEditor } from "@/lib/editor";
+
+export function Main() {
+  const { activeTab } = useEditor();
+  const { t } = useTranslation();
+
+  return (
+    <main className="flex h-full min-w-0 flex-col overflow-hidden bg-ide-editor">
+      <EditorTabs />
+
+      {activeTab ? (
+        <>
+          <EditorBreadcrumbs tab={activeTab} />
+
+          {activeTab.content.kind === "ai" ? (
+            <AiWorkflow docId={activeTab.content.docId} />
+          ) : activeTab.content.kind === "education" ? (
+            <EducationDetails
+              institutionId={activeTab.content.institutionId}
+              studyId={activeTab.content.studyId}
+            />
+          ) : activeTab.content.kind === "experience" ? (
+            <ExperienceDetails
+              companyId={activeTab.content.companyId}
+              roleId={activeTab.content.roleId}
+            />
+          ) : activeTab.content.kind === "profile" ? (
+            <ReadmeProfile />
+          ) : activeTab.content.kind === "technology" ? (
+            <TechnologyDetails technology={activeTab.content.technology} />
+          ) : activeTab.content.kind === "project-description" ? (
+            <ProjectDetails
+              projectId={activeTab.content.projectId}
+            />
+          ) : activeTab.content.kind === "site" ? (
+            <SitePreview
+              url={activeTab.content.url}
+              title={activeTab.content.title ?? activeTab.name}
+            />
+          ) : (
+            <section className="min-h-0 flex-1 overflow-auto px-6 py-4 text-[13px] text-ide-muted">
+              {t("editor.placeholder", { name: activeTab.name })}
+            </section>
+          )}
+        </>
+      ) : (
+        <div className="flex flex-1 flex-col items-center justify-center gap-3 text-ide-muted">
+          <Codicon name="files" size={40} className="opacity-40" />
+          <p className="text-[13px]">
+            {t("editor.empty")}
+          </p>
+        </div>
+      )}
+    </main>
+  );
+}
