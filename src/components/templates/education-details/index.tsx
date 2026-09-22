@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Codicon } from "@/components/atoms/codicon";
 import { useEditor } from "@/lib/editor";
 import { findStudy } from "@/lib/education";
@@ -11,19 +13,21 @@ interface EducationDetailsProps {
 
 const sidebarTitle = "mb-2 text-[11px] tracking-wider text-ide-muted uppercase";
 const rowClass =
-  "flex w-full cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-left text-[13px] text-ide-fg hover:bg-ide-hover hover:text-white";
+  "flex w-full cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-left text-[13px] text-ide-fg hover:bg-ide-hover hover:text-ide-heading";
 
 export function EducationDetails({
   institutionId,
   studyId,
 }: EducationDetailsProps) {
   const { openTechnology, openFile } = useEditor();
+  // useTranslation também re-renderiza quando o idioma muda
+  const { t } = useTranslation();
   const found = findStudy(institutionId, studyId);
 
   if (!found) {
     return (
       <section className="min-h-0 flex-1 px-6 py-4 text-[13px] text-ide-muted">
-        Formação não encontrada.
+        {t("education.notFound")}
       </section>
     );
   }
@@ -39,7 +43,7 @@ export function EducationDetails({
         <header className="flex flex-col gap-3">
           <p className="text-[13px] text-ide-muted">{institution.name}</p>
 
-          <h1 className="text-2xl leading-tight font-semibold text-white">
+          <h1 className="text-2xl leading-tight font-semibold text-ide-heading">
             {study.title}
           </h1>
 
@@ -49,7 +53,7 @@ export function EducationDetails({
                 name={isCertificate ? "verified-filled" : "mortar-board"}
                 size={14}
               />
-              {isCertificate ? "Certificado" : "Formação"}
+              {isCertificate ? t("education.certificate") : t("education.degree")}
             </span>
             <span className="flex items-center gap-1">
               <Codicon name="calendar" size={14} />
@@ -67,7 +71,7 @@ export function EducationDetails({
             )}
           </div>
 
-          <p className="text-[15px] text-white">{study.summary}</p>
+          <p className="text-[15px] text-ide-heading">{study.summary}</p>
         </header>
 
         <div className="h-px bg-ide-border" />
@@ -75,7 +79,7 @@ export function EducationDetails({
         <div className="flex flex-col gap-8 @3xl:flex-row">
           <section className="flex min-w-0 flex-1 flex-col gap-2">
             <h2 className="text-[11px] tracking-wider text-ide-muted uppercase">
-              O que o curso cobre
+              {t("education.covers")}
             </h2>
             <ul className="flex flex-col gap-2">
               {study.highlights.map((item) => (
@@ -94,14 +98,14 @@ export function EducationDetails({
           <aside className="flex w-full shrink-0 flex-col gap-6 @3xl:w-64">
             {stack.length > 0 && (
               <section>
-                <h2 className={sidebarTitle}>Stack</h2>
+                <h2 className={sidebarTitle}>{t("education.stack")}</h2>
                 <ul className="flex flex-wrap gap-1.5">
                   {stack.map((technology) => (
                     <li key={technology.id}>
                       <button
                         type="button"
                         onClick={() => openTechnology(technology)}
-                        className="flex cursor-pointer items-center gap-1.5 rounded-full border border-ide-border px-2 py-1 text-xs text-ide-fg hover:border-ide-resize hover:text-white"
+                        className="flex cursor-pointer items-center gap-1.5 rounded-full border border-ide-border px-2 py-1 text-xs text-ide-fg hover:border-ide-resize hover:text-ide-heading"
                       >
                         <img
                           src={technology.icon}
@@ -119,7 +123,7 @@ export function EducationDetails({
 
             {study.credential && (
               <section>
-                <h2 className={sidebarTitle}>Credencial</h2>
+                <h2 className={sidebarTitle}>{t("education.credential")}</h2>
                 <p className="px-2 font-mono text-[11px] break-all text-ide-muted">
                   {study.credential.id}
                 </p>
@@ -135,7 +139,7 @@ export function EducationDetails({
                       size={16}
                       className="shrink-0 text-ide-muted"
                     />
-                    Ver credencial
+                    {t("education.viewCredential")}
                   </a>
                 )}
               </section>
@@ -143,7 +147,7 @@ export function EducationDetails({
 
             {others.length > 0 && (
               <section>
-                <h2 className={sidebarTitle}>Na {institution.name}</h2>
+                <h2 className={sidebarTitle}>{t("education.atInstitution", { institution: institution.name })}</h2>
                 <ul className="flex flex-col">
                   {others.map((item) => (
                     <li key={item.id}>

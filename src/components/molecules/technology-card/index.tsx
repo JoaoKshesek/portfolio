@@ -27,11 +27,11 @@ export function TechnologyCard({
           className="h-10 w-10 rounded object-contain "
           />
         <div className="flex flex-col justify-center flex-1 min-w-0">
-          <h3 className="text-xs font-medium text-white line-clamp-2">{name}</h3>
+          <h3 className="text-xs font-medium text-ide-heading line-clamp-2">{name}</h3>
           <p className="text-xs text-ide-muted line-clamp-2">{description}</p>
         </div>
           </div>
-        <span className="text-xs text-ide-muted shrink-0 text-white ">{time}</span>
+        <span className="shrink-0 text-xs text-ide-muted">{time}</span>
       </div>
     </div>
   );

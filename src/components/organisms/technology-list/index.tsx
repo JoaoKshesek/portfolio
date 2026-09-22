@@ -1,4 +1,5 @@
 import { Menu } from "@base-ui/react/menu";
+import { useTranslation } from "react-i18next";
 import { Codicon } from "@/components/atoms/codicon";
 import { useTechnologyList } from "./use.index";
 import { TechnologyCard } from "@/components/molecules/technology-card";
@@ -13,9 +14,10 @@ interface TechnologyListProps {
 
 export function TechnologyList({
   data,
-  placeholder = "Buscar tecnologias...",
+  placeholder,
   onSelect,
 }: TechnologyListProps) {
+  const { t } = useTranslation();
   const {
     filtered,
     search,
@@ -35,7 +37,7 @@ export function TechnologyList({
           onOpenChange={setIsFilterOpen}
         >
           <SearchInput
-            placeholder={placeholder}
+            placeholder={placeholder ?? t("technologyList.placeholder")}
             value={search}
             onChange={setSearch}
             showIcon={false}
@@ -59,13 +61,13 @@ export function TechnologyList({
             >
               <Menu.Popup className="min-w-48 rounded-md border border-ide-border bg-ide-titlebar/80 backdrop-blur-md p-1 text-[13px] text-ide-fg shadow-2xl outline-none transition-opacity duration-100 data-ending-style:opacity-0 data-starting-style:opacity-0">
                 <div className="px-2 py-1 text-[11px] tracking-wider text-ide-muted uppercase font-semibold">
-                  Categorias
+                  {t("technologyList.categories")}
                 </div>
 
                 {categories.map((category) => (
                   <label
                     key={category.id}
-                    className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 outline-none select-none data-highlighted:bg-ide-hover data-highlighted:text-white"
+                    className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 outline-none select-none data-highlighted:bg-ide-hover data-highlighted:text-ide-heading"
                   >
                     <input
                       type="checkbox"
@@ -96,7 +98,7 @@ export function TechnologyList({
           ))
         ) : (
           <div className="flex items-center justify-center h-full text-ide-muted text-sm">
-            Nenhuma tecnologia encontrada
+            {t("technologyList.empty")}
           </div>
         )}
       </div>

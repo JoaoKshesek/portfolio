@@ -29,11 +29,11 @@ export function AiWorkflow({ docId }: AiWorkflowProps) {
             desenvolvimento assistido por IA
           </p>
 
-          <h1 className="text-2xl leading-tight font-semibold text-white">
+          <h1 className="text-2xl leading-tight font-semibold text-ide-heading">
             {doc.title}
           </h1>
 
-          <p className="text-[15px] text-white">{doc.summary}</p>
+          <p className="text-[15px] text-ide-heading">{doc.summary}</p>
         </header>
 
         <div className="h-px bg-ide-border" />
@@ -58,7 +58,7 @@ export function AiWorkflow({ docId }: AiWorkflowProps) {
                     </div>
 
                     <div className="flex min-w-0 flex-1 flex-col gap-1 pb-5">
-                      <h3 className="text-[13px] font-medium text-white">
+                      <h3 className="text-[13px] font-medium text-ide-heading">
                         {phase.title}
                       </h3>
                       <p className="text-[13px] text-ide-fg">

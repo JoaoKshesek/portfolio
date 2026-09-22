@@ -1,10 +1,11 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useEditor } from "@/lib/editor";
 import {
   branchById,
+  getTimelineCommits,
   timelineBranches,
-  timelineCommits,
 } from "@/lib/timeline";
 
 const ROW_HEIGHT = 34;
@@ -51,9 +52,11 @@ export interface UseGitGraphProps {
 
 export const useGitGraph = (): UseGitGraphProps => {
   const { openProject } = useEditor();
+  const { i18n } = useTranslation();
+  const language = i18n.language;
 
   const { rows, paths, railWidth, height } = useMemo(() => {
-    const rows = timelineCommits.map((commit, row) => ({ ...commit, row }));
+    const rows = getTimelineCommits().map((commit, row) => ({ ...commit, row }));
 
     const paths = timelineBranches.flatMap((branch) => {
       const own = rows.filter((row) => row.branch === branch.id);
@@ -108,7 +111,9 @@ export const useGitGraph = (): UseGitGraphProps => {
       railWidth: laneX(lanes) + RAIL_PADDING,
       height: rows.length * ROW_HEIGHT,
     };
-  }, []);
+    // as mensagens vêm do i18n global, por isso o memo depende do idioma
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
 
   return {
     rows,

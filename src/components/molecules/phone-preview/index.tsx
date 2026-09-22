@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Iphone } from "@/components/ui/iphone";
 import { phoneApps, type PhoneApp } from "@/lib/phone-apps";
@@ -10,6 +11,7 @@ interface PhonePreviewProps {
 export function PhonePreview({ className }: PhonePreviewProps) {
   const [openApp, setOpenApp] = useState<PhoneApp | null>(null);
   const [splashIndex, setSplashIndex] = useState(0);
+  const { t } = useTranslation();
 
   const openSplashes = (app: PhoneApp) => {
     if (app.splashes.length === 0) return;
@@ -29,12 +31,12 @@ export function PhonePreview({ className }: PhonePreviewProps) {
           <button
             type="button"
             onClick={nextSplash}
-            aria-label="Próxima tela do app"
+            aria-label={t("phone.nextScreen")}
             className="absolute inset-0 cursor-pointer"
           >
             <img
               src={openApp.splashes[splashIndex]}
-              alt={`Tela ${splashIndex + 1} do app ${openApp.name}`}
+              alt={t("phone.screenAlt", { index: splashIndex + 1, name: openApp.name })}
               className="size-full object-cover object-top"
             />
           </button>
@@ -88,7 +90,7 @@ export function PhonePreview({ className }: PhonePreviewProps) {
         {/* barra de home: volta para a tela inicial */}
         <button
           type="button"
-          aria-label="Voltar para a tela inicial"
+          aria-label={t("phone.home")}
           onClick={() => setOpenApp(null)}
           className={`absolute bottom-0 left-1/2 flex h-4 w-1/2 -translate-x-1/2 items-end justify-center pb-1 ${
             openApp ? "cursor-pointer" : "cursor-default"

@@ -31,6 +31,7 @@
   --ide-statusbar-fg: #6b7280;
   --ide-border: #e0e0e0;
   --ide-fg: #3b3b3b;
+  --ide-heading: #1f1f1f;
   --ide-muted: #767676;
   --ide-hover: rgba(0, 0, 0, 0.06);
   --ide-active: #ffffff;
@@ -139,6 +140,7 @@
     --ide-statusbar-fg: #7c8591;
     --ide-border: #2f363f;
     --ide-fg: #cccccc;
+    --ide-heading: #ffffff;
     --ide-muted: #8b8b8b;
     --ide-hover: rgba(255, 255, 255, 0.08);
     --ide-active: #0b1118;
@@ -166,6 +168,7 @@
   --color-ide-statusbar-fg: var(--ide-statusbar-fg);
   --color-ide-border: var(--ide-border);
   --color-ide-fg: var(--ide-fg);
+  --color-ide-heading: var(--ide-heading);
   --color-ide-muted: var(--ide-muted);
   --color-ide-hover: var(--ide-hover);
   --color-ide-active: var(--ide-active);
@@ -269,6 +272,7 @@
   --ide-statusbar-fg: #7c8591;
   --ide-border: #2f363f;
   --ide-fg: #cccccc;
+  --ide-heading: #ffffff;
   --ide-muted: #8b8b8b;
   --ide-hover: rgba(255, 255, 255, 0.08);
   --ide-active: #1f1f1f;

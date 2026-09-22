@@ -1,0 +1,146 @@
+{
+  "header": {
+    "title": "Portfolio - João Kshesek",
+    "close": "Close",
+    "minimize": "Minimize",
+    "maximize": "Maximize"
+  },
+  "footer": {
+    "status": "{{errors}} errors, {{warnings}} warnings"
+  },
+  "navigation": {
+    "files": "Explorer",
+    "search": "Search",
+    "scm": "Source Control",
+    "extensions": "Extensions",
+    "claude": "Claude Code",
+    "account": "Account",
+    "social": "Social networks",
+    "settings": "Settings",
+    "moreActions": "More actions",
+    "closePanel": "Close panel"
+  },
+  "settings": {
+    "language": "Language",
+    "theme": "Theme",
+    "themes": {
+      "dark": "Dark",
+      "light": "Light"
+    }
+  },
+  "explorer": {
+    "newFile": "New file",
+    "newFolder": "New folder",
+    "readOnly": "Read-only",
+    "refresh": "Refresh",
+    "collapseAll": "Collapse all"
+  },
+  "editor": {
+    "openFiles": "Open files",
+    "breadcrumbs": "File path",
+    "empty": "Select a file in the Explorer to open it.",
+    "placeholder": "Content of {{name}} goes here.",
+    "extensionsPath": "extensions"
+  },
+  "search": {
+    "placeholder": "Search the portfolio...",
+    "tryFor": "Try searching for",
+    "noResults": "No results for \"{{query}}\".",
+    "summary": "{{results}} in {{groups}}",
+    "results_one": "{{count}} result",
+    "results_other": "{{count}} results",
+    "groups_one": "{{count}} group",
+    "groups_other": "{{count}} groups",
+    "suggestions": [
+      "react",
+      "node",
+      "2022",
+      "humu"
+    ],
+    "groupLabels": {
+      "ia": "ai",
+      "experiencia": "experience",
+      "educacao": "education",
+      "tecnologias": "technologies",
+      "projetos": "projects",
+      "trajetoria": "journey",
+      "perfil": "profile",
+      "arquivos": "files"
+    }
+  },
+  "sourceControl": {
+    "title": "Journey · 2017 → today"
+  },
+  "technologyList": {
+    "placeholder": "Search technologies...",
+    "categories": "Categories",
+    "empty": "No technology found"
+  },
+  "technology": {
+    "years": "{{count}}y",
+    "inUse": "{{years}} of use",
+    "projects_one": "{{count}} project",
+    "projects_other": "{{count}} projects",
+    "projectsTitle": "Projects",
+    "noProjects": "No project listed with this technology yet.",
+    "details": "Details",
+    "identifier": "Identifier",
+    "category": "Category",
+    "timeInUse": "Time in use",
+    "categories": {
+      "ferramentas": "Tools",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "infraestrutura": "Infrastructure"
+    }
+  },
+  "project": {
+    "label": "Project",
+    "loading": "Loading...",
+    "notFound": "Project not found",
+    "loadError": "Could not load the project description",
+    "fetchError": "Error loading the description file",
+    "stack": "Stack",
+    "appPreview": "App preview",
+    "visit": "Visit project",
+    "openWebsite": "Open website",
+    "types": {
+      "site": "Website",
+      "app": "App",
+      "crm": "CRM",
+      "sistema": "Web system"
+    },
+    "roles": {
+      "criacao": "Built from scratch",
+      "manutencao": "Maintenance and features"
+    }
+  },
+  "experience": {
+    "notFound": "Role not found.",
+    "responsibilities": "What I did",
+    "achievements": "Results",
+    "stack": "Stack",
+    "projectsAt": "Projects at {{company}}",
+    "otherRoles": "Other roles"
+  },
+  "education": {
+    "notFound": "Program not found.",
+    "certificate": "Certificate",
+    "degree": "Degree",
+    "covers": "What the course covers",
+    "stack": "Stack",
+    "credential": "Credential",
+    "viewCredential": "View credential",
+    "atInstitution": "At {{institution}}"
+  },
+  "profile": {
+    "greeting": "👾 Hi, there!",
+    "skills": "Main skills:",
+    "hashtags": "#integrity #ethics #commitment"
+  },
+  "phone": {
+    "nextScreen": "Next app screen",
+    "screenAlt": "Screen {{index}} of the {{name}} app",
+    "home": "Back to the home screen"
+  }
+}

@@ -1,3 +1,5 @@
+import i18n from "i18next";
+
 export type StudyKind = "formacao" | "certificado";
 
 export interface Credential {
@@ -6,9 +8,22 @@ export interface Credential {
   url?: string;
 }
 
-export interface Study {
+/** dados fixos do curso; os textos vêm de src/locales/<lang>/education.json */
+interface StudyData {
   id: string;
   kind: StudyKind;
+  /** ids de @/lib/technologies */
+  stack: string[];
+  credential?: Credential;
+}
+
+interface InstitutionData {
+  id: string;
+  name: string;
+  studies: StudyData[];
+}
+
+export interface Study extends StudyData {
   title: string;
   field?: string;
   period: string;
@@ -16,18 +31,13 @@ export interface Study {
   /** a frase que resume o curso em uma linha */
   summary: string;
   highlights: string[];
-  /** ids de @/lib/technologies */
-  stack: string[];
-  credential?: Credential;
 }
 
-export interface Institution {
-  id: string;
-  name: string;
+export interface Institution extends Omit<InstitutionData, "studies"> {
   studies: Study[];
 }
 
-export const institutions: Institution[] = [
+const institutionData: InstitutionData[] = [
   {
     id: "rocketseat",
     name: "Rocketseat",
@@ -35,45 +45,12 @@ export const institutions: Institution[] = [
       {
         id: "pos-tech-developer-360",
         kind: "formacao",
-        title: "Pós-graduação Lato Sensu — Tech Developer 360",
-        field: "Tecnologia e Sistemas de Computação",
-        period: "Nov 2025 — Nov 2026",
-        status: "Em andamento",
-        summary:
-          "Especialização voltada à engenharia de software moderna, aprofundando conhecimentos em arquitetura de sistemas, desenvolvimento full stack, cloud computing, DevOps, observabilidade e inteligência artificial.",
-        highlights: [
-          "Arquitetura e engenharia de software",
-          "Desenvolvimento Full Stack",
-          "APIs REST e GraphQL",
-          "Cloud Computing e infraestrutura",
-          "DevOps, CI/CD e containerização",
-          "Observabilidade e monitoramento de aplicações",
-          "Performance e escalabilidade",
-          "Testes e qualidade de software",
-          "Segurança de aplicações",
-          "Desenvolvimento e integração de soluções com IA",
-        ],
-        stack: ["react", "node", "typescript", "graphql", "docker", "aws", "grafana", "ai"],
+        stack: ["react", "node", "typescript", "express", "fastify", "graphql", "docker", "aws", "grafana", "ai"],
       },
       {
         id: "explorer",
         kind: "certificado",
-        title: "Explorer",
-        period: "Ago 2023",
-        status: "Concluído",
-        summary:
-          "Formação prática em desenvolvimento web que consolidou os fundamentos essenciais para a construção de aplicações modernas, desde a estruturação de interfaces até o desenvolvimento de APIs e integração entre aplicações.",
-        highlights: [
-          "Desenvolvimento Web e fundamentos do Frontend",
-          "HTML, CSS e JavaScript",
-          "Manipulação do DOM e lógica de programação",
-          "Desenvolvimento de interfaces com React",
-          "Desenvolvimento de APIs REST com Node.js",
-          "Git e controle de versão",
-          "Organização e boas práticas de projetos",
-          "Integração entre frontend e backend",
-        ],
-        stack: ["html", "css", "javascript", "react", "node", "git"],
+        stack: ["html", "css", "javascript", "react", "node", "express", "fastify", "git"],
         credential: { id: "ceed2620-ab68-43b7-8874-abab5be5d7cd" },
       },
     ],
@@ -85,27 +62,49 @@ export const institutions: Institution[] = [
       {
         id: "analise-e-desenvolvimento-de-sistemas",
         kind: "formacao",
-        title: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
-        field: "Análise e Desenvolvimento de Sistemas",
-        period: "Jan 2023 — Dez 2025",
-        status: "Concluído",
-        summary:
-          "Formação tecnológica voltada para o desenvolvimento de software, com base sólida em programação, engenharia de software, bancos de dados e arquitetura de sistemas.",
-        highlights: [
-          "Desenvolvimento de aplicações Web e Mobile",
-          "Programação e Engenharia de Software",
-          "APIs REST e integração entre sistemas",
-          "Banco de dados e modelagem",
-          "Arquitetura de software",
-          "Metodologias ágeis e desenvolvimento colaborativo",
-          "Boas práticas e padrões de desenvolvimento",
-          "Cloud Computing e infraestrutura",
-        ],
         stack: ["javascript", "typescript", "php", "kotlin", "swift", "react", "react-native", "node", "laravel", "postgresql", "mysql", "aws", "docker", "git"],
       },
     ],
   },
 ];
+
+/** estrutura (ids, tipos e stacks) sem os textos, para árvore do explorer e afins */
+export const institutions: InstitutionData[] = institutionData;
+
+function text(key: string): string {
+  return i18n.t(`education:${key}`, { defaultValue: "" });
+}
+
+function list(key: string): string[] {
+  const value = i18n.t(`education:${key}`, { returnObjects: true, defaultValue: [] });
+  return Array.isArray(value) ? (value as string[]) : [];
+}
+
+function translateStudy(institutionId: string, study: StudyData): Study {
+  const key = `${institutionId}.studies.${study.id}`;
+  const field = text(`${key}.field`);
+
+  return {
+    ...study,
+    title: text(`${key}.title`),
+    field: field || undefined,
+    period: text(`${key}.period`),
+    status: text(`${key}.status`),
+    summary: text(`${key}.summary`),
+    highlights: list(`${key}.highlights`),
+  };
+}
+
+/** instituições e cursos com os textos no idioma atual */
+export function getInstitutions(): Institution[] {
+  return institutionData.map((institution) => ({
+    id: institution.id,
+    name: institution.name,
+    studies: institution.studies.map((study) =>
+      translateStudy(institution.id, study),
+    ),
+  }));
+}
 
 export interface StudyLocation {
   institution: Institution;
@@ -116,7 +115,7 @@ export function findStudy(
   institutionId: string,
   studyId: string,
 ): StudyLocation | undefined {
-  const institution = institutions.find((item) => item.id === institutionId);
+  const institution = getInstitutions().find((item) => item.id === institutionId);
   const study = institution?.studies.find((item) => item.id === studyId);
 
   return institution && study ? { institution, study } : undefined;

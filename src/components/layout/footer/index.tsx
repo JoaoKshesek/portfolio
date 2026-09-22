@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Codicon } from "@/components/atoms/codicon";
 
 interface FooterProps {
@@ -13,8 +15,10 @@ export function Footer({
   errors = 0,
   warnings = 0,
 }: FooterProps) {
+  const { t } = useTranslation();
+
   return (
-    <footer className="flex h-6 shrink-0 items-center justify-between rounded-b-[13px] border-t border-ide-border bg-ide-titlebar px-2 text-[12px] text-ide-statusbar-fg select-none">
+    <footer className="flex h-6 shrink-0 items-center justify-between border-t border-ide-border md:rounded-b-[13px] bg-ide-titlebar px-2 text-[12px] text-ide-statusbar-fg select-none">
       <div className="flex items-center">
         <button
           type="button"
@@ -29,7 +33,7 @@ export function Footer({
 
         <button
           type="button"
-          aria-label={`${errors} erros, ${warnings} avisos`}
+          aria-label={t("footer.status", { errors, warnings })}
           className="flex items-center gap-1 rounded px-2 py-0.5 hover:bg-ide-hover"
         >
           <Codicon name="error" size={14} />
@@ -39,7 +43,7 @@ export function Footer({
         </button>
       </div>
 
-      <span className="px-2">&copy; 2024 My Portfolio</span>
+      <span className="px-2">&copy; {new Date().getFullYear()} João Kshesek</span>
     </footer>
   );
 }

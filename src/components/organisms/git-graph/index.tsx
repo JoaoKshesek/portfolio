@@ -1,3 +1,4 @@
+import { ProjectIcon } from "@/components/atoms/project-icon";
 import { projectById } from "@/lib/projects";
 import { branchById } from "@/lib/timeline";
 import { cn } from "@/lib/utils";
@@ -53,6 +54,7 @@ export function GitGraph() {
 
           const content = (
             <>
+              {project && <ProjectIcon project={project} size={16} />}
               <span className="min-w-0 flex-1 truncate text-ide-fg">
                 {row.message}
               </span>

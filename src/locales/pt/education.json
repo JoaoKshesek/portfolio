@@ -1,0 +1,62 @@
+{
+  "rocketseat": {
+    "studies": {
+      "pos-tech-developer-360": {
+        "title": "Pós-graduação Lato Sensu — Tech Developer 360",
+        "field": "Tecnologia e Sistemas de Computação",
+        "period": "Nov 2025 — Nov 2026",
+        "status": "Em andamento",
+        "summary": "Especialização voltada à engenharia de software moderna, aprofundando conhecimentos em arquitetura de sistemas, desenvolvimento full stack, cloud computing, DevOps, observabilidade e inteligência artificial.",
+        "highlights": [
+          "Arquitetura e engenharia de software",
+          "Desenvolvimento Full Stack",
+          "APIs REST e GraphQL",
+          "Cloud Computing e infraestrutura",
+          "DevOps, CI/CD e containerização",
+          "Observabilidade e monitoramento de aplicações",
+          "Performance e escalabilidade",
+          "Testes e qualidade de software",
+          "Segurança de aplicações",
+          "Desenvolvimento e integração de soluções com IA"
+        ]
+      },
+      "explorer": {
+        "title": "Explorer",
+        "period": "Ago 2023",
+        "status": "Concluído",
+        "summary": "Formação prática em desenvolvimento web que consolidou os fundamentos essenciais para a construção de aplicações modernas, desde a estruturação de interfaces até o desenvolvimento de APIs e integração entre aplicações.",
+        "highlights": [
+          "Desenvolvimento Web e fundamentos do Frontend",
+          "HTML, CSS e JavaScript",
+          "Manipulação do DOM e lógica de programação",
+          "Desenvolvimento de interfaces com React",
+          "Desenvolvimento de APIs REST com Node.js, Express e Fastify",
+          "Git e controle de versão",
+          "Organização e boas práticas de projetos",
+          "Integração entre frontend e backend"
+        ]
+      }
+    }
+  },
+  "descomplica": {
+    "studies": {
+      "analise-e-desenvolvimento-de-sistemas": {
+        "title": "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+        "field": "Análise e Desenvolvimento de Sistemas",
+        "period": "Jan 2023 — Dez 2025",
+        "status": "Concluído",
+        "summary": "Formação tecnológica voltada para o desenvolvimento de software, com base sólida em programação, engenharia de software, bancos de dados e arquitetura de sistemas.",
+        "highlights": [
+          "Desenvolvimento de aplicações Web e Mobile",
+          "Programação e Engenharia de Software",
+          "APIs REST e integração entre sistemas",
+          "Banco de dados e modelagem",
+          "Arquitetura de software",
+          "Metodologias ágeis e desenvolvimento colaborativo",
+          "Boas práticas e padrões de desenvolvimento",
+          "Cloud Computing e infraestrutura"
+        ]
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { useActivityView, type ActivityView } from "@/lib/activity-view";
 
 export interface UseAsideProps {
@@ -5,16 +7,9 @@ export interface UseAsideProps {
   title: string;
 }
 
-const titles: Record<ActivityView, string> = {
-  files: "Explorer",
-  search: "Buscar",
-  scm: "Source Control",
-  extensions: "Extensões",
-  claude: "Claude Code",
-};
-
 export const useAside = (): UseAsideProps => {
   const { view } = useActivityView();
+  const { t } = useTranslation();
 
-  return { view, title: titles[view] };
+  return { view, title: t(`navigation.${view}`) };
 };

@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Codicon } from "@/components/atoms/codicon";
 import { Icon } from "@/components/atoms/icon";
 import { SearchInput } from "@/components/molecules/search-input";
@@ -28,7 +30,7 @@ function Highlight({ text, query }: { text: string; query: string }) {
 
   return parts.map((part, index) =>
     index % 2 === 1 ? (
-      <mark key={index} className="bg-ide-resize/30 text-white">
+      <mark key={index} className="bg-ide-resize/30 text-ide-heading">
         {part}
       </mark>
     ) : (
@@ -48,12 +50,13 @@ export function SearchPanel() {
     toggleGroup,
     open,
   } = useSearch();
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col gap-3 pb-3">
       <div className="px-3">
         <SearchInput
-          placeholder="Buscar no portfólio..."
+          placeholder={t("search.placeholder")}
           value={query}
           onChange={setQuery}
         />
@@ -62,7 +65,7 @@ export function SearchPanel() {
       {query.trim().length === 0 ? (
         <div className="flex flex-col gap-2 px-3">
           <p className="text-[11px] tracking-wider text-ide-muted uppercase">
-            Tente buscar por
+            {t("search.tryFor")}
           </p>
           <div className="flex flex-wrap gap-1.5">
             {suggestions.map((suggestion) => (
@@ -70,7 +73,7 @@ export function SearchPanel() {
                 key={suggestion}
                 type="button"
                 onClick={() => setQuery(suggestion)}
-                className="cursor-pointer rounded-full border border-ide-border px-2 py-0.5 text-xs text-ide-muted hover:border-ide-resize hover:text-white"
+                className="cursor-pointer rounded-full border border-ide-border px-2 py-0.5 text-xs text-ide-muted hover:border-ide-resize hover:text-ide-heading"
               >
                 {suggestion}
               </button>
@@ -79,13 +82,15 @@ export function SearchPanel() {
         </div>
       ) : total === 0 ? (
         <p className="px-3 text-[13px] text-ide-muted">
-          Nenhum resultado para "{query}".
+          {t("search.noResults", { query })}
         </p>
       ) : (
         <>
           <p className="px-3 text-xs text-ide-muted">
-            {total} {total === 1 ? "resultado" : "resultados"} em{" "}
-            {groups.length} {groups.length === 1 ? "grupo" : "grupos"}
+            {t("search.summary", {
+              results: t("search.results", { count: total }),
+              groups: t("search.groups", { count: groups.length }),
+            })}
           </p>
 
           <div className="flex flex-col">

@@ -21,7 +21,7 @@ export function ClaudePanel() {
                 title={doc.title}
                 className={`flex h-[22px] w-full cursor-pointer items-center gap-2 px-3 text-left ${
                   activeId === `ia:${doc.id}`
-                    ? "bg-ide-hover text-white"
+                    ? "bg-ide-hover text-ide-heading"
                     : "text-ide-fg hover:bg-ide-hover"
                 }`}
               >

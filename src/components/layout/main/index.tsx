@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Codicon } from "@/components/atoms/codicon";
 import { AiWorkflow } from "@/components/organisms/ai-workflow";
 import { EditorBreadcrumbs } from "@/components/organisms/editor-breadcrumbs";
@@ -12,6 +14,7 @@ import { useEditor } from "@/lib/editor";
 
 export function Main() {
   const { activeTab } = useEditor();
+  const { t } = useTranslation();
 
   return (
     <main className="flex h-full min-w-0 flex-col overflow-hidden bg-ide-editor">
@@ -48,7 +51,7 @@ export function Main() {
             />
           ) : (
             <section className="min-h-0 flex-1 overflow-auto px-6 py-4 text-[13px] text-ide-muted">
-              Conteúdo de {activeTab.name} entra aqui.
+              {t("editor.placeholder", { name: activeTab.name })}
             </section>
           )}
         </>
@@ -56,7 +59,7 @@ export function Main() {
         <div className="flex flex-1 flex-col items-center justify-center gap-3 text-ide-muted">
           <Codicon name="files" size={40} className="opacity-40" />
           <p className="text-[13px]">
-            Selecione um arquivo no Explorer para abrir.
+            {t("editor.empty")}
           </p>
         </div>
       )}

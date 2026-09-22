@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Codicon } from "@/components/atoms/codicon";
 import { Icon } from "@/components/atoms/icon";
 import type { EditorTab } from "@/lib/editor";
@@ -9,10 +11,11 @@ interface EditorBreadcrumbsProps {
 
 export function EditorBreadcrumbs({ tab }: EditorBreadcrumbsProps) {
   const segments = tab.path;
+  const { t } = useTranslation();
 
   return (
     <nav
-      aria-label="Caminho do arquivo"
+      aria-label={t("editor.breadcrumbs")}
       className="flex h-7 shrink-0 items-center gap-1 overflow-x-auto px-3 text-xs text-ide-muted"
     >
       {segments.map((segment, index) => {

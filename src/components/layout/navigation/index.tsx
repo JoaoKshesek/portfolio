@@ -22,7 +22,7 @@ export function Navigation() {
             onClick={() => setActive(item.id)}
             className={cn(
               "group relative flex h-12 w-full cursor-pointer items-center justify-center",
-              isActive ? "text-white" : "text-ide-muted hover:text-white",
+              isActive ? "text-ide-heading" : "text-ide-muted hover:text-ide-heading",
             )}
           >
             {isActive && (
@@ -49,7 +49,7 @@ export function Navigation() {
               key={item.id}
               type="button"
               aria-label={item.label}
-              className="flex h-12 w-full cursor-pointer items-center justify-center text-ide-statusbar-fg hover:text-white"
+              className="flex h-12 w-full cursor-pointer items-center justify-center text-ide-statusbar-fg hover:text-ide-heading"
             >
               <Codicon name={item.icon} size={24} />
             </button>

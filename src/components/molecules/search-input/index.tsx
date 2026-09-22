@@ -24,7 +24,7 @@ export function SearchInput({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="flex-1 px-2 py-2 bg-ide-activitybar text-xs text-white placeholder:text-xs placeholder:text-ide-muted outline-none h-5 leading-none"
+        className="flex-1 px-2 py-2 bg-ide-activitybar text-xs text-ide-heading placeholder:text-xs placeholder:text-ide-muted outline-none h-5 leading-none"
       />
 
       {rightSlot || (

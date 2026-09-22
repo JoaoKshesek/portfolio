@@ -1,13 +1,17 @@
+import { useTranslation } from "react-i18next";
+
 import { Codicon } from "@/components/atoms/codicon";
+import { ProjectIcon } from "@/components/atoms/project-icon";
 import { useEditor } from "@/lib/editor";
 import { findRole } from "@/lib/experience";
 import { experienceFile } from "@/lib/explorer-tree";
 import {
-  projectRoleLabels,
-  projectTypeLabels,
+  projectRoleLabel,
+  projectTypeLabel,
   projectsByCompany,
 } from "@/lib/projects";
 import { technologiesByIds } from "@/lib/technologies";
+import { cn } from "@/lib/utils";
 
 interface ExperienceDetailsProps {
   companyId: string;
@@ -16,19 +20,21 @@ interface ExperienceDetailsProps {
 
 const sidebarTitle = "mb-2 text-[11px] tracking-wider text-ide-muted uppercase";
 const rowClass =
-  "flex w-full cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-left text-[13px] text-ide-fg hover:bg-ide-hover hover:text-white";
+  "flex w-full cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-left text-[13px] text-ide-fg hover:bg-ide-hover hover:text-ide-heading";
 
 export function ExperienceDetails({
   companyId,
   roleId,
 }: ExperienceDetailsProps) {
   const { openTechnology, openProject, openFile } = useEditor();
+  // useTranslation também re-renderiza quando o idioma muda
+  const { t } = useTranslation();
   const found = findRole(companyId, roleId);
 
   if (!found) {
     return (
       <section className="min-h-0 flex-1 px-6 py-4 text-[13px] text-ide-muted">
-        Cargo não encontrado.
+        {t("experience.notFound")}
       </section>
     );
   }
@@ -44,7 +50,7 @@ export function ExperienceDetails({
         <header className="flex flex-col gap-3">
           <p className="text-[13px] text-ide-muted">{company.name}</p>
 
-          <h1 className="text-2xl leading-tight font-semibold text-white">
+          <h1 className="text-2xl leading-tight font-semibold text-ide-heading">
             {role.title}
           </h1>
 
@@ -71,7 +77,7 @@ export function ExperienceDetails({
             {company.description}
           </p>
 
-          <p className="text-[15px] text-white">{role.summary}</p>
+          <p className="text-[15px] text-ide-heading">{role.summary}</p>
         </header>
 
         <div className="h-px bg-ide-border" />
@@ -80,7 +86,7 @@ export function ExperienceDetails({
           <div className="flex min-w-0 flex-1 flex-col gap-6">
             <section className="flex flex-col gap-2">
               <h2 className="text-[11px] tracking-wider text-ide-muted uppercase">
-                O que eu fazia
+                {t("experience.responsibilities")}
               </h2>
               <ul className="flex flex-col gap-2">
                 {role.responsibilities.map((item) => (
@@ -98,7 +104,7 @@ export function ExperienceDetails({
 
             <section className="flex flex-col gap-2">
               <h2 className="text-[11px] tracking-wider text-ide-muted uppercase">
-                Resultados
+                {t("experience.achievements")}
               </h2>
               <ul className="flex flex-col gap-2">
                 {role.achievements.map((item) => (
@@ -117,14 +123,14 @@ export function ExperienceDetails({
 
           <aside className="flex w-full shrink-0 flex-col gap-6 @3xl:w-64">
             <section>
-              <h2 className={sidebarTitle}>Stack</h2>
+              <h2 className={sidebarTitle}>{t("experience.stack")}</h2>
               <ul className="flex flex-wrap gap-1.5">
                 {stack.map((technology) => (
                   <li key={technology.id}>
                     <button
                       type="button"
                       onClick={() => openTechnology(technology)}
-                      className="flex cursor-pointer items-center gap-1.5 rounded-full border border-ide-border px-2 py-1 text-xs text-ide-fg hover:border-ide-resize hover:text-white"
+                      className="flex cursor-pointer items-center gap-1.5 rounded-full border border-ide-border px-2 py-1 text-xs text-ide-fg hover:border-ide-resize hover:text-ide-heading"
                     >
                       <img
                         src={technology.icon}
@@ -141,27 +147,21 @@ export function ExperienceDetails({
 
             {projects.length > 0 && (
               <section>
-                <h2 className={sidebarTitle}>Projetos na {company.name}</h2>
+                <h2 className={sidebarTitle}>{t("experience.projectsAt", { company: company.name })}</h2>
                 <ul className="flex flex-col">
                   {projects.map((project) => (
                     <li key={project.id}>
                       <button
                         type="button"
                         onClick={() => openProject(project)}
-                        className={rowClass}
+                        className={cn(rowClass, "gap-3")}
                       >
-                        <Codicon
-                          name={project.url ? "globe" : "file"}
-                          size={16}
-                          className="shrink-0 text-ide-muted"
-                        />
+                        <ProjectIcon project={project} />
                         <span className="flex min-w-0 flex-1 flex-col">
                           <span className="truncate">{project.name}</span>
                           <span className="truncate text-[11px] text-ide-muted">
-                            {project.types
-                              .map((type) => projectTypeLabels[type])
-                              .join(" · ")}
-                            {` · ${projectRoleLabels[project.role]}`}
+                            {project.types.map(projectTypeLabel).join(" · ")}
+                            {` · ${projectRoleLabel(project.role)}`}
                             {project.client && ` · ${project.client}`}
                           </span>
                         </span>
@@ -174,7 +174,7 @@ export function ExperienceDetails({
 
             {otherRoles.length > 0 && (
               <section>
-                <h2 className={sidebarTitle}>Outros cargos</h2>
+                <h2 className={sidebarTitle}>{t("experience.otherRoles")}</h2>
                 <ul className="flex flex-col">
                   {otherRoles.map((item) => (
                     <li key={item.id}>
@@ -188,7 +188,7 @@ export function ExperienceDetails({
                         <Codicon
                           name="markdown"
                           size={16}
-                          className="shrink-0 text-sky-400"
+                          className="shrink-0 text-sky-600 dark:text-sky-400"
                         />
                         <span className="flex min-w-0 flex-1 flex-col">
                           <span className="truncate">{item.title}</span>

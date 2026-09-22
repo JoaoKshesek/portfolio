@@ -1,3 +1,5 @@
+import i18n from "i18next";
+
 export type ProjectType = "site" | "app" | "crm" | "sistema";
 
 /** construído do zero, ou recebido pronto para manter e ganhar features novas */
@@ -16,21 +18,20 @@ export interface Project {
   role: ProjectRole;
   /** ids de @/lib/technologies */
   stack: string[];
-  /** descrição breve do projeto */
-  description?: string;
 }
 
-export const projectRoleLabels: Record<ProjectRole, string> = {
-  criacao: "Criação",
-  manutencao: "Manutenção e features",
-};
+export function projectRoleLabel(role: ProjectRole): string {
+  return i18n.t(`ui:project.roles.${role}`);
+}
 
-export const projectTypeLabels: Record<ProjectType, string> = {
-  site: "Site",
-  app: "App",
-  crm: "CRM",
-  sistema: "Sistema web",
-};
+export function projectTypeLabel(type: ProjectType): string {
+  return i18n.t(`ui:project.types.${type}`);
+}
+
+/** descrição breve do projeto, no idioma atual (src/locales/<lang>/projects.json) */
+export function projectDescription(projectId: string): string {
+  return i18n.t(`projects:${projectId}.description`, { defaultValue: "" });
+}
 
 export const projects: Project[] = [
   {
@@ -40,17 +41,16 @@ export const projects: Project[] = [
     url: "https://lotericanova.com/",
     company: "signo",
     role: "manutencao",
-    stack: ["typescript", "react", "nextjs", "css", "nestjs", "mongodb"],
-    description: "Plataforma de intermediação de apostas em loterias. Atuei no desenvolvimento do novo design, manutenção das funcionalidades administrativas e na criação do sistema de impressão de tickets validados pela máquina.",
+    stack: ["typescript", "react", "nextjs", "css", "nestjs", "mongodb", "git"],
   },
   {
     id: "medguias",
     name: "MedGuias",
-    types: ["site"],
-    url: "https://www.medguias.com.br/",
+    types: ["site", "sistema"],
+    url: "https://medguias.com.br/",
     company: "signo",
     role: "manutencao",
-    stack: ["php", "laravel", "mysql", "javascript", "css"],
+    stack: ["php", "laravel", "mysql", "javascript", "css", "git"],
   },
   {
     id: "lide-global",
@@ -59,7 +59,7 @@ export const projects: Project[] = [
     url: null,
     company: "signo",
     role: "criacao",
-    stack: ["typescript", "react", "mui", "react-native", "node", "mysql"],
+    stack: ["typescript", "react", "mui", "react-native", "mysql", "php", "laravel", "git"],
   },
   {
     id: "blocos-dinamicos",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     url: "https://blocosdinamicos.com.br/",
     company: "signo",
     role: "criacao",
-    stack: ["typescript", "react", "nextjs", "node", "mongodb", "docker"],
+    stack: ["typescript", "react", "nextjs", "node", "docker", "mysql", "php", "laravel", "git"],
   },
     {
     id: "busca-global",
@@ -77,17 +77,17 @@ export const projects: Project[] = [
     url: "https://busca.global/",
     company: "signo",
     role: "criacao",
-    stack: ["typescript", "react", "nextjs", "node", "mongodb", "docker"],
+    stack: ["typescript", "react", "nextjs", "node", "docker", "mysql", "php", "laravel", "git"],
   },
   {
     id: "sebrae",
-    name: "Sebrae",
+    name: "Sebrae Ingresse",
     types: ["sistema"],
     url: "https://hub.sebraeingresse.com.br/",
     company: "signo",
     client: "Weef",
     role: "manutencao",
-    stack: ["typescript", "react", "nextjs", "express", "mysql", "azure"],
+    stack: ["typescript", "react", "nextjs", "express", "mysql", "azure", "cypress", "php", "laravel", "jest", "git"],
   },
   {
     id: "clipify",
@@ -96,9 +96,7 @@ export const projects: Project[] = [
     url: "https://www.clipify.com/",
     company: "signo",
     role: "criacao",
-    stack: ["react", "mui", "php", "laravel"],
-    description:
-      "Plataforma de distribuição viral que conecta criadores de conteúdo e clipadores: o criador abre campanhas com premiação, os clipadores publicam os cortes e o sistema acompanha as visualizações e a distribuição dos prêmios. Aplicação web construída do zero em React com MUI e backend em PHP/Laravel.",
+    stack: ["react", "mui", "php", "laravel", "git"],
   },
   {
     id: "i3pics",
@@ -107,87 +105,73 @@ export const projects: Project[] = [
     url: null,
     company: "humu",
     role: "criacao",
-    stack: ["typescript", "react-native", "node", "jest"],
-    description: "Aplicativo mobile construído do zero em React Native e publicado nas lojas. Participei da definição da arquitetura modular que virou referência para o time, com foco em desacoplamento, testabilidade e cobertura de testes em Jest.",
+    stack: ["typescript", "react-native", "git"],
   },
   {
-    id: "ionboarding",
-    name: "iOnboarding",
-    types: ["crm"],
+    id: "humu",
+    name: "Humu",
+    types: ["sistema", "app"],
     url: null,
     company: "humu",
     role: "manutencao",
-    stack: ["typescript", "react", "nextjs", "node"],
-    description: "CRM de onboarding de clientes da instituição: abertura de contas, envio e validação de documentos e acompanhamento das etapas de aprovação. Atuei na manutenção e em novas features dos fluxos de cadastro, sempre sob as exigências de LGPD.",
-  },
-  {
-    id: "ibass",
-    name: "iBaaS",
-    types: ["crm"],
-    url: null,
-    company: "humu",
-    role: "manutencao",
-    stack: ["typescript", "react", "nextjs", "node"],
-    description: "Painel de gestão da operação de Banking as a Service: contas, clientes e transações dos parceiros que operam sobre a infraestrutura da instituição. Atuei na manutenção e em novas features, com atenção à integridade dos dados financeiros exibidos.",
-  },
-  {
-    id: "icredit",
-    name: "iCredit",
-    types: ["sistema"],
-    url: null,
-    company: "humu",
-    role: "manutencao",
-    stack: ["typescript", "react", "nextjs", "node"],
-    description: "Sistema de gestão de operações de crédito: propostas, análise, contratos e acompanhamento das parcelas. Atuei na manutenção e em novas features das telas de operação, integrando com as APIs internas da instituição.",
-  },
-  {
-    id: "humu-lp",
-    name: "Humu LP",
-    types: ["site"],
-    url: null,
-    company: "humu",
-    role: "manutencao",
-    stack: ["typescript", "nextjs", "css"],
-    description: "Landing page institucional da Humu. Atuei na manutenção e evolução do site: novas seções, ajustes de conteúdo e melhorias de performance e responsividade em Next.js.",
+    stack: ["react", "react-native", "git"],
   },
   {
     id: "lugpay",
-    name: "LugPay",
-    types: ["app"],
-    url: null,
+    name: "Lugpay",
+    types: ["sistema", "app"],
+    url: "https://lugpay.com.br/",
     company: "jmn",
     role: "criacao",
-    stack: ["typescript", "react-native", "node"],
+    stack: ["typescript", "react", "react-native", "node", "express", "git"],
   },
   {
-    id: "bellus",
-    name: "Bellus",
-    types: ["sistema"],
-    url: null,
-    company: "pessoal",
+    id: "adenpay",
+    name: "AdenPay",
+    types: ["sistema", "app"],
+    url: "https://www.adenbank.com.br/",
+    company: "humu", // TODO: confirmar empresa
+    client: "Aden Bank",
     role: "criacao",
-    stack: ["typescript", "react", "nextjs", "node"],
-    description: "Plataforma fullstack de agendamento e gerenciamento de salões: agenda dos profissionais, serviços, clientes e horários. Projeto pessoal construído do zero com Spec-Driven Development (SDD), da especificação ao deploy.",
+    stack: ["react", "react-native", "git"],
   },
   {
-    id: "blog",
-    name: "Blog",
-    types: ["site"],
-    url: null,
-    company: "pessoal",
-    role: "criacao",
-    stack: ["typescript", "react", "nextjs", "node"],
-    description: "Blog fullstack criado como laboratório de Spec-Driven Development (SDD): um projeto de teste para explorar o fluxo de especificação antes do código, da escrita das specs à implementação completa.",
-  },
-  {
-    id: "bolsozen",
-    name: "Bolsozen",
+    id: "helpmeup",
+    name: "Help Me Up",
     types: ["app"],
-    url: null,
-    company: "pessoal",
+    url: "https://www.helpmeupapp.com/?page_id=133&lang=pt",
+    company: "signo", // TODO: confirmar empresa
     role: "criacao",
-    stack: ["typescript", "react-native", "node"],
-    description: "Aplicativo de gerenciamento inteligente de finanças pessoais: organização de gastos, categorização e acompanhamento do orçamento. Projeto pessoal construído do zero com Spec-Driven Development (SDD).",
+    stack: ["typescript", "react-native", "node", "php", "laravel", "mysql", "git"],
+  },
+  {
+    id: "porti",
+    name: "Portí",
+    types: ["sistema", "app"],
+    url: "https://porti.digital/",
+    company: "humu", // TODO: confirmar empresa
+    client: "Portí",
+    role: "criacao",
+    stack: ["react", "react-native", "git"],
+  },
+  {
+    id: "orbit",
+    name: "Orbit Ativos",
+    types: ["sistema", "app"],
+    url: "https://www.orbitativos.com.br/",
+    company: "humu", // TODO: confirmar empresa
+    client: "Orbit Ativos",
+    role: "criacao",
+    stack: ["react", "react-native", "git"],
+  },
+  {
+    id: "way",
+    name: "Way Odontologia",
+    types: ["app", "sistema"],
+    url: "https://wayodontologia.com.br/",
+    company: "signo", // TODO: confirmar empresa
+    role: "criacao",
+    stack: ["react", "react-native", "php", "laravel", "git"],
   },
 ];
 

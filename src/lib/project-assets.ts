@@ -8,17 +8,17 @@ const assetFiles = import.meta.glob("../assets/projects/*/*.{png,webp,jpg,jpeg}"
 }) as Record<string, string>;
 
 /** pastas cujo nome difere do id do projeto em @/lib/projects */
-const folderAliases: Record<string, string> = {
+export const folderAliases: Record<string, string> = {
   loterica: "loterica-nova",
   lide: "lide-global",
 };
 
-function buildAssetMap(kind: "banner" | "logo"): Record<string, string> {
+function buildAssetMap(matches: (baseName: string, folder: string) => boolean): Record<string, string> {
   const map: Record<string, string> = {};
 
   for (const [path, url] of Object.entries(assetFiles)) {
     const [, folder, fileName] = path.match(/projects\/([^/]+)\/([^/]+)$/) ?? [];
-    if (!folder || fileName?.replace(/\.[^.]+$/, "") !== kind) continue;
+    if (!folder || !fileName || !matches(fileName.replace(/\.[^.]+$/, ""), folder)) continue;
 
     map[folderAliases[folder] ?? folder] = url;
   }
@@ -26,13 +26,15 @@ function buildAssetMap(kind: "banner" | "logo"): Record<string, string> {
   return map;
 }
 
-const banners = buildAssetMap("banner");
-const logos = buildAssetMap("logo");
+const banners = buildAssetMap((name) => name === "banner");
+const logos = buildAssetMap((name) => name === "logo");
+/** ícone do app (icon.* ou <pasta>.*), usado como logo quando não há logo.* */
+const icons = buildAssetMap((name, folder) => name === "icon" || name === folder);
 
 export function projectBanner(projectId: string): string | undefined {
   return banners[projectId];
 }
 
 export function projectLogo(projectId: string): string | undefined {
-  return logos[projectId];
+  return logos[projectId] ?? icons[projectId];
 }

@@ -1,3 +1,5 @@
+import i18n from "i18next";
+
 import aws from "@/assets/icons/aws.png";
 import azure from "@/assets/icons/azure.png";
 import beekeeper from "@/assets/icons/bekeeper.png";
@@ -7,8 +9,11 @@ import cypress from "@/assets/icons/cypress.svg";
 import datadog from "@/assets/icons/datadog.png";
 import docker from "@/assets/icons/docker.webp";
 import express from "@/assets/icons/express.webp";
+import fastify from "@/assets/icons/fastify.svg";
 import git from "@/assets/icons/git.png";
 import github from "@/assets/icons/github.png";
+import grafana from "@/assets/icons/grafana.svg";
+import graphql from "@/assets/icons/graphql.svg";
 import html from "@/assets/icons/html.svg";
 import insomnia from "@/assets/icons/insomnia.png";
 import javascript from "@/assets/icons/javascript.svg";
@@ -31,267 +36,292 @@ import vscode from "@/assets/icons/vscode.png";
 
 export type TechnologyCategory = "ferramentas" | "frontend" | "backend" | "infraestrutura";
 
-export const categoryLabels: Record<TechnologyCategory, string> = {
-  ferramentas: "Ferramentas",
-  frontend: "Frontend",
-  backend: "Backend",
-  infraestrutura: "Infraestrutura",
-};
+export const technologyCategories: TechnologyCategory[] = [
+  "ferramentas",
+  "frontend",
+  "backend",
+  "infraestrutura",
+];
 
-export interface Technology {
+export function categoryLabel(category: TechnologyCategory): string {
+  return i18n.t(`ui:technology.categories.${category}`);
+}
+
+/** "6a" / "6y", conforme o idioma */
+export function yearsLabel(years: number): string {
+  return i18n.t("ui:technology.years", { count: years });
+}
+
+/** dados fixos da tecnologia; a descrição vem de src/locales/<lang>/technologies.json */
+interface TechnologyData {
   id: string;
   icon: string;
   name: string;
-  description: string;
-  time: string;
+  /** anos de uso */
+  years: number;
   category: TechnologyCategory;
 }
 
-export const technologies: Technology[] = [
+export interface Technology extends TechnologyData {
+  description: string;
+  /** anos de uso já formatados no idioma atual */
+  time: string;
+}
+
+const technologyData: TechnologyData[] = [
   {
     id: "typescript",
     icon: typescript,
     name: "TypeScript",
-    description: "JavaScript com tipagem estática e refactors seguros.",
-    time: "5a",
+    years: 6,
     category: "frontend",
   },
   {
     id: "javascript",
     icon: javascript,
     name: "JavaScript",
-    description: "Linguagem base da web, no browser e no servidor.",
-    time: "5a",
+    years: 6,
     category: "frontend",
   },
   {
     id: "react",
     icon: react,
     name: "React",
-    description: "Interfaces declarativas baseadas em componentes.",
-    time: "5a",
+    years: 6,
     category: "frontend",
   },
   {
     id: "nextjs",
     icon: nextjs,
     name: "Next.js",
-    description: "Framework React com SSR, rotas e otimização de build.",
-    time: "5a",
+    years: 5,
     category: "frontend",
   },
   {
     id: "react-native",
     icon: reactNative,
     name: "React Native",
-    description: "Apps mobile para iOS e Android com a stack React.",
-    time: "5a",
+    years: 5,
     category: "frontend",
   },
   {
     id: "html",
     icon: html,
     name: "HTML",
-    description: "Marcação semântica e acessível como base das páginas.",
-    time: "5a",
+    years: 6,
     category: "frontend",
   },
   {
     id: "css",
     icon: css,
     name: "CSS",
-    description: "Layout responsivo, animações e design system.",
-    time: "5a",
+    years: 6,
     category: "frontend",
   },
   {
     id: "mui",
     icon: mui,
     name: "Material UI",
-    description: "Biblioteca de componentes React com tema customizável.",
-    time: "5a",
+    years: 5,
     category: "frontend",
   },
   {
     id: "vite",
     icon: vite,
     name: "Vite",
-    description: "Dev server instantâneo e build otimizado para o front.",
-    time: "5a",
+    years: 6,
     category: "ferramentas",
   },
   {
     id: "node",
     icon: node,
     name: "Node.js",
-    description: "Runtime JavaScript para APIs e serviços no back-end.",
-    time: "5a",
+    years: 5,
     category: "backend",
   },
   {
     id: "express",
     icon: express,
     name: "Express",
-    description: "Framework minimalista para APIs REST em Node.",
-    time: "5a",
+    years: 4,
+    category: "backend",
+  },
+  {
+    id: "fastify",
+    icon: fastify,
+    name: "Fastify",
+    years: 2,
+    category: "backend",
+  },
+  {
+    id: "graphql",
+    icon: graphql,
+    name: "GraphQL",
+    years: 2,
     category: "backend",
   },
   {
     id: "php",
     icon: php,
     name: "PHP",
-    description: "Linguagem server-side em sistemas web e legados.",
-    time: "5a",
+    years: 6,
     category: "backend",
   },
   {
     id: "laravel",
     icon: laravel,
     name: "Laravel",
-    description: "Framework PHP com ORM, filas e autenticação prontos.",
-    time: "5a",
+    years: 5,
     category: "backend",
   },
   {
     id: "csharp",
     icon: csharp,
     name: "C#",
-    description: "Linguagem da plataforma .NET para APIs e serviços.",
-    time: "5a",
+    years: 3,
     category: "backend",
   },
   {
     id: "mysql",
     icon: mysql,
     name: "MySQL",
-    description: "Banco relacional: modelagem, queries e índices.",
-    time: "5a",
+    years: 6,
     category: "infraestrutura",
   },
   {
     id: "mongodb",
     icon: mongodb,
     name: "MongoDB",
-    description: "Banco NoSQL orientado a documentos e agregações.",
-    time: "5a",
+    years: 5,
     category: "infraestrutura",
   },
   {
     id: "docker",
     icon: docker,
     name: "Docker",
-    description: "Containers para padronizar ambientes e deploys.",
-    time: "5a",
+    years: 4,
     category: "infraestrutura",
   },
   {
     id: "aws",
     icon: aws,
     name: "AWS",
-    description: "Infra em nuvem: computação, storage e filas.",
-    time: "5a",
+    years: 2,
     category: "infraestrutura",
   },
   {
     id: "azure",
     icon: azure,
     name: "Azure",
-    description: "Nuvem da Microsoft para apps e pipelines .NET.",
-    time: "5a",
+    years: 2,
+    category: "infraestrutura",
+  },
+  {
+    id: "grafana",
+    icon: grafana,
+    name: "Grafana",
+    years: 2,
     category: "infraestrutura",
   },
   {
     id: "datadog",
     icon: datadog,
     name: "Datadog",
-    description: "Observabilidade com métricas, logs e alertas.",
-    time: "5a",
+    years: 2,
     category: "infraestrutura",
   },
   {
     id: "git",
     icon: git,
     name: "Git",
-    description: "Versionamento, branches e histórico de mudanças.",
-    time: "5a",
+    years: 6,
     category: "ferramentas",
   },
   {
     id: "github",
     icon: github,
     name: "GitHub",
-    description: "Repositórios, code review e CI com Actions.",
-    time: "5a",
+    years: 6,
     category: "ferramentas",
   },
   {
     id: "jest",
     icon: jest,
     name: "Jest",
-    description: "Testes unitários e de integração com cobertura.",
-    time: "5a",
+    years: 6,
     category: "ferramentas",
   },
   {
     id: "cypress",
     icon: cypress,
     name: "Cypress",
-    description: "Testes end-to-end rodando no browser real.",
-    time: "5a",
+    years: 3,
     category: "ferramentas",
   },
   {
     id: "swagger",
     icon: swagger,
     name: "Swagger",
-    description: "Documentação de APIs no padrão OpenAPI.",
-    time: "5a",
+    years: 4,
     category: "ferramentas",
   },
   {
     id: "postman",
     icon: postman,
     name: "Postman",
-    description: "Coleções para testar e documentar endpoints.",
-    time: "5a",
+    years: 6,
     category: "ferramentas",
   },
   {
     id: "insomnia",
     icon: insomnia,
     name: "Insomnia",
-    description: "Cliente REST e GraphQL para debug de requisições.",
-    time: "5a",
+    years: 6,
     category: "ferramentas",
   },
   {
     id: "beekeeper",
     icon: beekeeper,
     name: "Beekeeper Studio",
-    description: "Cliente SQL para explorar e editar bases de dados.",
-    time: "5a",
+    years: 4,
     category: "ferramentas",
   },
   {
     id: "vscode",
     icon: vscode,
     name: "VS Code",
-    description: "Editor do dia a dia — inclusive a inspiração deste site.",
-    time: "5a",
+    years: 6,
     category: "ferramentas",
   },
   {
     id: "visual-studio",
     icon: visualStudio,
     name: "Visual Studio",
-    description: "IDE para desenvolvimento em C# e .NET.",
-    time: "5a",
+    years: 3,
     category: "ferramentas",
   },
 ];
 
+function translate(data: TechnologyData): Technology {
+  return {
+    ...data,
+    description: i18n.t(`technologies:${data.id}`, { defaultValue: "" }),
+    time: yearsLabel(data.years),
+  };
+}
+
+/** todas as tecnologias, com descrição no idioma atual */
+export function getTechnologies(): Technology[] {
+  return technologyData.map(translate);
+}
+
+export function technologyById(id: string): Technology | undefined {
+  const data = technologyData.find((technology) => technology.id === id);
+  return data ? translate(data) : undefined;
+}
+
 export function technologiesByIds(ids: string[]): Technology[] {
   return ids
-    .map((id) => technologies.find((technology) => technology.id === id))
+    .map((id) => technologyById(id))
     .filter((technology) => technology !== undefined);
 }

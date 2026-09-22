@@ -1,5 +1,19 @@
-export interface Role {
+import i18n from "i18next";
+
+/** dados fixos do cargo; os textos vêm de src/locales/<lang>/experience.json */
+interface RoleData {
   id: string;
+  /** ids de @/lib/technologies */
+  stack: string[];
+}
+
+interface CompanyData {
+  id: string;
+  name: string;
+  roles: RoleData[];
+}
+
+export interface Role extends RoleData {
   title: string;
   period: string;
   duration: string;
@@ -8,13 +22,9 @@ export interface Role {
   summary: string;
   responsibilities: string[];
   achievements: string[];
-  /** ids de @/lib/technologies */
-  stack: string[];
 }
 
-export interface Company {
-  id: string;
-  name: string;
+export interface Company extends Omit<CompanyData, "roles"> {
   description: string;
   location: string;
   period: string;
@@ -22,104 +32,76 @@ export interface Company {
   roles: Role[];
 }
 
-export const companies: Company[] = [
+const companyData: CompanyData[] = [
   {
     id: "humu",
     name: "Humu",
-    description:
-      "Instituição de pagamento focada em soluções financeiras digitais — transferências, pagamentos e gestão financeira para empresas e consumidores.",
-    location: "Curitiba, PR",
-    period: "Jul 2025 — atual",
-    duration: "1 ano e 2 meses",
     roles: [
       {
         id: "tech-lead",
-        title: "Tech Lead",
-        period: "Mar 2026 — atual",
-        duration: "6 meses",
-        model: "Híbrido",
-        summary:
-          "Lidero o frontend de uma instituição de pagamento — web e mobile, sob LGPD e PCI DSS.",
-        responsibilities: [
-          "Lidero o time de frontend: arquitetura, qualidade de código e decisões que precisam durar.",
-          "Defino o roadmap técnico de web e mobile equilibrando entrega, escala e conformidade regulatória.",
-          "Cuido do planejamento de releases, dos pipelines de CI/CD e do que roda em produção.",
-          "Mantenho a observabilidade em Grafana e Kibana: dashboards, alertas e pipelines de log.",
-        ],
-        achievements: [
-          "Migrei a arquitetura mobile para uma estrutura modular e escalável, com cobertura de testes maior.",
-          "Padronizei as práticas de frontend entre web e mobile, reduzindo bugs e retrabalho.",
-          "Virei o ponto de contato técnico de conformidade, garantindo aderência a LGPD e PCI DSS.",
-          "Melhorei a observabilidade a ponto de detectar degradação de performance antes do usuário sentir.",
-        ],
-        stack: ["typescript", "react", "nextjs", "react-native", "jest", "git"],
+        stack: ["typescript", "react", "nextjs", "react-native", "jest", "git", "php", "laravel", "cypress", "aws", "grafana", "docker"],
       },
       {
         id: "desenvolvedor-senior",
-        title: "Desenvolvedor Front-end Sênior",
-        period: "Jul 2025 — Mar 2026",
-        duration: "9 meses",
-        model: "Presencial",
-        summary:
-          "Construí interfaces financeiras, web e mobile, num ambiente onde errar com dado é caro.",
-        responsibilities: [
-          "Desenvolvi interfaces seguras e responsivas em React para fluxos financeiros.",
-          "Modelei componentes reutilizáveis, com acessibilidade e consistência visual.",
-          "Trabalhei junto de backend e segurança pela integridade dos dados e pelas normas (LGPD, PCI DSS).",
-          "Ajudei a definir a arquitetura mobile, buscando desacoplamento e testabilidade.",
-        ],
-        achievements: [
-          "Entreguei as features de emissão e conciliação de boletos bancários.",
-          "Participei da reestruturação da arquitetura mobile que virou base do time.",
-        ],
-        stack: ["typescript", "react", "react-native", "node", "jest"],
+        stack: ["typescript", "react", "react-native", "node", "jest", "php", "laravel", "cypress", "aws", "grafana", "docker"],
       },
     ],
   },
   {
     id: "signo",
     name: "Signo Tech",
-    description:
-      "Software house de soluções sob medida, entregando produtos escaláveis para clientes de setores bem diferentes.",
-    location: "Curitiba, PR",
-    period: "Out 2022 — Jun 2025",
-    duration: "2 anos e 9 meses",
     roles: [
       {
         id: "desenvolvedor-front-end",
-        title: "Desenvolvedor Front-end",
-        period: "Out 2022 — Jun 2025",
-        duration: "2 anos e 9 meses",
-        model: "Presencial",
-        summary:
-          "Um cliente novo a cada ciclo: do e-commerce ao app, sempre com o produto no ar no fim.",
-        responsibilities: [
-          "Desenvolvi e otimizei interfaces em React e Next.js.",
-          "Modelei a arquitetura dos projetos pensando em escala e reuso de componentes.",
-          "Integrei APIs externas de forma segura e sustentável.",
-          "Liderei times técnicos em aplicações web e mobile, com code review e mentoria.",
-        ],
-        achievements: [
-          "Implantei práticas de segurança no frontend, prevenindo vulnerabilidades em sistemas críticos.",
-          "Reduzi o tempo de carregamento das aplicações com cache e lazy loading.",
-          "Subi a cobertura de testes unitários e de integração, derrubando a incidência de bugs.",
-          "Introduzi pipelines de CI/CD, automatizando deploys e tirando o erro humano da produção.",
-        ],
-        stack: [
-          "typescript",
-          "javascript",
-          "react",
-          "nextjs",
-          "node",
-          "express",
-          "jest",
-          "cypress",
-          "docker",
-        ],
+        stack: ["typescript", "javascript", "react", "nextjs", "node", "jest", "cypress", "docker", "azure", "php", "laravel", "mysql", "mongodb"],
       },
     ],
   },
 ];
+
+/** estrutura (ids e stacks) sem os textos, para árvore do explorer e afins */
+export const companies: CompanyData[] = companyData;
+
+function text(key: string): string {
+  return i18n.t(`experience:${key}`, { defaultValue: "" });
+}
+
+function list(key: string): string[] {
+  const value = i18n.t(`experience:${key}`, { returnObjects: true, defaultValue: [] });
+  return Array.isArray(value) ? (value as string[]) : [];
+}
+
+function translateRole(companyId: string, role: RoleData): Role {
+  const key = `${companyId}.roles.${role.id}`;
+
+  return {
+    ...role,
+    title: text(`${key}.title`),
+    period: text(`${key}.period`),
+    duration: text(`${key}.duration`),
+    model: text(`${key}.model`),
+    summary: text(`${key}.summary`),
+    responsibilities: list(`${key}.responsibilities`),
+    achievements: list(`${key}.achievements`),
+  };
+}
+
+function translateCompany(company: CompanyData): Company {
+  return {
+    id: company.id,
+    name: company.name,
+    description: text(`${company.id}.description`),
+    location: text(`${company.id}.location`),
+    period: text(`${company.id}.period`),
+    duration: text(`${company.id}.duration`),
+    roles: company.roles.map((role) => translateRole(company.id, role)),
+  };
+}
+
+/** empresas e cargos com os textos no idioma atual */
+export function getCompanies(): Company[] {
+  return companyData.map(translateCompany);
+}
 
 export interface RoleLocation {
   company: Company;
@@ -130,7 +112,7 @@ export function findRole(
   companyId: string,
   roleId: string,
 ): RoleLocation | undefined {
-  const company = companies.find((item) => item.id === companyId);
+  const company = getCompanies().find((item) => item.id === companyId);
   const role = company?.roles.find((item) => item.id === roleId);
 
   return company && role ? { company, role } : undefined;

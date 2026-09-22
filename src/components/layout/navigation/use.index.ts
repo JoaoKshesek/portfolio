@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { useActivityView, type ActivityView } from "@/lib/activity-view";
 
 interface NavigationItem {
@@ -20,20 +22,30 @@ export interface useNavigationProps {
   setActive: (id: ActivityView) => void;
 }
 
-const items: NavigationItem[] = [
-  { id: "files", icon: "files", label: "Explorer" },
-  { id: "search", icon: "search", label: "Buscar" },
-  { id: "scm", icon: "source-control", label: "Source Control", badge: 9 },
-  { id: "extensions", icon: "extensions", label: "Extensões" },
-  { id: "claude", icon: "sparkle", label: "Claude Code" },
+const items: Omit<NavigationItem, "label">[] = [
+  { id: "files", icon: "files" },
+  { id: "search", icon: "search" },
+  { id: "scm", icon: "source-control", badge: 9 },
+  { id: "extensions", icon: "extensions" },
+  // TODO: reativar quando a seção de IA estiver pronta
+  // { id: "claude", icon: "sparkle" },
 ];
 
-const bottomItems: BottomNavigationItem[] = [
-  { id: "account", icon: "account", label: "Conta" },
+const bottomItems: Omit<BottomNavigationItem, "label">[] = [
+  { id: "account", icon: "account" },
 ];
 
 export const useNavigation = (): useNavigationProps => {
-  const { view, setView } = useActivityView();
+  const { view, toggleView } = useActivityView();
+  const { t } = useTranslation();
 
-  return { items, bottomItems, active: view, setActive: setView };
+  return {
+    items: items.map((item) => ({ ...item, label: t(`navigation.${item.id}`) })),
+    bottomItems: bottomItems.map((item) => ({
+      ...item,
+      label: t(`navigation.${item.id}`),
+    })),
+    active: view,
+    setActive: toggleView,
+  };
 };

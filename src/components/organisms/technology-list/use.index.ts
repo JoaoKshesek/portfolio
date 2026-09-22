@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 
 import {
-  categoryLabels,
+  categoryLabel,
+  technologyCategories,
   type Technology,
   type TechnologyCategory,
 } from "@/lib/technologies";
@@ -25,9 +26,9 @@ export const useTechnologyList = (
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<TechnologyCategory[]>([]);
 
-  const categories = Object.entries(categoryLabels).map(([id, label]) => ({
-    id: id as TechnologyCategory,
-    label,
+  const categories = technologyCategories.map((id) => ({
+    id,
+    label: categoryLabel(id),
   }));
 
   const toggleCategory = (category: TechnologyCategory) => {

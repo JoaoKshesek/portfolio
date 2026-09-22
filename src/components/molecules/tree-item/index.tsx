@@ -36,7 +36,7 @@ export function TreeItem({
         className={cn(
           "flex h-[22px] w-full cursor-pointer items-center pr-2 pl-2 text-left text-[13px] outline-none",
           isSelected
-            ? "bg-ide-hover text-white"
+            ? "bg-ide-hover text-ide-heading"
             : "text-ide-fg hover:bg-ide-hover",
         )}
       >

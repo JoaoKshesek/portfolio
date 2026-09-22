@@ -1,7 +1,6 @@
 import { institutions } from "./education";
 import { companies } from "./experience";
 import {
-  certificateIconSrc,
   companyFolderIcon,
   folderIcon,
   projectFolderIcon,
@@ -78,7 +77,7 @@ export const readmeFile: TreeFile = {
   id: "README.md",
   name: "README.md",
   icon: "info",
-  iconClass: "text-sky-400",
+  iconClass: "text-sky-600 dark:text-sky-400",
   content: { kind: "profile" },
 };
 
@@ -86,15 +85,10 @@ export function educationFile(
   institutionId: string,
   studyId: string,
 ): TreeFile {
-  const study = institutions
-    .find((institution) => institution.id === institutionId)
-    ?.studies.find((item) => item.id === studyId);
-
   return {
     type: "file",
     id: `src/educacao/${institutionId}/${studyId}.md`,
     name: `${studyId}.md`,
-    image: study?.kind === "certificado" ? certificateIconSrc : undefined,
     content: { kind: "education", institutionId, studyId },
   };
 }
@@ -162,7 +156,7 @@ export function projectPreviewFile(project: Project): TreeFile | null {
     name: new URL(project.url).hostname.replace(/^www\./, ""),
     image: projectLogo(project.id),
     icon: "globe",
-    iconClass: "text-sky-400",
+    iconClass: "text-sky-600 dark:text-sky-400",
     content: { kind: "site", url: project.url, title: project.name },
   };
 }
@@ -201,16 +195,16 @@ interface FileIcon {
 }
 
 const extensionIcons: Record<string, FileIcon> = {
-  md: { icon: "markdown", iconClass: "text-sky-400" },
-  json: { icon: "json", iconClass: "text-amber-400" },
-  ts: { icon: "file-code", iconClass: "text-sky-400" },
-  tsx: { icon: "file-code", iconClass: "text-sky-400" },
-  js: { icon: "file-code", iconClass: "text-amber-400" },
-  pdf: { icon: "file-pdf", iconClass: "text-red-400" },
-  png: { icon: "file-media", iconClass: "text-purple-400" },
-  jpg: { icon: "file-media", iconClass: "text-purple-400" },
-  svg: { icon: "file-media", iconClass: "text-purple-400" },
-  webp: { icon: "file-media", iconClass: "text-purple-400" },
+  md: { icon: "markdown", iconClass: "text-sky-600 dark:text-sky-400" },
+  json: { icon: "json", iconClass: "text-amber-600 dark:text-amber-400" },
+  ts: { icon: "file-code", iconClass: "text-sky-600 dark:text-sky-400" },
+  tsx: { icon: "file-code", iconClass: "text-sky-600 dark:text-sky-400" },
+  js: { icon: "file-code", iconClass: "text-amber-600 dark:text-amber-400" },
+  pdf: { icon: "file-pdf", iconClass: "text-red-600 dark:text-red-400" },
+  png: { icon: "file-media", iconClass: "text-purple-600 dark:text-purple-400" },
+  jpg: { icon: "file-media", iconClass: "text-purple-600 dark:text-purple-400" },
+  svg: { icon: "file-media", iconClass: "text-purple-600 dark:text-purple-400" },
+  webp: { icon: "file-media", iconClass: "text-purple-600 dark:text-purple-400" },
 };
 
 const fallbackIcon: FileIcon = { icon: "file", iconClass: "text-ide-muted" };

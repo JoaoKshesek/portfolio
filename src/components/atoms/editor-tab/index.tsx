@@ -34,8 +34,8 @@ export function EditorTab({
       className={cn(
         "group relative flex h-9 shrink-0 cursor-pointer items-center gap-2 border-r border-b border-ide-border pr-1 pl-3 text-[13px] outline-none select-none",
         isActive
-          ? "border-b-transparent bg-ide-editor text-white"
-          : "bg-ide-sidebar text-ide-muted hover:text-white",
+          ? "border-b-transparent bg-ide-editor text-ide-heading"
+          : "bg-ide-sidebar text-ide-muted hover:text-ide-heading",
       )}
     >
       {isActive && (
@@ -59,7 +59,7 @@ export function EditorTab({
           onClose();
         }}
         className={cn(
-          "flex size-5 cursor-pointer items-center justify-center rounded-sm hover:bg-ide-hover hover:text-white",
+          "flex size-5 cursor-pointer items-center justify-center rounded-sm hover:bg-ide-hover hover:text-ide-heading",
           isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100",
         )}
       >

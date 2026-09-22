@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useActivityView } from "@/lib/activity-view";
 import { useEditor } from "@/lib/editor";
@@ -26,8 +27,14 @@ export const useSearch = (): UseSearchProps => {
   const { setView } = useActivityView();
   const [query, setQuery] = useState("");
   const [collapsed, setCollapsed] = useState<string[]>([]);
+  const { i18n } = useTranslation();
+  const language = i18n.language;
 
-  const groups = useMemo(() => search(query), [query]);
+  // o índice e as sugestões vêm do i18n global, por isso os memos dependem do idioma
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const groups = useMemo(() => search(query), [query, language]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const suggestions = useMemo(() => searchSuggestions(), [language]);
 
   const open = (result: SearchResult) => {
     const { target } = result;
@@ -57,7 +64,7 @@ export const useSearch = (): UseSearchProps => {
     setQuery,
     groups,
     total: countResults(groups),
-    suggestions: searchSuggestions,
+    suggestions,
     isCollapsed: (groupId: string) => collapsed.includes(groupId),
     toggleGroup: (groupId: string) =>
       setCollapsed((prev) =>

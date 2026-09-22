@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Codicon } from "@/components/atoms/codicon";
 import { ClaudePanel } from "@/components/organisms/aside-panels/claude";
@@ -20,19 +21,20 @@ const panels: Record<ActivityView, ComponentType> = {
 
 export function Aside() {
   const { view, title } = useAside();
+  const { t } = useTranslation();
   const Panel = panels[view];
 
   return (
     <aside className="flex h-full w-full flex-col overflow-hidden bg-ide-sidebar">
       <div className="flex h-9 shrink-0 items-center justify-between pr-1 pl-3">
-        <h3 className="text-[11px] font-normal tracking-wider text-white uppercase">
+        <h3 className="text-[11px] font-normal tracking-wider text-ide-heading uppercase">
           {title}
         </h3>
 
         <button
           type="button"
-          aria-label="Mais ações"
-          className="flex size-6 cursor-pointer items-center justify-center rounded-sm text-ide-muted hover:bg-ide-hover hover:text-white"
+          aria-label={t("navigation.moreActions")}
+          className="flex size-6 cursor-pointer items-center justify-center rounded-sm text-ide-muted hover:bg-ide-hover hover:text-ide-heading"
         >
           <Codicon name="ellipsis" size={16} />
         </button>

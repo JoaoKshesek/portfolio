@@ -1,4 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   useLanguage,
@@ -35,13 +36,10 @@ const languageOptions: LanguageOption[] = [
   { value: "es", label: "Español", hint: "es" },
 ];
 
-const themeOptions: ThemeOption[] = [
-  { value: "dark", label: "Default Dark" },
-  { value: "light", label: "Light" },
-];
+const themeValues: Theme[] = ["dark", "light"];
 
 const itemClass =
-  "flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 outline-none select-none data-highlighted:bg-ide-hover data-highlighted:text-white";
+  "flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 outline-none select-none data-highlighted:bg-ide-hover data-highlighted:text-ide-heading";
 
 const labelClass =
   "px-2 py-1 text-[11px] tracking-wider text-ide-muted uppercase";
@@ -49,6 +47,12 @@ const labelClass =
 export const useSettingsMenus = (): UseSettingsMenusProps => {
   const [theme, setTheme] = useTheme();
   const [language, setLanguage] = useLanguage();
+  const { t } = useTranslation();
+
+  const themeOptions: ThemeOption[] = themeValues.map((value) => ({
+    value,
+    label: t(`settings.themes.${value}`),
+  }));
 
   return {
     languageOptions,

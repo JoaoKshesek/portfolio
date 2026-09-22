@@ -1,10 +1,12 @@
+import { useTranslation } from "react-i18next";
+
 import { Codicon } from "@/components/atoms/codicon";
 import { TreeItem } from "@/components/molecules/tree-item";
 
 import { useExplorer } from "./use.index";
 
 const actionClass =
-  "flex size-6 items-center justify-center rounded-sm text-ide-muted hover:bg-ide-hover hover:text-white disabled:pointer-events-none disabled:opacity-40";
+  "flex size-6 items-center justify-center rounded-sm text-ide-muted hover:bg-ide-hover hover:text-ide-heading disabled:pointer-events-none disabled:opacity-40";
 
 export function ExplorerPanel() {
   const {
@@ -18,6 +20,7 @@ export function ExplorerPanel() {
     selectedId,
     select,
   } = useExplorer();
+  const { t } = useTranslation();
 
   return (
     <div className="pb-3 text-[13px]">
@@ -33,15 +36,15 @@ export function ExplorerPanel() {
             size={16}
             className="shrink-0 text-ide-muted"
           />
-          <span className="truncate font-semibold text-white">{root.name}</span>
+          <span className="truncate font-semibold text-ide-heading">{root.name}</span>
         </button>
 
         <div className="flex shrink-0 items-center opacity-0 transition-opacity group-hover:opacity-100 focus-within:opacity-100">
           <button
             type="button"
             disabled
-            aria-label="Novo arquivo"
-            title="Somente leitura"
+            aria-label={t("explorer.newFile")}
+            title={t("explorer.readOnly")}
             className={actionClass}
           >
             <Codicon name="new-file" size={16} />
@@ -49,8 +52,8 @@ export function ExplorerPanel() {
           <button
             type="button"
             disabled
-            aria-label="Nova pasta"
-            title="Somente leitura"
+            aria-label={t("explorer.newFolder")}
+            title={t("explorer.readOnly")}
             className={actionClass}
           >
             <Codicon name="new-folder" size={16} />
@@ -58,7 +61,7 @@ export function ExplorerPanel() {
           <button
             type="button"
             onClick={refresh}
-            aria-label="Recarregar"
+            aria-label={t("explorer.refresh")}
             className={`${actionClass} cursor-pointer`}
           >
             <Codicon name="refresh" size={16} />
@@ -66,7 +69,7 @@ export function ExplorerPanel() {
           <button
             type="button"
             onClick={collapseAll}
-            aria-label="Recolher tudo"
+            aria-label={t("explorer.collapseAll")}
             className={`${actionClass} cursor-pointer`}
           >
             <Codicon name="collapse-all" size={16} />

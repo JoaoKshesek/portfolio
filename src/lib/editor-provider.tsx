@@ -1,5 +1,7 @@
+import i18n from "i18next";
 import { useMemo, useState, type ReactNode } from "react";
 
+import { useActivityView } from "./activity-view";
 import type { AiDoc } from "./ai-workflow";
 import { EditorContext, type EditorTab } from "./editor";
 import {
@@ -31,7 +33,7 @@ function technologyTab(technology: Technology): EditorTab {
     id: `extensao:${technology.id}`,
     name: technology.name,
     icon: { type: "image", src: technology.icon },
-    path: ["extensões", technology.name],
+    path: [i18n.t("ui:editor.extensionsPath"), technology.name],
     content: { kind: "technology", technology },
   };
 }
@@ -54,6 +56,7 @@ export function EditorProvider({ children }: EditorProviderProps) {
   // o portfólio abre no README, como um projeto que já vem com um arquivo aberto
   const [tabs, setTabs] = useState<EditorTab[]>(() => [fileTab(readmeFile)]);
   const [activeId, setActiveId] = useState<string | null>(readmeFile.id);
+  const { setAsideOpen } = useActivityView();
 
   const value = useMemo(() => {
     const open = (tab: EditorTab) => {
@@ -62,6 +65,8 @@ export function EditorProvider({ children }: EditorProviderProps) {
       }
 
       setActiveId(tab.id);
+      // no mobile o painel é uma gaveta: abrir um arquivo fecha a gaveta para liberar a leitura
+      setAsideOpen(false);
     };
 
     const closeTab = (id: string) => {
@@ -89,7 +94,7 @@ export function EditorProvider({ children }: EditorProviderProps) {
       activateTab: setActiveId,
       closeTab,
     };
-  }, [tabs, activeId]);
+  }, [tabs, activeId, setAsideOpen]);
 
   return (
     <EditorContext.Provider value={value}>{children}</EditorContext.Provider>

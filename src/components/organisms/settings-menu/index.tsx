@@ -1,4 +1,5 @@
 import { Menu } from "@base-ui/react/menu";
+import { useTranslation } from "react-i18next";
 import { Codicon } from "@/components/atoms/codicon";
 import type { Language, Theme } from "@/lib/preferences";
 import { useSettingsMenus } from "./use.index";
@@ -24,12 +25,13 @@ export function SettingsMenu() {
     language,
     setLanguage,
   } = useSettingsMenus();
+  const { t } = useTranslation();
 
   return (
     <Menu.Root>
       <Menu.Trigger
-        aria-label="Configurações"
-        className="flex h-12 w-full cursor-pointer items-center justify-center text-ide-statusbar-fg outline-none hover:text-white data-popup-open:text-white"
+        aria-label={t("navigation.settings")}
+        className="flex h-12 w-full cursor-pointer items-center justify-center text-ide-statusbar-fg outline-none hover:text-ide-heading data-popup-open:text-ide-heading"
       >
         <Codicon name="settings-gear" size={24} />
       </Menu.Trigger>
@@ -46,7 +48,7 @@ export function SettingsMenu() {
               value={language}
               onValueChange={(value) => setLanguage(value as Language)}
             >
-              <Menu.GroupLabel className={labelClass}>Idioma</Menu.GroupLabel>
+              <Menu.GroupLabel className={labelClass}>{t("settings.language")}</Menu.GroupLabel>
               {languageOptions.map((option) => (
                 <Menu.RadioItem
                   key={option.value}
@@ -67,7 +69,7 @@ export function SettingsMenu() {
               value={theme}
               onValueChange={(value) => setTheme(value as Theme)}
             >
-              <Menu.GroupLabel className={labelClass}>Tema</Menu.GroupLabel>
+              <Menu.GroupLabel className={labelClass}>{t("settings.theme")}</Menu.GroupLabel>
               {themeOptions.map((option) => (
                 <Menu.RadioItem
                   key={option.value}

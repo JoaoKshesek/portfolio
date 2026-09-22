@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useEditor } from "@/lib/editor";
 import { projectById, type Project } from "@/lib/projects";
@@ -14,10 +15,18 @@ export interface UseProjectDetailsProps {
   renderMarkdown: () => React.ReactNode[];
 }
 
+/** markdown dos projetos, empacotado pelo Vite e carregado sob demanda (funciona no build, sem depender de fetch em /src) */
+const markdownFiles = import.meta.glob("/src/projetos/*/*.md", {
+  query: "?raw",
+  import: "default",
+}) as Record<string, () => Promise<string>>;
+
 export const useProjectDetails = (
   projectId: string,
 ): UseProjectDetailsProps => {
   const { openFile } = useEditor();
+  const { t, i18n } = useTranslation();
+  const language = i18n.language;
   const [content, setContent] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -31,17 +40,18 @@ export const useProjectDetails = (
         setIsLoading(true);
         setError(null);
 
-        const filePath = `/src/projetos/${projectId}.md`;
-        const response = await fetch(filePath);
+        // um arquivo por idioma em src/projetos/<lang>/; sem tradução, cai no português
+        const load =
+          markdownFiles[`/src/projetos/${language}/${projectId}.md`] ??
+          markdownFiles[`/src/projetos/pt/${projectId}.md`];
 
-        if (response.ok) {
-          const text = await response.text();
-          setContent(text);
+        if (load) {
+          setContent(await load());
         } else {
-          setError("Não foi possível carregar a descrição do projeto");
+          setError(t("project.loadError"));
         }
       } catch (err) {
-        setError("Erro ao carregar o arquivo de descrição");
+        setError(t("project.fetchError"));
         console.error(err);
       } finally {
         setIsLoading(false);
@@ -49,7 +59,9 @@ export const useProjectDetails = (
     };
 
     loadMarkdown();
-  }, [projectId]);
+    // t muda junto com language; listar só language evita recarregar à toa
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [projectId, language]);
 
   const renderMarkdown = () => {
     const lines = content.split("\n");
@@ -65,7 +77,7 @@ export const useProjectDetails = (
         elements.push(
           <h2
             key={i}
-            className="text-lg font-bold text-white"
+            className="text-lg font-bold text-ide-heading"
           >
             {line.replace(/^## /, "")}
           </h2>
