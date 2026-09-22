@@ -1,5 +1,6 @@
 import "./App.css";
 import { Aside } from "./components/layout/aside";
+import { BootScreen } from "./components/organisms/boot-screen";
 import { Footer } from "./components/layout/footer";
 import { Header } from "./components/layout/header";
 import { Main } from "./components/layout/main";
@@ -74,6 +75,8 @@ function Workbench() {
 function App() {
   return (
     <div className="flex h-dvh flex-col p-0 md:p-12">
+      <BootScreen />
+
       <GlyphMatrix
         glyphs="01·•+*/\<>="
         cellSize={16}

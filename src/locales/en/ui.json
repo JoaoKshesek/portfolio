@@ -142,5 +142,12 @@
     "nextScreen": "Next app screen",
     "screenAlt": "Screen {{index}} of the {{name}} app",
     "home": "Back to the home screen"
+  },
+  "boot": {
+    "label": "Loading the portfolio",
+    "clone": "Cloning into 'portfolio'... done.",
+    "install": "Packages: +42 ████████████████████ 100%",
+    "ready": "opening the editor",
+    "skip": "click or press any key to skip"
   }
 }
